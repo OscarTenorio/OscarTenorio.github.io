@@ -1,0 +1,52 @@
+How to Make your own Github Portfolio Page (basic instrucitons for MAC OS users):
+
+1) Download Visual Studio Code (VS Code here): https://code.visualstudio.com/Download
+    - Follow instructions to get your app installed and running on your machine
+
+2) Visit Github: https://github.com/ and create a free account!
+    - You should see a Sign Up button on the homepage, where you then need to choose a username and password, and provide an email that will be tied to your account.
+    - Navigate to the Repositories page, and create a new Repository.
+        * Name your Repo (short for Repository) <your username>.github.io (this will make it viewable from any computer on the internet)
+    - You'll land on your new Repo page. Look for the "uploading an existing file" link, and leave this page here - we'll toss some files in here so something renders when we visit your page in the browser later.
+
+3) Create a folder on your computer where you'll store the files you want to work in (you'll send these files later to Github).
+
+4) Now navigate to the VS Code application, and look in File > Open Folder.
+    - Navigate to the folder you created - highlight it, then click Open to have that folder open on the left pane of VS Code
+
+5) Create an index.html file in the Terminal app
+    - Press Command + spacebar and search for "Terminal", and select the option that has a black box for an icon (the Terminal app icon)
+    - Navigate to the desired folder (the one created in the previous step) using the following commands to get around:
+        ~     -> (tilde) navigates to the root directory (basically the top-most level of the folder structure for your user). You'll know you're there when your username is displayed near the cursor.
+                Start by using this command to get us in the right starting position.
+        ls    -> (list) lists the current items in the directory/folder you're in. This'll show you what your options are for yuor next command.
+                Use it now to see available files/folders.
+        cd    -> (change directory) changes where the user is to the directory given. Example: "cd Pictures" will navigate you to the Pictures folder.
+                Use "ls" to see what your next options are until you arrive at the folder you created (if you get lost you can always start again with "~").
+        touch -> (touch) a command primarily used to alter timestamps but can also create files - that's how we'll use it here.
+                Once you're in the right place where you want to create the file, write "touch index.html" to create an index file we'll use later.
+
+6) Go to that new folder, and include any other files you would like displayed on your site (like pictures) in that same folder created previously (where it will be located next to the "index.ntml" file)
+    - simply drag and drop the .JPG image you'll want to use - it's important that the new image/images is/are located in the same place the index.html file
+
+7) Open the index.html file and enter some basic code to get started
+    - copy the following code to get something basic on your page:
+
+            <html>
+                <h1> "xxxx" Portfolio</h1>   
+                <img src="./nameOfPic.jpg" />
+            </html>
+            
+    - replace the "xxxx" (including the quote marks) with your name
+    - replace "nameOfPic.jpg" with the filename you added
+        * leave the "./" in the filename (it'll help the computer know where that file is located)
+        * make sure to leave the quotation marks in place, they're needed so the computer knows where the filename starts/stops
+
+8) Upload your files to your new Repository
+    - Open a Finder window (Command + Space to search in your computer, look up Finder) and navigate to inside the folder you created
+    - Drag the desired files from within that folder and drop them onto the Github page (where it says "Drag files here" or something to that effect)
+    - Scroll down and click "Commit Changes". This will apply the changes you've staged
+
+9) Visit your new site!
+    - in any browser, type "<your username>.github.io" without the quotation marks and replace <your username> with your username.
+    - Enjoy!
