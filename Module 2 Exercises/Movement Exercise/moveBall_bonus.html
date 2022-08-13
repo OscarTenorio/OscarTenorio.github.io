@@ -26,7 +26,7 @@ function moveBallLeft() {
   if (positionX <= 0) {
     atEdgeX = false;
     };
-  return positionX;
+    ball.style.left = positionX + 'px';
   };
   
 function moveBallRight() {
@@ -34,7 +34,7 @@ function moveBallRight() {
   if (positionX >= window.innerWidth - ball.offsetWidth) {
       atEdgeX = true;
   };
-  return positionX;
+  ball.style.left = positionX + 'px';
 };
 
 
@@ -43,7 +43,7 @@ function moveBallUp() {
   if (positionY <= 0) {
     atEdgeY = false;
   };
-  return positionY;
+  ball.style.top = positionY + 'px';
 };
   
 function moveBallDown() {
@@ -51,27 +51,23 @@ function moveBallDown() {
   if (positionY >= window.innerHeight - ball.offsetWidth) {
     atEdgeY = true;
   };
-  return positionY;
+  ball.style.top = positionY + 'px';
 };
 
 // ----------------------------------
 
-function whichDirection() {
+function moveBall() {
   if (atEdgeX == false) {
     moveBallRight();
-    ball.style.left = positionX + 'px';
   } else if (atEdgeX == true) {
     moveBallLeft();
-    ball.style.left = positionX + 'px';
   };
   if (atEdgeY == false) {
     moveBallDown();
-    ball.style.top = positionY + 'px';
   } else if (atEdgeY == true) {
     moveBallUp();
-    ball.style.top = positionY + 'px';
   };
 };
 
-setInterval(whichDirection, 15);
+setInterval(moveBall, 15);
 </script>
