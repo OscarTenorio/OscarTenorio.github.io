@@ -1,0 +1,77 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<script>
+
+var velocityX = 5;
+var velocityY = 3;
+var positionX = 0;
+var positionY = 0;
+var ball = document.getElementById('ball');
+
+// YOUR CODE 
+// ----------------
+var atEdgeX = false;
+var atEdgeY = false;
+
+function moveBallLeft() {
+  positionX = positionX - velocityX;
+  if (positionX <= 0) {
+    atEdgeX = false;
+    };
+  return positionX;
+  };
+  
+function moveBallRight() {
+  positionX = positionX + velocityX;
+  if (positionX >= window.innerWidth - ball.offsetWidth) {
+      atEdgeX = true;
+  };
+  return positionX;
+};
+
+
+function moveBallUp() {
+  positionY = positionY - velocityY;
+  if (positionY <= 0) {
+    atEdgeY = false;
+  };
+  return positionY;
+};
+  
+function moveBallDown() {
+  positionY = positionY + velocityY;
+  if (positionY >= window.innerHeight - ball.offsetWidth) {
+    atEdgeY = true;
+  };
+  return positionY;
+};
+
+// ----------------------------------
+
+function whichDirection() {
+  if (atEdgeX == false) {
+    moveBallRight();
+    ball.style.left = positionX + 'px';
+  } else if (atEdgeX == true) {
+    moveBallLeft();
+    ball.style.left = positionX + 'px';
+  };
+  if (atEdgeY == false) {
+    moveBallDown();
+    ball.style.top = positionY + 'px';
+  } else if (atEdgeY == true) {
+    moveBallUp();
+    ball.style.top = positionY + 'px';
+  };
+};
+
+setInterval(whichDirection, 15);
+</script>

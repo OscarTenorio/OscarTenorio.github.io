@@ -1,0 +1,51 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"
+  ></div>
+
+<script>
+
+var velocity = 20;
+var position = 0;
+var ball = document.getElementById('ball');
+
+// YOUR CODE 
+// ----------------
+var atEdge = false
+
+function moveBallLeft() {
+      position = position - velocity;
+      ball.style.left = position + 'px';
+      if (position <= 0) {
+        atEdge = false;
+    };
+  };
+  
+function moveBallRight(screenWidth) {
+    position = position + velocity;
+    ball.style.left = position + 'px';
+    if (position >= screenWidth - ball.offsetWidth) {
+      atEdge = true;
+  };
+};
+
+function whichDirection() {
+  screenWidth = window.innerWidth
+  if (atEdge == false) {
+    moveBallRight(screenWidth);
+  } else if (atEdge == true) {
+    moveBallLeft();
+  };
+};
+
+setInterval(whichDirection, 50);
+</script>
+
+
+<!-- ball moves right -->
