@@ -20,12 +20,12 @@ var ball = document.getElementById('ball');
 var atEdge = false
 
 function moveBallLeft() {
-      position = position - velocity;
-      ball.style.left = position + 'px';
-      if (position <= 0) {
-        atEdge = false;
-    };
+    position = position - velocity;
+    ball.style.left = position + 'px';
+    if (position <= 0) {
+      atEdge = false;
   };
+};
   
 function moveBallRight(screenWidth) {
     position = position + velocity;

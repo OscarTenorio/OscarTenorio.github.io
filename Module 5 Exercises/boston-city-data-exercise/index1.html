@@ -1,0 +1,55 @@
+<div id="container1">
+  <!-- populated by JS-->
+</div>
+<div id="container2">
+  <!-- populated by JS-->
+</div>
+<div id="container3">
+  <!-- populated by JS-->
+</div>
+<script src="./boston.js"></script>
+<script>
+  function renderBoston(boston, container) {
+    var person = boston.data
+    const len = person.length; // boston is an array
+    var html = '';
+    for (let i = 0; i < len; i++) {
+      html += '<li class="post">' +
+        '<h2>' + person[i][8] + '</h2>' +
+        '<h3>' + person[i][11] + '</h3>'
+    };
+    container.innerHTML = '<ul id = "boston1">' + html + '</ul>';
+  }
+  // renderBoston(boston, document.getElementById('container1'));
+
+  function topEarners(boston, container) {
+    var person = boston.data;
+    var html = '';
+    var over100000 = [];
+    for (let i = 0; i < person.length; i++) {
+      if (person[i][11] >= 100000) {
+        over100000.push(person[i]);
+      };
+    };
+    container.innerHTML = '<div id = "topEarners"> Number of Employees earning more than $100,000 a year: ' + over100000.length + '</div>';
+  };
+  topEarners(boston, document.getElementById('container2'));
+
+  
+    // display top 5 earners
+  function top5Earners(boston, container) {  
+    var sortedPersons = boston.data.sort(function(a, b){return b[11] - a[11]});
+    var top5 = []
+    var html = '';
+    for (let i = 0; i < 5; i++) {
+      top5.push([sortedPersons[i][8], sortedPersons[i][11]]);
+    };
+    for (let i = 0; i < top5.length; i++) {
+      html += '<li class="post">' +
+        '<h2>' + top5[i][0] + '</h2>' +
+        '<h3>' + top5[i][1] + '</h3>'
+    };
+    container.innerHTML = '<ul id = "top5Earners">' + html + '</ul>';
+  };
+  top5Earners(boston, document.getElementById('container3'));
+</script>

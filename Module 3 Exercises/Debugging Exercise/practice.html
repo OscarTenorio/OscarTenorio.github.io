@@ -1,0 +1,21 @@
+<h1>Tables Exercise</h1>
+<p>Open the Console to see a multiplication table (formatted according to the challenge given)</p>
+<script>
+    // const multiplier = 1;
+
+    for (let i = 1; i <= 10; i++){
+        var numberString = ['  '];
+        var numArray = ['  '];
+        var column = i;
+        for (let i = 1; i <= 10; i++) {
+            var row = i * column;
+            if (row < 10) {
+                numArray.push('  ' + row);
+            } else {
+                numArray.push(' ' + row);
+            };
+        };
+        numArray.forEach(number => numberString = numberString + number);
+        console.log(numberString);
+    };
+</script>   
