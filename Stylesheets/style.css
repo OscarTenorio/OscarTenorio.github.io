@@ -1,12 +1,52 @@
-p {
-    color: lightgrey;
+body {
+    background-color: lightgray;
 }
 
-.red {
-    color:red;
+.container {
+    max-width: 1200px;
+    margin: auto;
 }
 
-#header-background {
-    background-image: url(./IMG_1945.JPG);
-    width: 50%;
+p, ul, ol, li {
+    color: rgb(40,40,40);
+    font-family: Roboto;
+}
+
+
+.red{
+    color: red;
+}
+
+
+.hero-text {
+    font-family: Poppins;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    color:black;
+    font-size: x-large;
+    text-shadow: 3px 3px 3px #ababab;
+}
+
+.navigation-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.menu-item{
+    margin: auto 50px;
+    padding: 10px 50px;
+}
+
+.hero {
+    background-image: url('../IMG_1945.JPG');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 325px;
 }
