@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Styling Dynamic Grid</title>
+    <style>
+        .on {
+        background: orange;
+        }
+
+        .content {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 5px;
+        }
+
+        div {
+        padding: 10px;
+        text-align: center;
+        border-style: solid;
+        font-size: 1em;
+        }
+
+    </style>>
+</head>
+
+<body>
+    <button onclick="createGrid()" id="btn_createGrid">CREATE GRID</button>
+    <button onclick="move()" style="margin-bottom: 10px;" id="btn_move">MOVE</button>
+    <main class="content" id="target"></main>
+</body>
+
+</html>
+
+
+<script>
+var position = 1; // The starting position of the grid
+const gridSize = 100; // The total number of the grid cells
+var intervalId = 0;
+
+function createGrid() {
+  // Should create a new Div based on the gridSize variable value and append these divs to the element with id "target"
+  const target = document.getElementById('target');
+  for (let i = 0; i < gridSize; i++) {
+    let newDiv = document.createElement('div')
+    newDiv.id = `n${i + 1}`;
+    newDiv.innerHTML = newDiv.id;
+    target.append(newDiv) 
+  };
+  let firstDiv = document.getElementById('n1');
+  firstDiv.classList.add('on');
+}
+
+function move() {
+  // Should increment the position variable by 1 each 100ms taking into consideration the gridSize variable value
+  // This function should make use of the toggle function below to change the CSS class on a specific div element
+  console.log(position);
+  toggle(position);
+  intervalId = setInterval(() => {
+    position += 1;
+    toggle(position);
+    console.log(position);
+  }, 100);
+};
+
+function toggle(position) {
+  // Takes a position parameter referencing a grid cell and sets the class name of that cell (or div) to the class 'on'
+  // The CSS class "on" is defined in the styles.css file
+  // If a position of less than 1 is passed into the function, return 0 as the grid positions only go from 1 to 100
+  var currentDiv = document.getElementById(position.toString());
+  if (position == 0) {
+    return 0;
+  };
+  if (position < gridSize) {
+    currentDiv.classList.remove('on');
+    let nextDiv = document.getElementById(`n${position + 1}`);
+    nextDiv.classList.add('on');
+
+    // currentDiv.classList.toggle('on');
+    // nextDiv.classList.toggle('on');
+  } else {
+    clearInterval(intervalId);
+  };
+};
+</script>
