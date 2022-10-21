@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
     <head>
         <link rel="stylesheet" type="text/css" href="./styles.css">
     </head>
@@ -13,4 +13,134 @@
         </div>
         <script src="./eyes.js"></script>
     </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../Stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+
+    <title>Portfolio | Eyes</title>
+  </head>
+  
+  <body>
+    <header>
+    <div class="collapse bg-dark" id="navbarHeader" onclick="document.getElementById('navbarHeader').classList.toggle('collapse');">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About Me</h4>
+            <p class="text-muted">Born and raised in Miami, I moved to Boston searching for change and growth. After discovering my interest in software through a good friend, I worked in Quality Assurance to surround myself in the industry. This further exposure prompted me to take the MIT MERN course that I am enrolled in today. Feel free to send me an email to get in contact with me, and I will reply when able.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+                <li><a href="https://github.com/OscarTenorio/oscartenorio.github.io" target="_blank" class="text-white">Visit my Github Page</a></li>
+                <li><a href="mailto:otenorio90@gmail.com" class="text-white">Email me</a></li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Portfolio</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+    </div>
+    </header>
+
+    <main role="main bg-light">
+
+    <section class="jumbotron text-center hero">
+        <div class="container">
+            <h1 class="jumbotron-heading"><span class="shadow-red">[</span> Eyes Exercise <span class="shadow-red">]</span></h1>
+            <div class="pt-5">
+                <!-- hero subtext here -->
+            </div>
+        </div>
+    </section>
+     <!-- End Hero Section -->
+
+    
+
+    <div class="container">
+        <div class="py-5 my-5">
+            <div class="container">
+                <div class="container py-5 my-3">
+                    <div class="text-center pt-5 pb-3">
+                        <p>This exercise was simple - we were to essentially learn how elements on a page can react to the cursor using css animations. The eyes themselves are really just circle divs nested in another element that transform their position based on the cursor movement. So cute, but so creepy!</p>
+                    </div>
+                    <div class="text-center py-2">
+                        <p>Unfortunately there are problems on the page - make the screen too narrow and the eyes stack on top of eachother. Further improvements are aimed at rectifying that, but for now the watcher prefers his page width to be above <code>770px</code>. </p>
+                    </div>
+                </div>
+
+                <!-- eyes -->
+                <div class="eye-wrapper">
+                    <div class="eyes">
+                        <div class="eye">
+                            <div class="ball"></div>
+                        </div>
+                        <div class="eye">
+                            <div class="ball"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of eyes -->
+
+                <div class="col-lg text-center my-auto py-5">
+                    <p>Behold the watcher! Move the cursor around to watch them be a peepin' creeper!</p>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+    </main>
+
+    <footer class="bg-dark text-center text-white mt-5">
+    <div class="container p-4 pb-0">
+      <section class="my-4">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://oscartenorio.github.io/">Homepage</a>
+        <div class="btn btn-outline-light text-dark btn-floating bg-light m-1" href="">Pacmen</div>
+        <a class="btn btn-outline-light btn-floating m-1" href="">Eye</a>
+        <a class="btn btn-outline-light btn-floating m-1" href="">Bus Tracker</a>
+      </section>
+    </div>
+  
+    <div class="text-center p-3 pt-4" style="background-color: rgba(0, 0, 0, 0.2);">MIT xPro MERN Full Stack Course <span class="red">|</span> Github Portfolio: Oscar Tenorio</div>
+    <div class="text-center text-muted pb-1" style="background-color: rgba(0, 0, 0, 0.2);">Last Updated: 10/24/22</div>
+
+    </footer>
+    <!-- Eyes JS file -->
+    <script src="./eyes.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body>
+
+
+  
 </html>
