@@ -10,8 +10,9 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="../Stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
 
-    <title>Portfolio | Pacmen</title>
+    <title>Portfolio | Bus Tracker</title>
   </head>
   
   <body>
@@ -49,41 +50,35 @@
 
     <section class="jumbotron text-center hero">
         <div class="container">
-            <h1 class="jumbotron-heading"><span class="shadow-red">[</span> Pacmen Exercise <span class="shadow-red">]</span></h1>
+            <h1 class="jumbotron-heading"><span class="shadow-red">[</span> Real Time Bus Tracker <span class="shadow-red">]</span></h1>
             <div class="pt-5">
                 <!-- hero subtext here -->
             </div>
         </div>
     </section>
-    <!-- End Hero Section -->
+     <!-- End Hero Section -->
 
-    <main class="main">
-        <div id='game' class="container">
-            <div class="py-5 my-5">
-                <div class="container">
-                    <img class="img-fluid mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/400px-Pac_Man.svg.png" alt="Pacman Thumbnail" style="height: 50px; width: 50px; display: block; overflow: hidden;" data-holder-rendered="true">
-                    <div class="container py-5 my-3">
-                        <div class="text-center py-2">
-                            <p>This assignment was testing our ability to manipulate the DOM by adding <code>Pacmen</code> images and having them start at random positions with random initialized velocities. Each press of the "Add PacMan" button creates a PacMan element, storing and managing them in an array. Once you have your desired amount of prisoners, you can have them run amok your screen by pressing the <code>Start Game</code> button, where they will bounce off the edges of the viewport until the page is refreshed.</p>
-                        </div>
-                        <div class="text-center py-2">
-                            <p>The chaos is managed by an <code>update()</code> function that iterates over the array and applies their randomized velocity used to move the element, then calls itself after a moment to create the movement of the Pacman. Once the Pacman reaches the edge of the screen, it reverses it's direction while it faces and travels the other way.</p>
-                        </div>
+    
+
+    <div class="container">
+        <div class="py-5 my-5">
+            <div class="container">
+                <div class="container py-5 my-3">
+                    <div class="text-center pt-5 pb-3">
+                        <p>Here we are tapping into the publicly available map data from Boston's MBTA, and displaying live feed of current bus positions.</p>
                     </div>
-                    <div class="col-lg text-center my-auto py-3">
-                        <p>Give it a try!<br><br>But be warned, there's no telling where they'll spawn on the page...</p>
+                    <div class="text-center py-2">
+                        <p>Unfortunately there are problems on the page - make the screen too narrow and the eyes stack on top of eachother. Further improvements are aimed at rectifying that, but for now the watcher prefers his page width to be above <code>770px</code>. </p>
                     </div>
                 </div>
-        
+
+                <!-- map -->
+				<div class="mx-auto" id="map" style="width:1024px; height:768px; background-color: rgba(0, 0, 0, 0.2);"></div>
+                <!-- end of map -->
             </div>
-            <div class="container d-flex pb-5">
-                <div class="mx-auto">
-                    <button class="btn btn-outline-dark btn-floating m-1" onclick='makeOne()' width='200' height='30'>Add PacMan</button>
-                    <button class="btn btn-outline-dark btn-floating m-1" onclick='update()' width='200' height='30'>Start Game</button>
-                    <button class="btn btn-outline-dark btn-floating m-1" onClick="window.location.reload();" width='200' height='30'>Refresh Page</button>
-                </div>
-            </div>
+    
         </div>
+    </div>
 
     </main>
 
@@ -91,18 +86,19 @@
     <div class="container p-4 pb-0">
       <section class="my-4">
         <a class="btn btn-outline-light btn-floating m-1" href="https://oscartenorio.github.io/">Homepage</a>
-        <div class="btn btn-outline-light text-dark btn-floating bg-light m-1">Pacmen</div>
-        <a class="btn btn-outline-light btn-floating m-1" href="https://oscartenorio.github.io/Eye_Exercise/">Eye</a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://oscartenorio.github.io/Pacmen_Exercise/">Pacmen</a>
+        <div class="btn btn-outline-light text-dark btn-floating bg-light m-1">Eye</div>
         <a class="btn btn-outline-light btn-floating m-1" href="">Bus Tracker</a>
       </section>
     </div>
   
     <div class="text-center p-3 pt-4" style="background-color: rgba(0, 0, 0, 0.2);">MIT xPro MERN Full Stack Course <span class="red">|</span> Github Portfolio: Oscar Tenorio</div>
     <div class="text-center text-muted pb-1" style="background-color: rgba(0, 0, 0, 0.2);">Last Updated: 10/24/22</div>
-    </footer>
+	</footer>
 
-    <!-- Pacmen JS file -->
-    <script src="./pacmen.js"></script>
+    <!-- Bus Tracker JS files -->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyARxs_0QWBQzZ-7tnFIkcz6Tzh5Fr1I0xg"></script>
+	<script src="./mapanimation.js"></script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
