@@ -25,7 +25,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a simple practice exercise to show a css animation. You should have no problem running this with an internet connection and a browser to execute the files.
+This is a simple practice exercise to show a css animation manipulating the placement of divs on a page to create the illusion of eyes following the user's cursor. You should have no problem running this with an internet connection and a browser to execute the files.
 
 
 ### Built With
