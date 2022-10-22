@@ -27,24 +27,20 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-asasd
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This is a simple practice exercise to show a css animation. You should have no problem running this with an internet connection and a browser to execute the files.
 
 
 ### Built With
 
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+[![Bootstrap][Bootstrap.com]][Bootstrap-url]
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+There isn't anything required to run this since it's hosted on the site itself (nothing needs to be on your machine to view the page beyond having an internet connection to load the bootstrap files and JQuery files).
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
@@ -58,34 +54,25 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/oscartenorio.github.io/repo_name.git
+   git clone https://github.com/oscartenorio.github.io/Eye_Exercise.git
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- [ ] Adjust CSS to scale down when the screen is narrower than 720px
+- [ ] Have the eyes aim at the current location of the cursor, rather than their position relative to the viewport
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Free for anyone to use - go crazy!
 
 
 
