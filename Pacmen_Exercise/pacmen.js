@@ -14,18 +14,19 @@ function setToRandom(scale) {
 }
 // Factory to make a PacMan
 function makePac() {
-  // returns an object with values scaled (for example {x: 33, y: 21})
+  // returns an object with values scaled {x: 33, y: 21}
   let velocity = setToRandom(10);
-  let position = setToRandom(200);
-  
+  let position = setToRandom(1600);
+  // Add image to div id = game
   let game = document.getElementById('game');
   let newimg = document.createElement('img');
   newimg.style.position = 'absolute';
   newimg.src = './images/PacMan1.png';
   newimg.width = 100;
-  newimg.style.left = position.x;
-  newimg.style.top = position.y;
+  newimg.style.left = position.x + 'px';
+  newimg.style.top = position.y + 'px';
   game.appendChild(newimg);
+  pacMen.push(newimg)
   return {
     position,
     velocity,
@@ -36,7 +37,8 @@ function makePac() {
 function update() {
   //loop over pacmen array and move each one and move image in DOM
   pacMen.forEach((item) => {
-    // focus = (focus + 1) % 2;
+    focus = (focus + 1) % 2;
+    // item.src = './images/PacMan' +  + '.png'
     // direction = checkPageBounds(direction, imgWidth, pos, pageWidth);
     checkCollisions(item);
     // item.src = pacArray[direction][focus];
@@ -64,15 +66,7 @@ function checkCollisions(item) {
     item.velocity.y = -item.velocity.y;
 }
 
-// function checkPageBounds(direction, newImgWidth, pos, pageWidth) {
-//   if (pos + newImgWidth >= pageWidth){
-//     direction = 1;
-//   } else if (pos < 0){
-//     direction = 0;
-//   };
-//   return direction;
-// };
-
 function makeOne() {
   pacMen.push(makePac()); // add a new PacMan
-};
+}
+
