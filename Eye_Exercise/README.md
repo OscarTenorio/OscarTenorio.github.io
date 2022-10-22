@@ -11,11 +11,9 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -42,14 +40,8 @@ This is a simple practice exercise to show a css animation. You should have no p
 There isn't anything required to run this since it's hosted on the site itself (nothing needs to be on your machine to view the page beyond having an internet connection to load the bootstrap files and JQuery files).
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
+<!-- INSTALLATION -->
 ### Installation
 
 1. Clone the repo
@@ -79,7 +71,7 @@ Free for anyone to use - go crazy!
 <!-- CONTACT -->
 ## Contact
 
-Oscar Tenorio -  [mailto:otenorio90@gmail.com](otenorio90@gmail.com)
+Oscar Tenorio -  otenorio90@gmail.com
 
 Project Link: [https://github.com/OscarTenorio/oscartenorio.github.io](https://github.com/OscarTenorio/oscartenorio.github.io)
 
