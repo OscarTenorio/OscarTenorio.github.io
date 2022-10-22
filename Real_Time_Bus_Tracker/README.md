@@ -25,7 +25,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a simple practice exercise to show a css animation. You should have no problem running this with an internet connection and a browser to execute the files.
+This page shows integration with the Mapbox API to dynamically load bus positions in real time (the MBTA makes this information publicly accessible for free). This page is to showcase my newfound understanding of how to generate map displays on a webpage.
 
 
 ### Built With
@@ -46,7 +46,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/oscartenorio.github.io/Eye_Exercise.git
+   git clone https://github.com/oscartenorio.github.io/Real_Time_Bus_Tracker.git
    ```
 2. Install NPM packages
    ```sh
@@ -57,8 +57,8 @@ To get a local copy up and running follow these simple steps.
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Adjust CSS to scale down when the screen is narrower than 720px
-- [ ] Have the eyes aim at the current location of the cursor, rather than their position relative to the viewport
+- [ ] Add user input to search different buses
+- [ ] Add user input to change display styles
 
 
 <!-- LICENSE -->
@@ -67,6 +67,7 @@ To get a local copy up and running follow these simple steps.
 Free for anyone to use - go crazy!
 
 This README.md file was build off a template found here: [https://github.com/othneildrew/Best-README-Template/blob/master/README.md](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
+
 
 
 <!-- CONTACT -->

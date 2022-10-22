@@ -73,7 +73,7 @@ This README.md file was build off a template found here: [https://github.com/oth
 <!-- CONTACT -->
 ## Contact
 
-Oscar Tenorio -  otenorio90@gmail.com
+Oscar Tenorio: otenorio90@gmail.com
 
 Project Link: [https://github.com/OscarTenorio/oscartenorio.github.io](https://github.com/OscarTenorio/oscartenorio.github.io)
 
