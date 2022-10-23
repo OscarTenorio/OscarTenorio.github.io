@@ -43,6 +43,8 @@
 
 .link {
     color: rgb(228, 132, 29);
+    text-decoration: underline;
+    text-decoration-color: rgb(228, 132, 29);
 }
 
 .link:hover {
@@ -56,6 +58,8 @@
 
 .projects > li {
     font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: rgb(228, 132, 29);
 }
 
 .pacman-game {
