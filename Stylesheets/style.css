@@ -24,6 +24,7 @@
 }
 
 .hero {
+    background-color: lightgrey;
     background-image: url('../IMG_1945.JPG');
     background-repeat: no-repeat;
     background-attachment: fixed;

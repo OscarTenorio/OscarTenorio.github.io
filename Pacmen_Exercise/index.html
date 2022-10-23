@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
                 <h4 class="text-white">About Me</h4>
-                <p class="text-muted">Born and raised in Miami, I moved to Boston searching for change and growth. Once I met my now fiancée working in Quality Assurance, I began exploring software development through introductory Front End Development courses. This further exposure prompted me to take the MIT MERN course that I am enrolled in today.<br><br>Feel free to send me an email to get in contact with me, and I will reply when able.</p>
+                <p class="text-muted">Born and raised in Miami, I moved to Boston searching for change and growth. Once I met my now fiancée working in Quality Assurance, I began exploring software development as a career rather than a hobby. This exploration prompted me to take the MIT MERN course that I am enrolled in today.<br><br>Feel free to send me an email to get in contact with me, and I will reply when able.</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                 <h4 class="text-white">Contact</h4>
@@ -44,10 +44,9 @@
         </div>
         <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> -->
+            <div class="navbar-brand d-flex align-items-center">
                 <strong>My Portfolio</strong>
-            </a>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" onclick="document.getElementById('navbarHeader').classList.toggle('collapse');">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,10 +73,13 @@
                     <img class="img-fluid mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/400px-Pac_Man.svg.png" alt="Pacman Thumbnail" style="height: 50px; width: 50px; display: block; overflow: hidden;" data-holder-rendered="true">
                     <div class="container py-5 my-3">
                         <div class="text-center py-2">
-                            <p>This assignment was testing our ability to manipulate the DOM by adding <code>Pacmen</code> images and having them start at random positions with random initialized velocities. Each press of the "Add PacMan" button creates a PacMan element, storing and managing them in an array. Once you have your desired amount of prisoners, you can have them run amok your screen by pressing the <code>Start Game</code> button, where they will bounce off the edges of the viewport until the page is refreshed.</p>
+                            <p>This assignment was testing our ability to manipulate the DOM by adding <code>Pacmen</code> images and having them start at random positions with random initialized velocities. Each press of the <code>Add PacMan</code> button creates a PacMan element, storing and managing them in an array. Once you have your desired amount of prisoners, you can have them run amok the play area by pressing the <code>Start Game</code> button, where they will bounce off the edges of the viewport and containing play area until the page is refreshed.</p>
                         </div>
                         <div class="text-center py-2">
                             <p>The chaos is managed by an <code>update()</code> function that iterates over the array and applies their randomized velocity used to move the element, then calls itself after a moment to create the movement of the Pacman. Once the Pacman reaches the edge of the screen, it reverses it's direction while it faces and travels the other way.</p>
+                        </div>
+                        <div class="text-center py-2">
+                            <p>There were particluar challenges getting the Pacman to spawn within the confines of the targeted <code>div</code> (and many further adjustments that were needed to get the PacMen to behave correctly), but I am happy with the final result. There was a limit of <code>10</code> PacMen that can be added to control for some strange behavior when too many are added on the page. To run again with new speeds and spawn points, use the <code>Refresh page</code> button.</p>
                         </div>
                     </div>           
                     <div class="col-lg text-center my-auto">
@@ -86,10 +88,6 @@
                     
                 </div>
             </div>
-        </div>
-
-        <div class="col-lg text-center mx-auto py-3">
-            <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Pacmen_Exercise" class="link" target="_blank">Visit the Github page for this code!</a>
         </div>
 
     </main>
@@ -104,6 +102,9 @@
                     <button class="btn btn-outline-dark btn-floating m-1" onclick='update()' width='200' height='30'>Start Chaos</button>
                     <button class="btn btn-outline-dark btn-floating m-1" onClick="window.location.reload();" width='200' height='30'>Refresh Page</button>
                 </div>
+            </div>
+            <div class="col-lg text-center mx-auto py-3">
+                <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Pacmen_Exercise" class="link" target="_blank">Visit the Github page for this code!</a>
             </div>
         </div>
     </div>
