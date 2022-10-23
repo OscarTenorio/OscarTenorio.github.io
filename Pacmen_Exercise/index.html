@@ -83,15 +83,7 @@
                     <div class="col-lg text-center my-auto">
                         <p>Give it a try!</p>
                     </div>
-                    <div id="game" class="mx-auto bg-light pacman-game">
-                    </div>     
-                </div>
-            </div>
-            <div class="container d-flex pb-5">
-                <div class="mx-auto pb-5">
-                    <button class="btn btn-outline-dark btn-floating m-1" onclick='makeOne()' width='200' height='30'>Add PacMan</button>
-                    <button class="btn btn-outline-dark btn-floating m-1" onclick='update()' width='200' height='30'>Start Chaos</button>
-                    <button class="btn btn-outline-dark btn-floating m-1" onClick="window.location.reload();" width='200' height='30'>Refresh Page</button>
+                    
                 </div>
             </div>
         </div>
@@ -101,6 +93,20 @@
         </div>
 
     </main>
+
+    <div id="game" class="bg-light py-5 container-fluid pacman-game"></div>
+    <!-- here -->
+    <div class="container">
+        <div class="pt-5 my-5">
+            <div class="container d-flex pb-5">
+                <div class="mx-auto pb-5">
+                    <button class="btn btn-outline-dark btn-floating m-1" onclick='makeOne()' width='200' height='30'>Add PacMan</button>
+                    <button class="btn btn-outline-dark btn-floating m-1" onclick='update()' width='200' height='30'>Start Chaos</button>
+                    <button class="btn btn-outline-dark btn-floating m-1" onClick="window.location.reload();" width='200' height='30'>Refresh Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-dark text-center text-white mt-5">
     <div class="container p-4 pb-0">
