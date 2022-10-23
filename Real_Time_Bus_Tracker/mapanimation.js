@@ -2,6 +2,16 @@ var map;
 var markers = [];
 
 // load map
+
+const accessToken = 'pk.eyJ1Ijoib3NjYXJtYXBib3gxMSIsImEiOiJjbDlqNTFuODQwZTdlM3Vwa2Nvd3Z6c3oyIn0.DeOlW6DMo29zR-NQVwj_vw';
+ 
+const script = document.getElementById('search-js');
+script.onload = function() {
+mapboxsearch.autofill({
+    accessToken
+});
+};
+
 function init(){
 	var myOptions = {
 		zoom      : 14,

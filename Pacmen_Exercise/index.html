@@ -67,9 +67,9 @@
     </section>
     <!-- End Hero Section -->
 
-    <main id="game" class="main">
+    <main class="main">
         <div class="container">
-            <div class="py-5 my-5">
+            <div class="pt-5 my-5">
                 <div class="container">
                     <img class="img-fluid mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/400px-Pac_Man.svg.png" alt="Pacman Thumbnail" style="height: 50px; width: 50px; display: block; overflow: hidden;" data-holder-rendered="true">
                     <div class="container py-5 my-3">
@@ -79,12 +79,13 @@
                         <div class="text-center py-2">
                             <p>The chaos is managed by an <code>update()</code> function that iterates over the array and applies their randomized velocity used to move the element, then calls itself after a moment to create the movement of the Pacman. Once the Pacman reaches the edge of the screen, it reverses it's direction while it faces and travels the other way.</p>
                         </div>
-                    </div>
-                    <div class="col-lg text-center my-auto py-3">
+                    </div>           
+                    <div class="col-lg text-center my-auto">
                         <p>Give it a try!</p>
                     </div>
+                    <div id="game" class="mx-auto bg-light pacman-game">
+                    </div>     
                 </div>
-        
             </div>
             <div class="container d-flex pb-5">
                 <div class="mx-auto pb-5">
@@ -96,7 +97,7 @@
         </div>
 
         <div class="col-lg text-center mx-auto py-3">
-            <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Pacmen_Exercise" target="_blank">Visit the Github page for this code!</a>
+            <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Pacmen_Exercise" class="link" target="_blank">Visit the Github page for this code!</a>
         </div>
 
     </main>

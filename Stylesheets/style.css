@@ -56,3 +56,8 @@
 .projects > li {
     font-weight: bold;
 }
+
+.pacman-game {
+    height: 300px;
+    width: 90%;
+}
