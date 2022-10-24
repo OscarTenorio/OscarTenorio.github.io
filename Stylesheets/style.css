@@ -37,8 +37,8 @@
 }
 
 .border-top {
-    border-top: 2px;
-    border-color: red;
+    border-top: 2px solid;
+    border-top-color: red!important;
 }
 
 .link {
@@ -51,15 +51,26 @@
     color: red;
 }
 
-.contact-link:hover {
+.nav-contact-link {
+    text-decoration: underline;
+    text-decoration-color: rgb(228, 132, 29);
+}
+
+.nav-contact-link:hover {
     text-decoration: underline;
     text-decoration-color: red;
 }
 
-.projects > li {
-    font-weight: bold;
+.projects-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3px;
+}
+
+.projects-grid > * {
     text-decoration: underline;
     text-decoration-color: rgb(228, 132, 29);
+    width: 100%;
 }
 
 .pacman-game {
