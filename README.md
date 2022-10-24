@@ -25,7 +25,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is my main Portfolio page, showcasing a small sample of projects that I have completed so far. There is a short bio description to help yuo get acquainted with me, as well as links to other pages where you can see the projects work embedded in the page. Each project has their own README.md that go into further details.
+This is my main Portfolio page, showcasing a small sample of projects that I have completed so far. There is a short bio description to help you get acquainted with me, as well as links to other pages where you can see the project work embedded in the page. Each project has their own README.md that go into further details.
 
 
 ### Built With
@@ -37,14 +37,14 @@ This is my main Portfolio page, showcasing a small sample of projects that I hav
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Nothing to run here since it's just a site hosting pages showcasing my work.
+Nothing to run here since it's just a site hosting pages showcasing my work. An internet connection is al you need, though since you're reading this I think you got that covered.
 
 <!-- INSTALLATION -->
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/oscartenorio.github.io/Real_Time_Bus_Tracker.git
+   git clone https://github.com/oscartenorio.github.io/.git
    ```
 2. Install NPM packages
    ```sh
