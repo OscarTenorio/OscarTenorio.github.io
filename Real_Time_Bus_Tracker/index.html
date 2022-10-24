@@ -76,31 +76,24 @@
     
 
     <div class="container">
-        <div class="pt-5 my-5">
+        <div class="pt-5">
             <div class="container">
                 <div class="container py-5 my-3">
                     <div class="text-center pt-5 pb-3">
-                        <p>Here we are tapping into the publicly available map data from Boston's MBTA, and displaying live feed of current bus positions.</p>
+                        <p>Here we are tapping into the publicly available bus route data from Boston's MBTA, and displaying live feed of one of their current bus positions.</p>
                     </div>
                     <div class="text-center py-2">
-                        <p>Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info Bus tracker info</p>
+                        <p>This is an exercise for applying asynchronous functions in managing <code>promises</code> to display live data - in this case the location of a specific bus (id: <code>y1923</code>). The asynchronous <code>run()</code> function is called every 15 seconds to not pass my request limit with Mapbox, so you'll have to wait a little in between updates. The bus route chosen is quite long, so feel free to scroll down on the map to zoom out to see the bus' location come into focus. I started the map <code>zoom</code> setting quite far for this reason, but mentioning it just in case.</p>
                     </div>
                 </div>
 
                 <!-- map -->
 				<div class="mx-auto" id="map" style="width:512px; height:389px; background-color: rgba(0, 0, 0, 0.2);"></div>
-                <div class="container d-flex">
-                    <div class="mx-auto py-5">
-                        <button onclick="move()" class="btn btn-outline-dark btn-floating m-1">
-                            Stops between MIT and Harvard
-                        </button>
-                    </div>
-                </div>
                 <!-- end of map -->
 
-                <div class="container py-2 my-3">
-                    <div class="text-center pb-3">
-                        <p>Future imrovements will see the ability to accept user input to search for different bus routes, and add functionality to change color schemes of the map display (everyone <i>loves</i> dark mode, eh?)</p>
+                <div class="container py-5 my-3">
+                    <div class="text-center py-3">
+                        <p>Future improvements will see the ability to accept user input to search for different bus routes, and add functionality to change color schemes of the map display (everyone <i>loves</i> dark mode, eh?)</p>
                     </div>
                 </div>
 
