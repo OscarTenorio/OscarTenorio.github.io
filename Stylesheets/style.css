@@ -23,6 +23,11 @@
     padding: 10px 50px;
 }
 
+.home:hover {
+    text-decoration: underline;
+    text-decoration-color:  rgb(228, 132, 29);
+}
+
 .hero {
     background-color: lightgrey;
     background-image: url('../IMG_1945.JPG');
