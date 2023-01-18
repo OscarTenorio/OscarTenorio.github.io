@@ -1,0 +1,3 @@
+chrome console, location object on Amazon, google, etc
+
+============== look at internal.html for the video's lesson ==============

@@ -1,0 +1,131 @@
+--------------------------------------------------------------------------------
+-------------------------------- Major Concepts --------------------------------
+--------------------------------------------------------------------------------
+
+
+===== useState()
+syntax: const [name, setName] = React.useState(default);
+               -a--  ----b---   ------c------- ---d---
+    a. name of the variable that holds the state of the element (camelCase). Ex: elementState
+    b. name of the method used to change that state. It's common convention to use "set" at the beginning to make it clear what this method does. Ex: setElementState
+    c. this tells React that you are trying to manage state, and (I think) should only be used in the above syntax where a variable holds an array with two values (a. and b. defined above - the first being the state and the second being the state setter) and sets it to equal React.useState()
+    d. the parameter passed into React.useState() to set the initial value of the state. Note that it can be an integer, boolean, array, string, etc. Ex: React.useState("initialValue")
+
+
+===== useEffect()
+syntax: useEffect( () => {}, [] );
+                   ----a---- -b-
+    a. the code block / instructions to be triggered
+    b. the trigger to execute those instructions - it stores an array of states that, then it detects a change in state to any of the listed states (remember that state changes when using setState, defined when calling React.useState() ), it executes these commands. Reminder that the component who's state changed re-renders (basic functionality from states changing).
+        - if nothing is passed in here, you can call useEffect without re-rendering anything and it will just trigger the instructions (defined in a.) once
+        - if within the code block you change a variables state, that variable will re-render regardless of whether anything was passed into the second parameter of the function.
+    - a great time to use useEffect() is when you don't want the action of getting data to cause a re-render, but rather upon successful fetching of data to display such data (an stopping once complete) - this is done by passing the empty array [] as the second parameter, signaling to useEffect() that this is to be carried out once and rerender should occur once complete. Passing nothing into the second parameter causes a lot of unnecessary background computation in rerendering.
+
+
+===== useReducer() ===== (TODO: NEEDS REVIEW) ======
+syntax: const [] = useReducer(reducerFunction, initialState)
+        ---a----   ----b----  ------c--------  -----d------
+    a.
+
+
+===== async (asynchronous) function
+syntax: const fetchData = async () = { const result = await axios(https://google.com); console.log(result) };
+        -------a-------   ----b---     -----c------   --d-- --e-- --------f---------   ---------g---------
+    a. the variable that will hold the function that will make the async call (can name anything you want). Later you can call fetchData() to call this async function
+    b. defines that this is an async function (in this example without parameters)
+    c. the variable that will hold the results of the async call
+    d. defines the "promise", or the part that will be on standby
+
+
+===== custom hook ===== (TODO: NEEDS REVIEW) ======
+syntax (defining it): const useCustomHook = (parameter1, parameter2, etc) => {...};
+                      --------a----------   -------------b--------------- ---c----
+    a. variable later used as handle to invoke custom hook. NOTE: common convention has "use" at the beginning to easily point out it's a custom hook
+    b. parameters/arguments for hook to use later in code block
+    c. code block
+syntax (using it): const [variableName, doSomething] = useCustomHook(arg1, arg2);
+                   --a--  -----b------  -----c-----    ------d------ -----e-----
+    a. just declares that what follows is a variable, part of the syntax (doesn't have to be const)
+    b. like the useState() hook, defines a variable that will store state? Feels like useState... ===== (TODO: NEEDS REVIEW) ======
+    c. function that changes state? Feels like useState... ===== (TODO: NEEDS REVIEW) ======
+    d. calling the custom hook previously defined
+    e. parameters passed into the custom hook (should match the number of arguments defined when the custom hook was defined)
+
+--------------------------------------------------------------------------------
+-------------------------------- Tips & Tricks ---------------------------------
+--------------------------------------------------------------------------------
+
+- Conditionally render an element:
+syntax: { truthyOrFalseyVariable && <elementToRender />}
+          -----------a---------- -b- --------c---------
+    a. variable that holds a boolean value
+    b. "And" operator
+    c. element to be rendered
+    This way, the element only renders if both sides of the operator are evaluated to true (simply defining an element evaluates to true)
+
+
+--------------------------------------------------------------------------------
+--------------------------- Other Terms to Recognize ---------------------------
+--------------------------------------------------------------------------------
+* Any commands to run in your console/terminal will be denoted using " " around the command. Run these without the " " *
+
+- Running React program
+    - to run a quick rendering of a React program, there are several things needed (to get it running locally, in a non-Prod ready state):
+        - proper linking of files (to get one running real quick, check the /Notes/React/templates folder to see the required details here)
+        - In your Terminal, download a basic http server (many can be used, but for this example I used http-server using npm) by running "npm install --global http-server" (installs it globally, so it doesn't matter where you are in your directory when you run it). Troubleshooting and details: https://www.npmjs.com/package/http-server
+            - If you don't have npm, you can download it using "npm install -g npm" . Troubleshooting and details: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+        - Next, navigate to the folder containing the file you want to run, and run the command "http-server -c-1" (this runs it without caching, so you can change your code and refresh the browser in a later step to see your changes).
+        - You'll notice something like this returned in the console if you did it right (just an example, might be different for you):
+            Starting up http-server, serving ./
+
+            http-server version: 14.1.1
+
+            http-server settings: 
+            CORS: disabled
+            Cache: -1 seconds
+            Connection Timeout: 120 seconds
+            Directory Listings: visible
+            AutoIndex: visible
+            Serve GZIP Files: false
+            Serve Brotli Files: false
+            Default File Extension: none
+
+            Available on:
+            http://127.0.0.1:8080
+            http://192.168.1.153:8080       <--- this is the port where your code is being displayed
+            Hit CTRL-C to stop the server
+
+        - above is marked for you the location of where you can view your code. Copy that line and paste it into a browser to see your code displaying. Remember you can pop open your browser's console to look for errors if you don't see anything displaying.
+
+- Axios - library for fetching data
+    - Axios vs. fetch()
+        1. Axios is more browser compatible, but has to be imported/installed. If focusing on a wider user clientele (age, country, devices, etc), maybe you would want to use Axios for backward compatibility. It's more limited compared to Fetch() but needs less code to implement common commands (ex. it automatically formats JSON data)
+        2. Fetch() is included with modern browsers and has more capabilities, but requires more code for common commands (you have to manually convert data into JSON for example). An example where this extra flexibility is useful is if you wanted to convert data fetched into .csv format for exporting.
+
+- React Component Lifecycles (remove React element from page)
+    - A component's lifecycle begins when it's mounted to the DOM.  This happens only once. It can then be updated in the DOM as many times as necessary. Finally, it is unmounted from the DOM when it's no longer displayed on the screen. In the example below, you’ll see a basic React component that goes through this lifecycle:
+        ex. let someComponent = React.createElement(someComponent)
+    - To render this React component, aka mount it to the DOM, you can write the following:
+        ex. ReactDOM.render(
+                someComponent, document.getElementById("root")
+            );
+    - Suppose, you want to remove the component from the DOM after it completes an operation. You can use the React API unmountComponentAtNode()
+        ex. handleClick() {
+                unmountComponentAtNode(document.getElementById('root'));
+            };
+- Prop-drilling - term used in React when a Parent component is passing down data (properties, or props) to child elements
+
+- React Context - a way of prop-drilling through many react components a state (or otherwise communicating some change) by making it global so all components can know that state (or boolean or whatever)
+    - since it complicates how the application runs and manages this info, it's not needed in more simple applications (parent -> child), but moreso when many nested components need to know the state (or w.e.) of a Parent component (parent -> children -> children -> children)
+
+- Strapi - back-end database product
+
+--------------------------------------------------------------------------------
+------------------------------- Useful Links -----------------------------------
+--------------------------------------------------------------------------------
+
+- https://reactjs.org/ - React JS documentation and resources
+
+- https://getbootstrap.com - Bootstrap CSS documentation and resources
+
+- https://strapi.io/ - Strapi (back-end database) documentation and resources

@@ -1,0 +1,55 @@
+--------------CREATING A REACT APP--------------
+------------------------------------------------
+
+~~~ WITHOUT USING TOOLCHAIN ~~~
+
+Run the following commands in the Terminal to intialize a new React application:
+
+1. mkdir new-react-app-name
+   cd  new-react-app-name
+   npm intit
+
+   (this creates the directory, moves you into that folder, then uses npm to initialize a package.json file (you can provide the name and version here))
+
+2. npm install react react-dom
+
+   (this will install react and react-dom packages, by creating a node_modules folder with all dependent libraries to further add dependency inside the package.json file) 
+
+3. touch .gitignore
+
+   (creates a .gitignore file, to avoid pushing unnecessary files to GitHub) 
+
+4. mkdir app
+
+   (creates an app directory to hold most of the React files) 
+
+5. cd app
+   touch index.js
+   touch index.css
+   touch index.html
+
+   (moves you into the app folder, then creates the basic files you'll need to get started)
+
+6. npm install --save -dev @babel/core @babel/preset/env @babel/react webpack webpack-cli webpack-dev-server babel-loader css-loader style-loader html-webpack-plugin
+
+   (uses npm to install all of these dependencies(?) needed to run react) 
+
+TODO: add steps for the following:
+    1. Edit the Webpack configuration
+    2. Get the babel-loader to work
+    3. Add the Webpack script to the package.json
+
+
+
+
+~~~ USING TOOLCHAIN ~~~
+
+1. npx create-react-app new-react-app-name
+
+   (As you can see, way easier. This auto-generates all of your files and handles the configurations and dependencies. When generating a new file or component, create-react-app will handle any configuration changes or file imports that need to happen for your application to work)
+
+   (You can look for the react_with_toolchain folder somewhere in the Practice folder to see what it looks like once the above commands have been executed)
+
+   Links to other popular toolchains for React:
+   - NextJS:  https://nextjs.org/
+   - Gatsby:  https://reactjs.org/docs/create-a-new-react-app.html#gatsby

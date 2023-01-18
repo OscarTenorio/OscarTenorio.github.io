@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- my css -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <p>Note: you need to run this file from a server! run <code> http-server -c-1 </code> in terminal in the proper directory</p>
+      <h1>Books</h1>
+
+      <!-- custom component being replaced -->
+      <!-- <mit-book
+      title="Eloquent Javascript, Second Edition"
+      subtitle="A Modern Introduction to Programming"
+      author="Marijn Haverbeke"
+      publisher="No Starch Press"
+      description="Description text that's totally not repeating Description text that's totally not repeating Description text that's totally not repeating Description text that's totally not repeating Description text that's totally not repeating">
+      </mit-book> -->
+
+      <!-- replaced with this div, to be targeted later -->
+      <div id="books"></div>
+
+
+    </div>
+    <!-- replaced book.js with a main file that will access it, and called that file a module for some reason -->
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

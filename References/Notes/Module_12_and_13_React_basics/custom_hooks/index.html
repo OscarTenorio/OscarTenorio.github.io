@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Custom Hooks</title>
+
+        <!-- do not use this in production -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <h1>Custom Hooks</h1>
+
+        <!-- react in this div -->
+        <div id="root"></div>
+
+        <!-- load react library -->
+        <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- load react component -->
+        <!-- the order of loading following files is important - load components before main JS file -->
+        <script src="useForm.js" defer type="text/babel"></script>
+        <script src="index.js" defer type="text/babel"></script>
+
+    </body>
+</html>
