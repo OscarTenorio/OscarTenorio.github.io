@@ -118,7 +118,10 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 - React Context - a way of prop-drilling through many react components a state (or otherwise communicating some change) by making it global so all components can know that state (or boolean or whatever)
     - since it complicates how the application runs and manages this info, it's not needed in more simple applications (parent -> child), but moreso when many nested components need to know the state (or w.e.) of a Parent component (parent -> children -> children -> children)
 
-- Strapi - back-end database product
+- Strapi - back-end database service, installed locally
+
+- Postman - application (downloaded onto the computer so it can interact with localhost, otherwise can be viewed in the browser) that can test databases by making POST and GET requests (and can be followed up by visiting Strapi to see if the POST went through, or stay in Postman for GETs to see the response)
+    - NOTE: at the right hand of the application, look for a "code" button. This is super useful to show you how to make the selected POST or GET request across different languages!!!
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
