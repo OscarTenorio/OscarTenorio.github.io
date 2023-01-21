@@ -23,6 +23,9 @@
     },
     "instock": {
       "type": "integer"
+    },
+    "imgsource": {
+      "type": "string"
     }
   }
 }

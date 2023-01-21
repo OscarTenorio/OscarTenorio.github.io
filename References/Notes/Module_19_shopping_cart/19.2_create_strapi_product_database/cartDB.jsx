@@ -1,9 +1,9 @@
 // sumulate getting products from DataBase
 const products = [
-  { name: "Apples_:", country: "Italy", cost: 3, instock: 10 },
-  { name: "Oranges:", country: "Spain", cost: 4, instock: 3 },
-  { name: "Beans__:", country: "USA", cost: 2, instock: 5 },
-  { name: "Cabbage:", country: "USA", cost: 1, instock: 8 },
+  { name: "Apples", country: "Italy", cost: 3, instock: 10, imgsource: "https://images.unsplash.com/photo-1610397962076-02407a169a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"},
+  { name: "Oranges:", country: "Spain", cost: 4, instock: 3, imgsource: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"},
+  { name: "Beans", country: "USA", cost: 2, instock: 5, imgsource: "https://images.unsplash.com/photo-1613758235402-745466bb7efe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"},
+  { name: "Cabbage:", country: "USA", cost: 1, instock: 8, imgsource: "https://images.unsplash.com/photo-1598030343246-eec71cb44231?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"},
 ];
 //=========Cart=============
 const Cart = (props) => {
@@ -123,18 +123,19 @@ const Products = (props) => {
 
   let list = items.map((item, index) => {
     let n = index + 1049;
-    let uhit = "http://picsum.photos/" + n;
+    let defaultURL = "http://picsum.photos/" + n;
+    let uhit = item.imgsource ? item.imgsource : defaultURL;
     // note, source.unsplash is used here because it loads images faster than picsum.photos
     // it should functionally be the same as picsum.photos which is shown in the videos
     // let uhit = "https://source.unsplash.com/random/800x800/?img=" + n;
 
     return (
-      <li key={index}>
-        <Image src={uhit} width={70} roundedCircle alt={`img-${n}`}></Image>
+      <li key={index} className="py-3">
+        <Image src={uhit} width={70} height={70} roundedCircle alt={`img-${n}`}></Image>
         <div variant="primary" size="large">
-          {item.name}:${item.cost}-Stock={item.instock}
+          {item.name}<br/>${item.cost}<br/>Stock = {item.instock}
         </div>
-        <input name={item.name} type="submit" onClick={addToCart}></input>
+        <Button name={item.name} type="submit" onClick={addToCart}>Add To Cart</Button>
       </li>
     );
   });
@@ -146,12 +147,15 @@ const Products = (props) => {
             {item.name}
           </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse
-          onClick={() => deleteCartItem(index)}
-          eventKey={1 + index}
-        >
+        <Accordion.Collapse eventKey={1 + index}>
           <Card.Body>
             $ {item.cost} from {item.country}
+            <Button
+              onClick={() => deleteCartItem(index)} 
+              className="float-right"
+            >
+              Delete
+            </Button>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
