@@ -123,17 +123,17 @@ const Products = (props) => {
 
   let list = items.map((item, index) => {
     let n = index + 1049;
-    // let uhit = "http://picsum.photos/" + n;
+    let uhit = "http://picsum.photos/" + n;
     // note, source.unsplash is used here because it loads images faster than picsum.photos
     // it should functionally be the same as picsum.photos which is shown in the videos
-    let uhit = "https://source.unsplash.com/random/800x800/?img=" + n;
+    // let uhit = "https://source.unsplash.com/random/800x800/?img=" + n;
 
     return (
       <li key={index}>
         <Image src={uhit} width={70} roundedCircle alt={`img-${n}`}></Image>
-        <Button variant="primary" size="large">
+        <div variant="primary" size="large">
           {item.name}:${item.cost}-Stock={item.instock}
-        </Button>
+        </div>
         <input name={item.name} type="submit" onClick={addToCart}></input>
       </li>
     );
