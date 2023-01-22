@@ -22,9 +22,9 @@ const useDataApi = (initialUrl, initialData) => {
     isError: false,
     data: initialData,
   });
-  console.log(`useDataApi called`);
+  // console.log(`useDataApi called`);
   useEffect(() => {
-    console.log("useEffect Called");
+    // console.log("useEffect Called");
     let didCancel = false;
     const fetchData = async () => {
       dispatch({ type: "FETCH_INIT" });
@@ -98,7 +98,7 @@ const Products = () => {
       data: [],
     }
   );
-  console.log(`Rendering Products ${JSON.stringify(data)}`);;
+  console.log(`Rendering Products ${JSON.stringify(data)}`);
 
   // Fetch Data
   const addToCart = (e) => {
@@ -143,24 +143,24 @@ const Products = () => {
   });
   let cartList = cart.map((item, index) => {
     return (
-      <Card key={index}>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey={1 + index}>
-              {item.name}
-            </Accordion.Toggle>
-          </Card.Header>
-        <Accordion.Collapse eventKey={1 + index}>
-          <Card.Body>
-            $ {item.cost} from {item.country}
-            <Button
-              onClick={() => deleteCartItem(index)} 
-              className="float-right"
-            >
-              Delete
-            </Button>
-          </Card.Body>
-        </Accordion.Collapse>
-      </Card>
+      <>
+        <Card key={index}>
+          <Accordion.Toggle as={Button} variant="" eventKey={1 + index}>
+            <Card.Header>
+                {item.name}
+            </Card.Header>
+          </Accordion.Toggle>  
+          <Accordion.Collapse eventKey={1 + index}>
+            <Card.Body>
+              $ {item.cost} from {item.country}
+              <Button
+                onClick={() => deleteCartItem(index)} 
+                className="float-right">Delete
+              </Button>
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </>
     );
   });
 
@@ -180,7 +180,7 @@ const Products = () => {
     let costs = cart.map((item) => item.cost);
     const reducer = (accum, current) => accum + current;
     let newTotal = costs.reduce(reducer, 0);
-    console.log(`total updated to ${newTotal}`);
+    // console.log(`total updated to ${newTotal}`);
     // cart.forEach((item, index) => deleteCartItem(index));
     // console.log("Checkout Cart:",cart);
     return newTotal;
@@ -226,7 +226,7 @@ const Products = () => {
         <form
           onSubmit={(event) => {
             restockProducts(query);
-            console.log(`Restock called on ${query}`);
+            // console.log(`Restock called on ${query}`);
             event.preventDefault();
           }}
         >
