@@ -1,14 +1,13 @@
-// sumulate getting products from DataBase
+// default products in case can't get products from DataBase
 const products = [
-  { name: "Apples", country: "Italy", cost: 3, instock: 10, imgsource: "https://images.unsplash.com/photo-1610397962076-02407a169a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"},
-  { name: "Oranges:", country: "Spain", cost: 4, instock: 3, imgsource: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"},
-  { name: "Beans", country: "USA", cost: 2, instock: 5, imgsource: "https://images.unsplash.com/photo-1613758235402-745466bb7efe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"},
-  { name: "Cabbage:", country: "USA", cost: 1, instock: 8, imgsource: "https://images.unsplash.com/photo-1598030343246-eec71cb44231?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"},
+  { name: "Apples", country: "Italy", cost: 3, instock: 10},
+  { name: "Oranges", country: "Spain", cost: 4, instock: 3,},
+  { name: "Beans", country: "USA", cost: 2, instock: 5,},
+  { name: "Cabbage", country: "USA", cost: 1, instock: 8,},
 ];
 //=========Cart=============
 const Cart = (props) => {
   const { Card, Accordion, Button } = ReactBootstrap;
-  let data = props.location.data ? props.location.data : products;
   console.log(`data:${JSON.stringify(data)}`);
 
   return <Accordion defaultActiveKey="0">{list}</Accordion>;
@@ -74,7 +73,9 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-const Products = (props) => {
+const Products = () => {
+  const [restockAmount, setRestockAmount] = React.useState(0);
+  const [initialized, setInitialized] = React.useState(false);
   const [items, setItems] = React.useState(products);
   const [cart, setCart] = React.useState([]);
   const [total, setTotal] = React.useState(0);
@@ -97,7 +98,8 @@ const Products = (props) => {
       data: [],
     }
   );
-  console.log(`Rendering Products ${JSON.stringify(data)}`);
+  console.log(`Rendering Products ${JSON.stringify(data)}`);;
+
   // Fetch Data
   const addToCart = (e) => {
     let name = e.target.name;
@@ -116,15 +118,15 @@ const Products = (props) => {
       if (item.name == target[0].name) item.instock = item.instock + 1;
       return item;
     });
+    
     setCart(newCart);
     setItems(newItems);
   };
-  const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];
 
   let list = items.map((item, index) => {
     let n = index + 1049;
-    let defaultURL = "http://picsum.photos/" + n;
-    let uhit = item.imgsource ? item.imgsource : defaultURL;
+    let randomURL = "http://picsum.photos/" + n;
+    let uhit = item.imgsource ? item.imgsource : randomURL;
     // note, source.unsplash is used here because it loads images faster than picsum.photos
     // it should functionally be the same as picsum.photos which is shown in the videos
     // let uhit = "https://source.unsplash.com/random/800x800/?img=" + n;
@@ -133,7 +135,7 @@ const Products = (props) => {
       <li key={index} className="py-3">
         <Image src={uhit} width={70} height={70} roundedCircle alt={`img-${n}`}></Image>
         <div variant="primary" size="large">
-          {item.name}<br/>${item.cost}<br/>Stock = {item.instock}
+          {item.name} ({item.country})<br/>${item.cost}<br/>Stock = {item.instock}
         </div>
         <Button name={item.name} type="submit" onClick={addToCart}>Add To Cart</Button>
       </li>
@@ -142,11 +144,11 @@ const Products = (props) => {
   let cartList = cart.map((item, index) => {
     return (
       <Card key={index}>
-        <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey={1 + index}>
-            {item.name}
-          </Accordion.Toggle>
-        </Card.Header>
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="link" eventKey={1 + index}>
+              {item.name}
+            </Accordion.Toggle>
+          </Card.Header>
         <Accordion.Collapse eventKey={1 + index}>
           <Card.Body>
             $ {item.cost} from {item.country}
@@ -179,16 +181,30 @@ const Products = (props) => {
     const reducer = (accum, current) => accum + current;
     let newTotal = costs.reduce(reducer, 0);
     console.log(`total updated to ${newTotal}`);
-    //cart.map((item, index) => deleteCartItem(index));
+    // cart.forEach((item, index) => deleteCartItem(index));
+    console.log("Checkout",cart);
     return newTotal;
   };
+
   const restockProducts = (url) => {
     doFetch(url);
-    let newItems = data.map((item) => {
-      let { name, country, cost, instock } = item;
-      return { name, country, cost, instock };
+    let newItemArray = [];
+    data.data.forEach((item) => {
+      newItemArray.push(item.attributes);
     });
-    setItems([...items, ...newItems]);
+
+    newItemArray.forEach((newItem) => {
+      items.forEach((item) => {
+        // if the item is already listed as a product, add their stocks instead of overwriting
+        if (item.name === newItem.name && item.country === newItem.country && item.cost === newItem.cost) {
+          console.log("Same Item: ", item.name, newItem.name);
+          console.log(typeof newItem.instock)
+          newItem.instock = newItem.instock + restockAmount;
+        };
+      });
+    });
+    setItems([...newItemArray]);
+    // reStockText = initialized ? "Restock" : "Initialize Data";
   };
 
   return (
@@ -204,25 +220,33 @@ const Products = (props) => {
         </Col>
         <Col>
           <h1>CheckOut </h1>
-          <Button onClick={checkOut}>CheckOut $ {finalList().total}</Button>
+          <Button onClick={checkOut}>CheckOut ${finalList().total}</Button>
           <div> {finalList().total > 0 && finalList().final} </div>
         </Col>
-      </Row>
-      <Row>
+        <Col>
         <form
           onSubmit={(event) => {
-            restockProducts(`http://localhost:1337/api/${query}`);
+            restockProducts(query);
             console.log(`Restock called on ${query}`);
             event.preventDefault();
           }}
         >
+          <div>Pull Data From:</div>
           <input
             type="text"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
-          <button type="submit">ReStock Products</button>
+          <div>Restock Amount:</div>
+          <input
+            type="number"
+            value={restockAmount}
+            onChange={(event) => setRestockAmount(parseInt(event.target.value))}
+          />
+          <br/>
+          <Button type="submit" className="my-3" >Restock</Button>
         </form>
+      </Col>
       </Row>
     </Container>
   );
