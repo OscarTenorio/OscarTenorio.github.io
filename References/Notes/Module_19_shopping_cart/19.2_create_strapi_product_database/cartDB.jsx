@@ -182,29 +182,28 @@ const Products = () => {
     let newTotal = costs.reduce(reducer, 0);
     console.log(`total updated to ${newTotal}`);
     // cart.forEach((item, index) => deleteCartItem(index));
-    console.log("Checkout",cart);
+    // console.log("Checkout Cart:",cart);
     return newTotal;
   };
 
   const restockProducts = (url) => {
-    doFetch(url);
+    if (!initialized) doFetch(url);
     let newItemArray = [];
     data.data.forEach((item) => {
       newItemArray.push(item.attributes);
     });
 
+    // if the item is already listed as a product, add their stocks instead of overwriting
     newItemArray.forEach((newItem) => {
       items.forEach((item) => {
-        // if the item is already listed as a product, add their stocks instead of overwriting
         if (item.name === newItem.name && item.country === newItem.country && item.cost === newItem.cost) {
           console.log("Same Item: ", item.name, newItem.name);
-          console.log(typeof newItem.instock)
-          newItem.instock = newItem.instock + restockAmount;
+          newItem.instock += restockAmount;
         };
       });
     });
     setItems([...newItemArray]);
-    // reStockText = initialized ? "Restock" : "Initialize Data";
+    setInitialized(true);
   };
 
   return (
@@ -231,7 +230,7 @@ const Products = () => {
             event.preventDefault();
           }}
         >
-          <div>Pull Data From:</div>
+          <div>Pull Product Items From:</div>
           <input
             type="text"
             value={query}
@@ -244,7 +243,9 @@ const Products = () => {
             onChange={(event) => setRestockAmount(parseInt(event.target.value))}
           />
           <br/>
-          <Button type="submit" className="my-3" >Restock</Button>
+          {initialized ? 
+            (<Button type="submit" className="my-3" >Restock</Button>)
+           : (<Button type="submit" className="my-3" >Initialize Data</Button>)}
         </form>
       </Col>
       </Row>
