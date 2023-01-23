@@ -251,7 +251,7 @@ const Products = () => {
             (<Button type="submit" className="my-3" >Restock</Button>)
            : (<Button type="submit" className="my-3" >Initialize Data</Button>)}
         </form>
-        <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/References/Notes/Module_19_shopping_cart/19.2_create_strapi_product_database/Shopping%20Cart" target="_blank" >Github Link</a>
+        <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/References/Notes/Module_19_shopping_cart/19.2_create_strapi_product_database/Shopping_Cart" target="_blank" >Github Link</a>
         <br/>
         <a href="https://www.youtube.com/watch?v=i8y8wy_dW2o" target="_blank" >Application Description Link</a>
       </Col>
