@@ -1,0 +1,5 @@
+To download and run Strapi:
+- MAC OS needs to be 10.3 or higher (had to switch to work cpomputer for this exercise)
+- NPM installed
+- Latest Python installed (I did it with Pythoin 3.something)
+- Latest XCode installed
