@@ -123,6 +123,8 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 - Postman - application (downloaded onto the computer so it can interact with localhost, otherwise can be viewed in the browser) that can test databases by making POST and GET requests (and can be followed up by visiting Strapi to see if the POST went through, or stay in Postman for GETs to see the response)
     - NOTE: at the right hand of the application, look for a "code" button. This is super useful to show you how to make the selected POST or GET request across different languages!!!
 
+- Static Website - a site that, once loaded, does not communicate with a server or database to further function. It is self-contained, and thus makes it hard to hack (or allow hackers to steal information).
+
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
 --------------------------------------------------------------------------------

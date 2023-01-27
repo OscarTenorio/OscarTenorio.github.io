@@ -2,3 +2,4 @@
 - After using create-react-app, we added a new folder under the src folder called Components, where we have the shopping cart file saved into
 - You'll need to make adjustments to the file too - manually importing certain elements/components from their respective definitive files for example (see line 3 from oscartenorio.github.io/References/Notes/Module_20_intro_create_react_app/Create_React_App_ShoppingCart/video_20.2_merge_cart_into_react_app/src/Components/products.jsx)
 - Bootstrap and axios will have to be installed in this case since it's used in this app - run "npm install react-bootstrap", then "npm install axios" in the folder created when using react-create-app (in this case it's video_20.2_merge_cart_into_react_app)
+- to create a static website, simply run "npm build" and all the pieces will be made for you - then simply host in on your preferred cloud service (like AWS) and done!
