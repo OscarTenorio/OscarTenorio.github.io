@@ -128,6 +128,8 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 - GraphQL - a query language for APIs that helps manage POSTs and uses a query in which we specify exactly what data we want in the response.
     - it is database agnostic, so it can be used with any top database option
 
+- Mock - adding a fake dependency to a test (we did it in Jest) to work around real dependencies that the app the test is running against would have.
+
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
 --------------------------------------------------------------------------------
