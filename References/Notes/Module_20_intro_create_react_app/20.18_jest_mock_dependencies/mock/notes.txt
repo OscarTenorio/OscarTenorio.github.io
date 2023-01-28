@@ -1,0 +1,1 @@
+- Changes made to App.js, (added) MyComponent.js, and App.test.js files
