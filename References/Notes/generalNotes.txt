@@ -125,6 +125,57 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
 - Static Website - a site that, once loaded, does not communicate with a server or database to further function. It is self-contained, and thus makes it hard to hack (or allow hackers to steal information).
 
+- GraphQL - a database service that helps manage POSTs and uses a query in which we specify exactly what data we want in the response.
+
+--------------------------------------------------------------------------------
+----------------------------- Copied from Class --------------------------------
+--------------------------------------------------------------------------------
+
+- REST (REpresentational State Transfer): copied from a lecture slide:
+    Representational state transfer (REST) is a standard for communication between an application’s server and its client. It is considered the industry-standard protocol for web APIs, so you will likely answer questions about REST during software development interviews. It’s important to understand that REST is not a technology or framework; it’s an architectural style to support any API design. 
+
+    RESTful APIs adhere to these five principles.
+    1.Contract-first approach / Uniform Resource Identifiers
+
+    The “contract” in the Contract-first approach refers to a contract between your client application and the server. The client app needs to know that it can call the API endpoint and get the data in the expected format each time.
+
+    Contract Example:
+
+    Let’s suppose you had a server with the endpoint “/api/v1/orders/14829/status” that returned the status of order number `14829.` As a RESTful API, the client would expect that:
+
+        The API endpoint does not change
+        The data format does not change
+        The API documentation describes what information is stored and how
+
+    2. Statelessness
+
+    The client application should assume that the server did not preserve the state from previous API calls. The client application should provide all the information necessary for the server to respond to each call. What does this mean? 
+
+    Say you (the client application) asked your neighbor (the server application) about a mutual friend. In a real-life conversation, the following questions would be stateful:
+
+    How old is Frank Gibson? What does he do for work?
+
+    You (the client application) expect your neighbor (the server application) to remember the mutual friend’s name. So, the second question assumes that the question is about Frank Gibson.
+
+    In a RESTful API, the same conversation between the client and server applications would instead go like this:
+
+    How old is Frank Gibson?
+
+    What does Frank Gibson do for work?
+
+    The client provides all the information a server needs to respond to every API call, assuming that the server remembers nothing of the previous API calls.
+    3. Client-server Model
+
+    The client application doesn’t care about how the server stores the data or the technology used. The only thing it cares about is the database schema which contains a description of the stored data and the layout in which it is stored.
+    4. Caching
+
+    Caching is the temporary storage of information outside the server. The client can cache data locally to have it available without making an additional API call. 
+    5. Layered architecture
+
+    When you have a client application that calls an API endpoint that triggers logic on your back-end server application, you have a layered architecture. What’s important in REST is that each layer only knows about the layer next to it and no more. This is also called a separation-of-concerns. Each layer has a specific job and passes information to and from its neighboring layers to get the job done. Thus, the only layer that the client application knows about is the API, which is its immediate neighbor; it does not know about any other layers beyond the API.
+
+
+
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
 --------------------------------------------------------------------------------
