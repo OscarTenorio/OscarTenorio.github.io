@@ -275,7 +275,7 @@ const Products = () => {
   );
 };
 // ========================================
-// NOTE: this is no longer need too
+// NOTE: ReactDMO.render is no longer need (since it's handled in index.js now)
 
 
 export default Products;
