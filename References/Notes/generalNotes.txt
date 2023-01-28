@@ -175,7 +175,24 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
     When you have a client application that calls an API endpoint that triggers logic on your back-end server application, you have a layered architecture. What’s important in REST is that each layer only knows about the layer next to it and no more. This is also called a separation-of-concerns. Each layer has a specific job and passes information to and from its neighboring layers to get the job done. Thus, the only layer that the client application knows about is the API, which is its immediate neighbor; it does not know about any other layers beyond the API.
 
+- GraphQL vs REST
 
+    In a standard RESTful API, you typically hit an endpoint that determines what data is returned.GraphQL improves upon the REST philosophy by allowing the front-end application to ask for a specific piece of that data.
+
+    Let's say you want to display the logged-in user's email address on their profile page.
+
+    To do this with a REST API, you would:
+
+        Call an“auth/user” endpoint and get all of the user's information. 
+        Pull the email address out of that returned data 
+        Display the email address
+
+    Issues with REST:
+
+        If the logged-in user has many data associated with it, such as a list of events, order history, addresses, and phone numbers, it will all be returned even if you don’t need this information. 
+        Unnecessary information is passed around. 
+
+    GraphQL allows you to query only the data you want. If you replace the REST endpoint with a GraphQL one, you could query the currently logged-in user but specify you only want their email address. 
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
