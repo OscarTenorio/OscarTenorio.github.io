@@ -1,0 +1,1 @@
+Look in the App.test.js file for details on what this folder is about - Jest (Javascript testing language) tests for the react app
