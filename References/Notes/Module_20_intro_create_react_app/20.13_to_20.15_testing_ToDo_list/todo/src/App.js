@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
+// import { api } from './api';
 import './App.css';
 
 function App() {
@@ -8,6 +8,11 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    // here the simulated API is being used, commented out so the code can run as before using it
+    // api.createItem(value).then((persistedItem) => {
+    //   setItems([...items, value]);
+    //   setValue('');
+    // })
     setItems([...items, value]);
     setValue('');
   }
