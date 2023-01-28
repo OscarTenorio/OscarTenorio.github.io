@@ -1,14 +1,29 @@
-import * as ReactDOM from 'react-dom';
-import { getQueriesForElement } from '@testing-library/dom';
+//NOTE: with the SUPER clean way of importing methods even this import below is not needed
+// import * as ReactDOM from 'react-dom';
+
+//NOTE: where the getQueriesForElement() functions list comes from, but commented out for an even cleaner version of this just below
+// import { getQueriesForElement } from '@testing-library/dom';
+
+//NOTE: here is the SUPER clean way of rendering - others eft as comments for posterity
+import { render } from '@testing-library/react';
 import App from './App';
 
-test('Todo', () => {
-  // writing test to verify the app can render
-  const root = document.createElement('div');
-  ReactDOM.render(<App/>, root);
-  const { getByText, getByLabelText } = getQueriesForElement(root);
+//abstract the rendering of the elements into a render() function
 
-  //after rendering, we're using DOM APIs (query selector) to make assertions
+// function render(component){
+//   const root = document.createElement('div');
+//   ReactDOM.render(component, root);
+//   //return the getQueriesForElement() functions once done rendering
+//   return getQueriesForElement(root);
+// };
+
+// All of the above is commented out since there's an even CLEANER way to go about it
+// render() from the React library already does this, so it's imported and then just called below on line 25 and wam bam all done!
+
+test('Todo', () => {
+  //destructure the needed methods from the returned functions list once the app is rendered
+  const { getByText, getByLabelText } = render(<App/>);
+
   // NOTE: syntax
   expect(getByText('TODO')).not.toBe(null);
   expect(getByLabelText('Add Todo:')).not.toBe(null);
