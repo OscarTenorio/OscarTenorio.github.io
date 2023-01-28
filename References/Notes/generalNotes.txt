@@ -125,7 +125,8 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
 - Static Website - a site that, once loaded, does not communicate with a server or database to further function. It is self-contained, and thus makes it hard to hack (or allow hackers to steal information).
 
-- GraphQL - a database service that helps manage POSTs and uses a query in which we specify exactly what data we want in the response.
+- GraphQL - a query language for APIs that helps manage POSTs and uses a query in which we specify exactly what data we want in the response.
+    - it is database agnostic, so it can be used with any top database option
 
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
