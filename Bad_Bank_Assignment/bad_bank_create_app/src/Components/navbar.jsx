@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 
-const UserContext = React.createContext(null);
+// const UserContext = React.createContext(null);
 
 function NavBar() {
   return(
