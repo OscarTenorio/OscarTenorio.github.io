@@ -1,7 +1,9 @@
 import React from "react";
+// import UserContext from './spa'
 import 'bootstrap/dist/css/bootstrap.css';
 
-// const UserContext = React.createContext(null);
+// const ctx = React.createContext(UserContext);
+// console.log('Navbar context: ',ctx);
 
 function NavBar() {
   return(
@@ -17,10 +19,7 @@ function NavBar() {
           <a className="nav-link" href="#/login/">Login</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#/deposit/">Deposit</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#/withdraw/">Withdraw</a>
+          <a className="nav-link" href="#/depositwithdraw/">Deposit/Withdraw</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#/balance/">Balance</a>

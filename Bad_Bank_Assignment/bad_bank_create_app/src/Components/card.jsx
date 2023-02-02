@@ -13,12 +13,13 @@ function Card(props) {
   function headerClasses(){
     const headerclasses = props.headerclasses ? ' ' + props.headerclasses : '';
     const headerbgcolor = props.headerbgcolor ? ' ' + props.headerbgcolor : '';
-    return 'card-header text-center' + headerclasses + headerbgcolor
+    const headercolor = props.headercolor ? ' ' + props.headercolor : '';
+    return 'card-header text-center' + headerclasses + headerbgcolor + headercolor
   }
 
   const width = props.width ? ' ' + props.width : ' 18rem';
   const maxheight = props.maxheight ? ' ' + props.maxheight : ' 25rem';
-  // <div class="card-header text-white" style="background-color: #00AA9E;">
+  const textdisplay = props.balance ? (<h4 className="card-text">{props.text}</h4>) : (<p className="card-text">{props.text}</p>);
 
 
   return(
@@ -26,7 +27,7 @@ function Card(props) {
       <div className={headerClasses()}>{props.header}</div>
       <div className="card-body">
         {props.title && (<h5 className="card-title text-center">{props.title}</h5>)}
-        {props.text && (<p className="card-text">{props.text}</p>)}
+        {props.text && textdisplay}
         {props.body}
         {props.status && (<div className="primary" id="createStatus">{props.status}</div>)}
       </div>

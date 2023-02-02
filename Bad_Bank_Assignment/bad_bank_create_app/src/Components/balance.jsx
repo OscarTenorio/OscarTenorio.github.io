@@ -10,11 +10,12 @@ function Balance() {
 			txtcolor="white"
 			headerClasses="text-center"
 			bgcolor="primary"
-			margin="mx-auto"
+			margin="mx-auto mt-3"
 			header="Hardcoded User"
+			balance={true}
 			text={(<>
-			<h1>{ctx}</h1>
-			<h4>Balance: $5</h4>
+			{/* {ctx}<br/> */}
+			Balance: $5
 			</>)}
 		/>
 	);

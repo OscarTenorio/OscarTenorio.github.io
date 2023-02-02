@@ -6,7 +6,7 @@ import Balance from './balance';
 function Home() {
 
 	const ctx = React.useContext(UserContext);
-	console.log(ctx);
+	console.log('Home context: ',ctx);
 
 	return(
 		<>

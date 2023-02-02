@@ -1,14 +1,15 @@
-// Needs more work to actually make changes to user's balance rather than just do math that wipes when navigated away from
 import React from 'react';
 import Card from './card';
 import UserContext from './spa';
 import Balance from './balance';
+// import ctx from './navbar'
 
 
-function Deposit() {
+function Depositwithdraw() {
 	const ctx = React.useContext(UserContext);
-	console.log('inherited userContext: ', ctx)
+	console.log('Deposit context: ', ctx)
 	const [deposit, setDeposit] 		= React.useState(0);
+	const [withdraw, setWithdraw] 	= React.useState(0);
 	const [show, setShow] 					= React.useState(true);
 	const [status, setStatus] 			= React.useState('');
 
@@ -28,8 +29,18 @@ function Deposit() {
 			clearForm();
 			return
 		};
-		ctx.users.push({name:"Oscar", email:"emai@email.email", password:"admin", balance:10000});
+		// ctx.users.push({name:"Oscar", email:"emai@email.email", password:"admin", balance:10000});
 		// ctx.users[0].balance += parseInt(deposit);
+		setShow(false);
+	}
+
+	function handleWithdraw() {
+		if (!validate(withdraw, 'withdraw')) {
+			clearForm();
+			return
+		};
+		// ctx.users.push({name:"Oscar", email:"emai@email.email", password:"admin", balance:10000});
+		// ctx.users[0].balance -= parseInt(deposit);
 		setShow(false);
 	}
 
@@ -42,9 +53,9 @@ function Deposit() {
 		<>
 			<Balance/>
 			<Card 
-				txtcolor="white"
 				bgcolor="success"
 				header="Deposit"
+				headercolor="text-white"
 				extra='d-inline-flex'
 				status={status}
 				body={show ? (
@@ -61,8 +72,28 @@ function Deposit() {
 					</>
 				)}
 			/>
+						<Card 
+				bgcolor="warning"
+				header="Withdraw"
+				headercolor="text-white"
+				extra='d-inline-flex'
+				status={status}
+				body={show ? (
+					<>
+						{/* <p>Balance: ${ctx.users[0].balance}</p><br/> */}
+						<input type="number" className="form-control" id="withdraw" placeholder="Enter Withdrawal" value={withdraw} onChange={e => setWithdraw(e.currentTarget.value)}/>
+						<br/>
+						<button type="submit" className="btn btn-light" onClick={handleWithdraw}>Withdraw</button>
+					</>
+				) : (
+					<>
+						<h5>Success!</h5>
+						<button type="submit" className="btn btn-light" onClick={clearForm}>New Withdrawal</button>
+					</>
+				)}
+			/>
 		</>
 	);
 }
 
-export default Deposit;
+export default Depositwithdraw;
