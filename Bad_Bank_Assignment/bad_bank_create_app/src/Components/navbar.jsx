@@ -2,21 +2,45 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 
 function NavBar() {
+  const [homeIsActive, setHomeIsActive] = React.useState(true);
+  const [depwithIsActive, setDepwithIsActive] = React.useState(false);
+  const [historyIsActive, setHistoryIsActive] = React.useState(false);
 
-  // onClick={e => changeActive(e.currentTarget.value)}
-  // onClick={e => changeActive(e.currentTarget)}
+
+  // sorry it's a bit hardcoded, running into too-many-re-render errors so had to do this
+  function toggleHomeActive(){
+    setHomeIsActive(true);
+    setDepwithIsActive(false);
+    setHistoryIsActive(false);
+  }
+
+  function toggleDepwithActive(){
+    setHomeIsActive(false);
+    setDepwithIsActive(true);
+    setHistoryIsActive(false);
+  }
+
+  function toggleHistoryActive(){
+    setHomeIsActive(false);
+    setDepwithIsActive(false);
+    setHistoryIsActive(true);
+  }
+
+  function className(state){
+    return state ? "nav-link active" : 'nav-link';
+  }
 
   return(
     <>
       <ul className="nav nav-tabs">
         <li className="nav-item">
-          <a className="nav-link active" name="Home" aria-current="page" href="#">Bad Bank Home</a>
+          <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bad Bank Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" name="DepWith" href="#/depositwithdraw/">Deposit/Withdraw</a>
+          <a className={className(depwithIsActive)} name="DepWith" href="#/depositwithdraw/" onClick={toggleDepwithActive}>Deposit/Withdraw</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" name="History" href="#/balancehistory/">Balance History</a>
+          <a className={className(historyIsActive)} name="History" href="#/balancehistory/" onClick={toggleHistoryActive}>Activity History</a>
         </li>
       </ul>
     </>

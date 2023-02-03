@@ -19,16 +19,16 @@ function Depositwithdraw() {
 	function validate(field, label) {
 		if (label == 'deposit' && !field || field < 0) {
 			setDepositStatus('Error: Please enter a ' + label + ' amount');
-			setTimeout(() => setDepositStatus(''), 8000);
+			setTimeout(() => setDepositStatus(''), 5000);
 			return false;
 		}
 		if (label == 'withdraw' && !field) {
 			setWithdrawStatus('Error: Please enter a ' + label + ' amount');
-			setTimeout(() => setWithdrawStatus(''), 8000);
+			setTimeout(() => setWithdrawStatus(''), 5000);
 			return false;
 		} else if (label == 'withdraw' && field > ctx.users[0].balance) {
 			setWithdrawStatus('Error: Cannot ' + label + ' more than your Balance');
-			setTimeout(() => setWithdrawStatus(''), 8000);
+			setTimeout(() => setWithdrawStatus(''), 5000);
 			return false;
 		}
 		return true;
