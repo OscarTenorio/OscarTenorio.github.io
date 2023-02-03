@@ -1,12 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react';
+
 
 function Card(props) {
 
   function cardClasses(){
     const bgcolor = props.bgcolor ? ' bg-' + props.bgcolor : ' ';
     const txt = props.txtcolor ? ' text-' + props.txtcolor : ' text-white';
-    const margin = props.margin? ' ' + props.margin : ' my-5 mx-auto';
-    const extra = props.extra ? props.extra : '';
+    const margin = props.margin ? ' ' + props.margin : ' my-5 mx-auto';
+    const extra = props.extra ? ' ' + props.extra : '';
     return 'card' + margin + bgcolor + txt + extra;
   }
 
@@ -19,7 +21,9 @@ function Card(props) {
 
   const width = props.width ? ' ' + props.width : ' 18rem';
   const maxheight = props.maxheight ? ' ' + props.maxheight : ' 25rem';
-  const textdisplay = props.balance ? (<h4 className="card-text">{props.text}</h4>) : (<p className="card-text">{props.text}</p>);
+  const textdisplay = props.balance ? (
+    <h4 className="card-text text-center">{props.text}</h4>
+  ) : (<p className="card-text">{props.text}</p>);
 
 
   return(
@@ -29,7 +33,7 @@ function Card(props) {
         {props.title && (<h5 className="card-title text-center">{props.title}</h5>)}
         {props.text && textdisplay}
         {props.body}
-        {props.status && (<div className="primary" id="createStatus">{props.status}</div>)}
+        {props.status && (<div className="primary text-danger my-2" id="createStatus">{props.status}</div>)}
       </div>
     </div>
   );

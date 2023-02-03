@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './card';
-import UserContext from './spa';
+import UserContext from './userContext';
 
 function Balance() {
 	const ctx = React.useContext(UserContext);
@@ -11,12 +11,9 @@ function Balance() {
 			headerClasses="text-center"
 			bgcolor="primary"
 			margin="mx-auto mt-3"
-			header="Hardcoded User"
+			header={"User: " + ctx.users[0].name}
 			balance={true}
-			text={(<>
-			{/* {ctx}<br/> */}
-			Balance: $5
-			</>)}
+			text={"Balance: $" + ctx.users[0].balance}
 		/>
 	);
 }

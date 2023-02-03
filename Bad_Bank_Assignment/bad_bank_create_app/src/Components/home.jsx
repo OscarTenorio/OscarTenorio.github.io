@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './card';
-import UserContext from './spa';
-import Balance from './balance';
+import UserContext from './userContext';
+import CreateAccount from './createaccount';
 
 function Home() {
 
@@ -9,18 +9,20 @@ function Home() {
 	console.log('Home context: ',ctx);
 
 	return(
-		<>
-			<Balance/>
+		<div className="d-flex justify-content-center">
+			<CreateAccount/>
 			<Card
 				width="25rem"
+				margin="m-5"
+				extra="d-inline-block"
 				txtcolor="black"
-				headerClasses="text-center"
+				headerbgcolor="bg-muted"
 				header="Bad Bank"
 				title="Welcome to the Bank!"
-				text="You can use this Bank, but beware... it's bad!! Navigate to your desired page from the Navbar."
-				body={(<img src="https://cdn1.iconfinder.com/data/icons/corruption-outline-1/60/Corrupt-Bank-corrupted-banking-evil-512.png" className="img-fluid" alt="Evil Image Icon" style={{height:'50%', margin:'0px 65px'}}></img>)}
+				text="You can use this Bank, but beware... it's bad!! It's bad because it has no security *shame*"
+				body={(<img src="https://cdn1.iconfinder.com/data/icons/corruption-outline-1/60/Corrupt-Bank-corrupted-banking-evil-512.png" className="mx-auto d-block" alt="Evil Image Icon" style={{maxWidth:'100%', maxHeight:'220px'}}></img>)}
 			/>
-		</>
+		</div>
 	);
 }
 

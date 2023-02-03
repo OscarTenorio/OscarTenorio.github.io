@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './card';
-import UserContext from './spa';
+import UserContext from './userContext';
 
 function CreateAccount() {
 	const [show, setShow] 					= React.useState(true);
@@ -42,6 +42,8 @@ function CreateAccount() {
 			bgcolor="primary"
 			header="Create Account"
 			status={status}
+			margin="m-5"
+			extra="d-inline-block"
 			body={show ? (
 				<>
 					Name<br/>
@@ -58,7 +60,8 @@ function CreateAccount() {
 			) : (
 				<>
 					<h5>Success!</h5>
-					<button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+					<p>Navigate to other pages through the NavBar, or start over with account creation.</p>
+					<button type="submit" className="btn btn-light" onClick={clearForm}>Create another account</button>
 				</>
 			)}
 		/>
