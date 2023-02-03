@@ -32,8 +32,8 @@ function Card(props) {
       <div className="card-body">
         {props.title && (<h5 className="card-title text-center">{props.title}</h5>)}
         {props.text && textdisplay}
+        {props.status && (<div className="primary text-danger font-weight-bold my-2" id="createStatus">{props.status}</div>)}
         {props.body}
-        {props.status && (<div className="primary text-danger my-2" id="createStatus">{props.status}</div>)}
       </div>
     </div>
   );

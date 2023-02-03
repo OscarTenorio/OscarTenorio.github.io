@@ -10,8 +10,7 @@ function AllData() {
 		console.log("ctx.users[0].history.length", ctx.users[0].history.length)
 
 		// generate rows based on how many entries there are in the user's history
-		let date = String(props.value.timestamp).substr(0, 15);
-		// let date = String(ctx.users[0].history[i].timestamp).substr(0, 15);
+		let timestamp = String(props.value.timestamp).substr(0, 21);
 		let type = String(props.value.type)
 		let amount = String(props.value.amount)
 		let balance = String(props.value.balance)
@@ -19,7 +18,7 @@ function AllData() {
 		return (
 			<tr>
 				<th scope="row">{parseInt(props.id) + 1}</th>
-				<td>{date}</td>
+				<td>{timestamp}</td>
 				<td>{type}</td>
 				<td>${amount}</td>
 				<td>${balance}</td>
@@ -30,12 +29,12 @@ function AllData() {
 	return(
 		<>
 			<Balance/>
-			<h1 className="text-center my-5">History</h1>
+			<h1 className="text-center my-5">Activity History</h1>
 			<table className="table">
 				<thead>
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Date</th>
+						<th scope="col">When</th>
 						<th scope="col">Activity Type</th>
 						<th scope="col">Amount</th>
 						<th scope="col">Balance</th>
@@ -45,7 +44,6 @@ function AllData() {
 					{ctx.users[0].history.map((value, index) => {
 						return 	(<History value={value} key={index} id={index}/>)
 					})}
-					{/* <History/> */}
 				</tbody>
 			</table>
 		</>
