@@ -1,29 +1,43 @@
 import React from 'react';
-import { Fragment } from 'react';
 import Balance from './balance';
 import UserContext from './userContext';
 
 function AllData() {
 	const ctx = React.useContext(UserContext);
+	const [blank, setBlank] = React.useState(true);
 
 	function History(props){
-		console.log("ctx.users[0].history.length", ctx.users[0].history.length)
+		if (ctx.users[0].history.length > 0) {
+			setBlank(false);
+			// generate rows based on how many entries there are in the user's history
 
-		// generate rows based on how many entries there are in the user's history
-		let timestamp = String(props.value.timestamp).substr(0, 21);
-		let type = String(props.value.type)
-		let amount = String(props.value.amount)
-		let balance = String(props.value.balance)
+			//timestamp just grabs Day of Week, date, and time (Hours and minutes)
+			let timestamp = String(props.value.timestamp).substr(0, 21);
+			let type = String(props.value.type)
+			let amount = String(props.value.amount)
+			let balance = String(props.value.balance)
 
-		return (
-			<tr>
-				<th scope="row">{parseInt(props.id) + 1}</th>
-				<td>{timestamp}</td>
-				<td>{type}</td>
-				<td>${amount}</td>
-				<td>${balance}</td>
-			</tr>
-		)
+			return (
+				<tr>
+					<th scope="row">{parseInt(props.id) + 1}</th>
+					<td>{timestamp}</td>
+					<td>{type}</td>
+					<td>${amount}</td>
+					<td>${balance}</td>
+				</tr>
+			)
+		}
+	}
+
+	function BlankHistory() {
+		if (blank) {
+			return (
+				<div className="mx-auto" style={{paddingTop:"8rem"}}>
+						<h2 className="text-center" style={{color:"lightgray"}}>Wow, So Much Nothing</h2>
+						<p className="text-center" style={{color:"lightgray"}}>Try visiting the Deposit/Withdraw tab first</p>
+				</div>
+			)
+		}
 	}
 
 	return(
@@ -46,6 +60,7 @@ function AllData() {
 					})}
 				</tbody>
 			</table>
+			<BlankHistory/>
 		</>
 	);
 }
