@@ -6,7 +6,6 @@ import CreateAccount from './createaccount';
 function Home() {
 
 	const ctx = React.useContext(UserContext);
-	console.log('Home context: ',ctx);
 
 	return(
 		<div className="d-flex justify-content-center">
@@ -19,7 +18,7 @@ function Home() {
 				headerbgcolor="bg-muted"
 				header="Bad Bank"
 				title="Welcome to the Bank!"
-				text="You can use this Bank, but beware... it's bad!! It's bad because it has no security *shame*"
+				text="You can use this Bank, but beware... it's bad!! DISCLAIMER: It's bad because it has no security"
 				body={(<img src="https://cdn1.iconfinder.com/data/icons/corruption-outline-1/60/Corrupt-Bank-corrupted-banking-evil-512.png" className="mx-auto d-block" alt="Evil Image Icon" style={{maxWidth:'100%', maxHeight:'220px'}}></img>)}
 			/>
 		</div>
