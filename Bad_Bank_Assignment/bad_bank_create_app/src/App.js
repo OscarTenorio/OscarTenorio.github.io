@@ -14,7 +14,7 @@ function App() {
         textAlign: 'center',
         }}>
         <div>
-          <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Bad_Bank_Assignment">Source Code: oscartenorio.github.io</a>
+          <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Bad_Bank_Assignment" target="“_blank”">Source Code: oscartenorio.github.io</a>
         </div>
       </footer>
     </>
