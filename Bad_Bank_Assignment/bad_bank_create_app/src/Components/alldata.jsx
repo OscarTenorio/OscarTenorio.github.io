@@ -6,9 +6,10 @@ function AllData() {
 	const ctx = React.useContext(UserContext);
 	const [blank, setBlank] = React.useState(true);
 
+	if (ctx.users[0].history.length > 0 && blank) { setBlank(false) };
+
 	function History(props){
 		if (ctx.users[0].history.length > 0) {
-			setBlank(false);
 			// generate rows based on how many entries there are in the user's history
 
 			//timestamp just grabs Day of Week, date, and time (Hours and minutes)

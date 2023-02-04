@@ -80,7 +80,7 @@ function Depositwithdraw() {
 						</>
 					) : (
 						<>
-							<h5>Success!</h5>
+							<h5 className="my-3">Success!</h5>
 							<button type="submit" className="btn btn-light" onClick={clearForm}>New Deposit</button>
 						</>
 					)}
@@ -93,14 +93,13 @@ function Depositwithdraw() {
 					status={withdrawStatus}
 					body={showWithdraw ? (
 						<>
-							{/* <p>Balance: ${ctx.users[0].balance}</p><br/> */}
 							<input type="number" className="form-control" id="withdraw" placeholder="Enter Withdrawal" value={withdraw} onChange={e => setWithdraw(e.currentTarget.value)}/>
 							<br/>
 							<button type="submit" className="btn btn-light" onClick={handleWithdraw}>Withdraw</button>
 						</>
 					) : (
 						<>
-							<h5>Success!</h5>
+							<h5 className="my-3">Success!</h5>
 							<button type="submit" className="btn btn-light" onClick={clearForm}>New Withdrawal</button>
 						</>
 					)}

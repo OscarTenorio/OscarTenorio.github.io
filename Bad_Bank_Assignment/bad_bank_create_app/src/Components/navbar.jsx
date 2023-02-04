@@ -2,7 +2,8 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 
 function NavBar() {
-  const [homeIsActive, setHomeIsActive] = React.useState(true);
+  // navbar tab states, used to render which is active
+  const [homeIsActive, setHomeIsActive]       = React.useState(true);
   const [depwithIsActive, setDepwithIsActive] = React.useState(false);
   const [historyIsActive, setHistoryIsActive] = React.useState(false);
 

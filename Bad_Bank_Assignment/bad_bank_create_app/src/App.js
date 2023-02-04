@@ -7,11 +7,11 @@ function App() {
     <>
       <Spa/>
       <footer className="footer mb-4" style={{
-        position: 'fixed',
-        width: '100%',
-        left: '0',
-        bottom: '0',
-        textAlign: 'center',
+          position: 'fixed',
+          width: '100%',
+          left: '0',
+          bottom: '0',
+          textAlign: 'center',
         }}>
         <div>
           <a href="https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Bad_Bank_Assignment" target="“_blank”">Source Code: oscartenorio.github.io</a>
