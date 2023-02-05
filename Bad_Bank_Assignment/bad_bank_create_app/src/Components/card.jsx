@@ -21,9 +21,6 @@ function Card(props) {
 
   const width = props.width ? ' ' + props.width : ' 18rem';
   const maxheight = props.maxheight ? ' ' + props.maxheight : ' 25rem';
-  const textdisplay = props.balance ? (
-    <h4 className="card-text text-center">{props.text}</h4>
-  ) : (<p className="card-text">{props.text}</p>);
 
 
   return(
@@ -31,7 +28,7 @@ function Card(props) {
       <div className={headerClasses()}>{props.header}</div>
       <div className="card-body">
         {props.title && (<h5 className="card-title text-center">{props.title}</h5>)}
-        {props.text && textdisplay}
+        {props.text}
         {props.status && (<div className="primary text-danger text-center font-weight-bold my-2" id="createStatus">{props.status}</div>)}
         {props.body}
       </div>

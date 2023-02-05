@@ -21,11 +21,11 @@ function CreateAccount() {
 	}
 
 	function handleCreate() {
-		console.log("Name: ",name," Email: ",email," Password: ",password,", starting with a Balance of 10000");
+		console.log("Name: ",String(name),", Email: ",String(email),", Password: ",String(password),", starting with a Balance of ",String(balance));
 		if (!validate(name, 		'name')) return;
 		if (!validate(email, 		'email')) return;
 		if (!validate(password, 'password')) return;
-		ctx.users[0] = ({name:name, email:email, password:password, balance:balance, history:[]});
+		ctx.users.push({name:name, email:email, password:password, balance:balance, history:[], blank:true});
 		setShow(false);
 		console.log('Create Account context: ',ctx);
 	}
@@ -47,20 +47,20 @@ function CreateAccount() {
 			extra="d-inline-block"
 			text={show ? (
 				<>
-					Name<br/>
-					<input type="input" className="form-control" id="name" placeholder="Enter Name" value={name} onChange={e => setName(e.currentTarget.value)}/>
-					<br/>
-					Email Address<br/>
-					<input type="input" className="form-control" id="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.currentTarget.value)}/>
-					<br/>
-					Password<br/>
-					<input type="password" className="form-control" id="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.currentTarget.value)}/>
-					<br/>
-					Initial Balance<br/>
-					<input type="number" className="form-control" id="balance" placeholder="Enter Initial Balance" value={balance} onChange={e => setBalance(parseInt(e.currentTarget.value))}/>
-					<br/>
+					<p>Name
+						<input type="input" className="form-control" id="name" placeholder="Enter Name" value={name} onChange={e => setName(e.currentTarget.value)}/>
+					</p>
+					<p>Email Address
+						<input type="input" className="form-control" id="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.currentTarget.value)}/>
+					</p>
+					<p>Password
+						<input type="password" className="form-control" id="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.currentTarget.value)}/>
+					</p>
+					<p>Initial Balance
+						<input type="number" className="form-control" id="balance" placeholder="Enter Initial Balance" value={balance} onChange={e => setBalance(parseInt(e.currentTarget.value))}/>
+					</p>
 					<div className="text-center">
-					<button type="submit" className="btn btn-primary text-center mt-3" onClick={handleCreate}>Create Account</button>
+						<button type="submit" className="btn btn-primary text-center mt-5" onClick={handleCreate}>Create Account</button>
 					</div>
 				</>
 			) : (
