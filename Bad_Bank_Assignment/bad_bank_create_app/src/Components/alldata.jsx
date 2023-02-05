@@ -10,15 +10,15 @@ function AllData() {
 		// computes history data into a table row
 		let formattedTimestamp = String(props.historyentry.timestamp).substr(0, 21)
 
-			return (
-				<tr>
-					<th scope="row">{props.id + 1}</th>
-					<td>{formattedTimestamp}</td>
-					<td>{props.historyentry.type}</td>
-					<td>${props.historyentry.amount}</td>
-					<td>${props.historyentry.balance}</td>
-				</tr>
-			)
+		return (
+			<tr>
+				<th scope="row">{props.id + 1}</th>
+				<td>{formattedTimestamp}</td>
+				<td>{props.historyentry.type}</td>
+				<td>${props.historyentry.amount}</td>
+				<td>${props.historyentry.balance}</td>
+			</tr>
+		)
 		}
 
 
@@ -67,6 +67,7 @@ function AllData() {
 	// ==============================================	// AllUsersHistory()
 	function AllUsersHistory(props) {
 		// generates a history table per user
+
 		return props.users.map((user, index) => {
 			return (
 				<div style={{overflow:"scroll"}}>

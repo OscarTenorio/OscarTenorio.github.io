@@ -14,16 +14,18 @@ function Depositwithdraw() {
 	const [showWithdraw, setShowWithdraw] 			= React.useState(true);
 	const [depositStatus, setDepositStatus] 		= React.useState('');
 	const [withdrawStatus, setWithdrawStatus] 	= React.useState('');
+	const [depositButton, setDespositButton] 		= React.useState(false)
+	const [withdrawButton, setWithdrawButton]		= React.useState(false)
 
 
 	function validate(field, label) {
 		if (label == 'deposit' && !field || field < 0) {
-			setDepositStatus('ERROR: Please enter a ' + label + ' amount');
+			setDepositStatus('ERROR: Please enter a ' + label + ' amount number');
 			setTimeout(() => setDepositStatus(''), 5000);
 			return false;
 		}
 		if (label == 'withdraw' && !field) {
-			setWithdrawStatus('ERROR: Please enter a ' + label + ' amount');
+			setWithdrawStatus('ERROR: Please enter a ' + label + ' amount number');
 			setTimeout(() => setWithdrawStatus(''), 5000);
 			return false;
 		} else if (label == 'withdraw' && field > ctx.users[ctx.users.length - 1].balance) {
@@ -31,6 +33,8 @@ function Depositwithdraw() {
 			setTimeout(() => setWithdrawStatus(''), 5000);
 			return false;
 		}
+		setDespositButton(true);
+		setWithdrawButton(true);
 		return true;
 	}
 
@@ -40,7 +44,13 @@ function Depositwithdraw() {
 			return
 		};
 		ctx.users[ctx.users.length - 1].balance += parseInt(deposit);
-		ctx.users[ctx.users.length - 1].history.push({name:"Oscar", email:"emai@email.email", type:"Deposit", amount:deposit, balance:ctx.users[ctx.users.length - 1].balance, timestamp:new Date()});
+		ctx.users[ctx.users.length - 1].history.push({
+			name:"Oscar",
+			email:"emai@email.email",
+			type:"Deposit", amount:deposit,
+			balance:ctx.users[ctx.users.length - 1].balance,
+			timestamp:new Date()
+		});
 		ctx.users[ctx.users.length - 1].blank = false;
 		setShowDesposit(false);
 	}
@@ -51,7 +61,13 @@ function Depositwithdraw() {
 			return
 		};
 		ctx.users[ctx.users.length - 1].balance -= parseInt(withdraw);
-		ctx.users[ctx.users.length - 1].history.push({name:"Oscar", email:"emai@email.email", type:"Withdrawal", amount:withdraw, balance:ctx.users[ctx.users.length - 1].balance, timestamp:new Date()});
+		ctx.users[ctx.users.length - 1].history.push({
+			name:"Oscar",
+			email:"emai@email.email",
+			type:"Withdrawal", amount:withdraw,
+			balance:ctx.users[ctx.users.length - 1].balance,
+			timestamp:new Date()
+		});
 		ctx.users[ctx.users.length - 1].blank = false;
 		setShowWithdraw(false);
 	}
@@ -61,6 +77,17 @@ function Depositwithdraw() {
 		setWithdraw(0);
 		setShowDesposit(true);
 		setShowWithdraw(true);
+	}
+
+	function buttonClass(button) {
+		let activeState = "btn btn-light"
+		let inActiveState = "btn btn-light disabled"
+
+		if (button === "withdrawButton") {
+			if (withdrawButton) {return activeState} else { return inActiveState};
+		} else if (button === "depositButton") {
+			if (depositButton) {return activeState} else { return inActiveState};
+		};
 	}
 
 	return(
@@ -77,14 +104,16 @@ function Depositwithdraw() {
 					text={showDeposit ? (
 						<>
 							<p>Deposit Amount:</p>
-							<input type="number" className="form-control" id="deposit" placeholder="Enter Deposit" value={deposit} onChange={e => setDeposit(e.currentTarget.value)}/>
+							<input type="number" className="form-control" id="deposit" placeholder="Enter Deposit"
+								value={deposit} onChange={e => { setDeposit(e.currentTarget.value); setDespositButton(true) }}
+							/>
 							<br/>
-							<button type="submit" className="btn btn-light" onClick={handleDeposit}>Deposit</button>
+							<button type="submit" className={buttonClass("depositButton")} onClick={handleDeposit}>Deposit</button>
 						</>
 					) : (
 						<>
 							<h5 className="my-3">Success!</h5>
-							<button type="submit" className="btn btn-light" onClick={clearForm}>New Deposit</button>
+							<button type="submit" id ="depositButton" className="btn btn-light" onClick={clearForm}>New Deposit</button>
 						</>
 					)}
 				/>
@@ -97,9 +126,11 @@ function Depositwithdraw() {
 					text={showWithdraw ? (
 						<>
 							<p>Withdrawal Amount:</p>
-							<input type="number" className="form-control" id="withdraw" placeholder="Enter Withdrawal" value={withdraw} onChange={e => setWithdraw(e.currentTarget.value)}/>
+							<input type="number" className="form-control" id="withdraw" placeholder="Enter Withdrawal"
+								value={withdraw} onChange={e => { setWithdraw(e.currentTarget.value); setWithdrawButton(true) }}
+							/>
 							<br/>
-							<button type="submit" className="btn btn-light" onClick={handleWithdraw}>Withdraw</button>
+							<button type="submit" id ="withdrawButton" className={buttonClass("withdrawButton")} onClick={handleWithdraw}>Withdraw</button>
 						</>
 					) : (
 						<>
