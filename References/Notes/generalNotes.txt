@@ -130,6 +130,50 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
 - Mock - adding a fake dependency to a test (we did it in Jest) to work around real dependencies that the app the test is running against would have.
 
+- Routes - paths that define an API (think Bad Bank application, where routes were used to define different pages to load into the main page)
+
+- Node - an open-source, cross-platform runtime environment that allows developers to create all kinds of server-side tools and applications in JavaScript. Think NPM (node package manager)
+    - to use Node in your application (like separate from npm, which just uses node to manage packages) you have to first initialize node using "node init"
+        - there will be questions asked to get the details of the server you're about to spin up, make logical choices here but I don't think it impacts too much
+    - you can call "node [filename]" to run that file with the server you spun up
+    - NOTE: remember that when trying to run a Node server, you need to download dependencies AND initialize the data store
+        - dependencies in class: Express ("npm install express"), Lowdb ("npm install lowdb") - NOTE: if already in your package.json file, "npm install" will already know what (and which version) to download
+        - data store in class: eun "npm init" to set up, entering more or less default names for the values asked
+            - once done, you can run "cat packagae.json" to see the metadata file created with details
+
+- Express - the most popular Node web framework (unopinionated). It can:
+    - write handlers for requests with different HTTP verbs at different URL paths (routes)
+    - integrate with "view" rendering engines in order to generate responses by inserting data into templates
+    - set common web application settings like the port to use for connecting, and the location of templates that are used for rendering the response
+    - add additional request processing "middleware" at any point within the request handling pipeline
+
+- Opinionated VS Unopinionated frameworks:
+    - Opinionated: "there is a right way to solve this problem"
+        - less flexible in tools or options to resolve problems
+        - well-documented and reliable solutions for given issues
+        - narrower scope
+    - Unopinionated: "get creative to find a solution"
+        - very flexible, incorporates outside components into workflow
+        - easier for developers to navigate (no strict "do A then B then C" to resolve an issue)
+        - no good direction to resolve things - it's up to you to find a solution that works
+
+- URL Routes - when working locally, the URL denotes imformation hierarchy (how it is being accessed). This will be made clearer with an example:
+    - Let's say you're looking at a (GET in this case) request from an app trying to display a post on a blog - the code can look something like this:
+        - ex: app.get('/posts/:title/:id/:published', function(req, res){...
+                      -------relevant bit here------
+    You can see that the app is looking in the 'posts' part of the database, and the further parts are just parameters being passed in
+    Let's look at what the URL looks like once the information is returned:
+        - ex: http://localhost:3000/post/Hello/91991/false
+                    -----a------  -b-  --c-- --d-- --e--
+                                        -------i---------
+            a. which port you are currently connected to
+            b. Route - the higher up umbrella group. In this case, we're looking at a post (like blog post)
+            i. the rest are just parameters to the data being accessed, parameters to the post data structure
+                that specify what within posts we're looking at
+            c. title - nested in the post category is a specific post called Hello
+            d. id - some very specific element within that post (or even the id of the post)
+            e. boolean - some true or false value used to keep track of whether it's published
+
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
 --------------------------------------------------------------------------------
@@ -205,3 +249,5 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 - https://getbootstrap.com - Bootstrap CSS documentation and resources
 
 - https://strapi.io/ - Strapi (back-end database) documentation and resources
+
+- https://www.npmjs.com/ - npm package registry (look up commands to install specific packages)
