@@ -240,6 +240,26 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
     GraphQL allows you to query only the data you want. If you replace the REST endpoint with a GraphQL one, you could query the currently logged-in user but specify you only want their email address. 
 
+- Common packages to hekp a developer in the real world:
+
+    Throughout this course, you’ve seen many packages that you can use to build impressive features and applications. Now let’s look at some that can make your life as a developer easier:
+
+        - Faker.js
+        https://www.npmjs.com/package/@faker-js/faker
+        As you’ve seen in previous videos, Faker.js can help you generate dummy front-end and back-end data to test your application. You can create people, organizations, accounts, products, images, and more. You can use the same data that are used in production for simplicity and speed. And Faker.js will always keep your data safe.
+
+        - Chalk
+        https://www.npmjs.com/package/chalk
+        You often check console.log when debugging. However, back-end logs can blend in the terminal and become difficult to identify. With Chalk, you can customize your console.log so that particular errors appear bright red, with a background color, or underlined.
+
+        - Moment
+        https://www.npmjs.com/package/moment
+        Comparing or manipulating dates or timestamps can be confusing, especially when you have to consider time differences between the user and the server. Moment has been the standard and most widely used date library for a long time, and for a good reason. For instance, if you want to know if one date is older than another, you simply have to write: (png that I can't here) Or maybe you want to add one month to an order creation date to see when it needs to be paid (another png I can't add here).
+
+        Moment does a lot more, and you’re encouraged to take a look at its documentation (https://momentjs.com/) to get a good sense of all you can do with it.
+
+        Note: As of September 2020, Moment recommends using a different date library when building new applications. Nevertheless, with over 12 million downloads per week, Moment is still the most used date library. Therefore, it’s important that you become familiar with its basic functionality and capabilities. For more information and other libraries recommended by Moment, take a look at its Project Status (https://momentjs.com/docs/)
+
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
 --------------------------------------------------------------------------------
