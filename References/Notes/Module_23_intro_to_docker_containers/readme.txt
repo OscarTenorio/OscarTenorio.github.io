@@ -1,0 +1,2 @@
+Moving forward, I'm avoiding creating a separate notes section for the modules and will instead use the starter files to save on time
+  - the only reason I had made a notes section was to preserve the starter files and practice writing things out myself - this need has been met and I no longer wish to spend the time re-writing code I understand
