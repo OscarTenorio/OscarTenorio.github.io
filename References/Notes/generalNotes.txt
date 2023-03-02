@@ -260,6 +260,14 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
         Note: As of September 2020, Moment recommends using a different date library when building new applications. Nevertheless, with over 12 million downloads per week, Moment is still the most used date library. Therefore, it’s important that you become familiar with its basic functionality and capabilities. For more information and other libraries recommended by Moment, take a look at its Project Status (https://momentjs.com/docs/)
 
+- What Is Heroku?
+
+    https://www.heroku.com/
+    Heroku is a cloud service platform that allows you to deploy and run your apps. This platform offers support for a wide range of programming languages, such as Java, Ruby, Node.js, and Python. Heroku runs applications in virtual containers known as Dynos. Think of Dynos as virtual machines that run your applications on the cloud.
+
+    Heroku has a free tier to help you get started. You can create a Heroku account and then follow this getting started guide
+    Links to an external site. to start using Heroku services. This will help you accomplish some of the deployment tasks required throughout the course.
+
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
 --------------------------------------------------------------------------------
