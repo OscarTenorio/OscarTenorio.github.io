@@ -1,6 +1,6 @@
 FROM node:slim
 
-MAINTAINER abelsan <abel@mit.edu>
+LABEL abelsan <abel@mit.edu>
 
 WORKDIR /app
 
