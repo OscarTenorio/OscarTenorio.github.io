@@ -174,6 +174,17 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
             d. id - some very specific element within that post (or even the id of the post)
             e. boolean - some true or false value used to keep track of whether it's published
 
+- Mongo DB - database service used for this class. For class I installed the comunity version (I don't think I had an option), version 6.
+    Running/Stopping as a macOS service:
+    - To run:  brew services start mongodb-community@6.0
+    - To stop running:  brew services stop mongodb-community@6.0
+    Running manually as a backgrgound process:
+    - (Intel Chip mac):  mongod --config /usr/local/etc/mongod.conf --fork
+    - (M1 chip):  mongod --config /opt/homebrew/etc/mongod.conf --fork
+    * To stop running as a background process:
+    - connect to "mongod" using "mongosh", run the "shutdown" command (google these terms to know more)
+    Notes taken from here: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
+
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
 --------------------------------------------------------------------------------
