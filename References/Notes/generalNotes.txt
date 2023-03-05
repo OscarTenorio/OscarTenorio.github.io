@@ -393,6 +393,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
     When you have a client application that calls an API endpoint that triggers logic on your back-end server application, you have a layered architecture. What’s important in REST is that each layer only knows about the layer next to it and no more. This is also called a separation-of-concerns. Each layer has a specific job and passes information to and from its neighboring layers to get the job done. Thus, the only layer that the client application knows about is the API, which is its immediate neighbor; it does not know about any other layers beyond the API.
 
+----------------------------------------------------------------
 - GraphQL vs REST
 
     In a standard RESTful API, you typically hit an endpoint that determines what data is returned.GraphQL improves upon the REST philosophy by allowing the front-end application to ask for a specific piece of that data.
@@ -412,6 +413,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
     GraphQL allows you to query only the data you want. If you replace the REST endpoint with a GraphQL one, you could query the currently logged-in user but specify you only want their email address. 
 
+----------------------------------------------------------------
 - Common packages to hekp a developer in the real world:
 
     Throughout this course, you’ve seen many packages that you can use to build impressive features and applications. Now let’s look at some that can make your life as a developer easier:
@@ -432,6 +434,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
         Note: As of September 2020, Moment recommends using a different date library when building new applications. Nevertheless, with over 12 million downloads per week, Moment is still the most used date library. Therefore, it’s important that you become familiar with its basic functionality and capabilities. For more information and other libraries recommended by Moment, take a look at its Project Status (https://momentjs.com/docs/)
 
+----------------------------------------------------------------
 - What Is Heroku?
 
     https://www.heroku.com/
@@ -439,6 +442,204 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
     Heroku has a free tier to help you get started. You can create a Heroku account and then follow this getting started guide
     Links to an external site. to start using Heroku services. This will help you accomplish some of the deployment tasks required throughout the course.
+
+----------------------------------------------------------------
+- Docker Convenient Notes:
+    Useful Docker Commands:
+
+    Build image
+    # The -t gives your image a name
+    $ docker build -t YourImageName.
+
+    List Containers
+    # Containers currently running
+    $ docker ps -a
+
+    List Images
+    # List all Docker images
+    $ docker images -a
+
+    Delete containers
+    # Delete every Docker container
+    # Run this command first because images are attached to containers
+    $ docker rm $(docker ps -a -q)
+
+    Delete images
+    # Delete every Docker image
+    $ docker rmi $(docker images -q)
+
+    Force delete images
+    # to force delete images to prevent their use
+    $ docker rmi -f $(docker images -q)
+
+    Stop container
+    # Stop a container
+    $ docker stop <container id>
+
+    Shell in running container
+    # From Docker 1.3 onwards
+    $ sudo docker exec -i -t <containerIdOrName> bash
+    --------------------------------
+    Create and Publish A Docker Image:
+    Create an application and a docker file for the application. Then, create a docker image for the application. Name your image YourDockerUsername/YourImageName. In this example the username is "abelsan" and the image name is "cabinfever".
+
+    # Create Docker image
+    $ docker build -t abelsan/cabinfever.
+
+    Test your new image.
+
+    # "-p 8080:3000" sets the container port to 3000 and the host port to 8080
+    # "--name cabinfeverInstance" sets the container name to cabinfeverInstance
+    # "-t cabinfever" references the cabinfever image
+    $ docker run -p 8080:3000 --name cabinfeverInstance -t abelsan/cabinfever
+
+    After you confirm your application works, push your image to docker hub.
+
+    # Note the username/image matches the Docker repository
+    $ docker push abelsan/cabinfever
+
+    To use the image, enter the pull command.
+
+    $ docker pull abelsan/cabinfever
+    --------------------------------
+    Docker - NodeJS Hello World:
+    Use this document as a way to quickly start any new project.
+
+    Create a barebones NodeJS application
+    Create a directory named docnode. Initialize your application (npm init). Install express (npm install express --save). Your package.json file should look like the following:
+
+    {
+    "name": "docnode",
+    "version": "1.0.0",
+    "description": "barebones node on docker",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "abel@mit.edu",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.15.5"
+    }
+    }
+
+    Add a bare-bones express server and name your file index.js:
+    var express = require('express');
+    var app     = express();
+    
+    app.get('/', function(req,res){
+    res.send('Hello World!');
+    });
+    
+    var port = 3000;
+    app.listen(port,function(){
+    console.log('Listening on port:' + port);
+    });
+
+    Create a Docker file and name it Dockerfile:
+    FROM node:slim
+    MAINTAINER abelsan <abel@mit.edu>
+    WORKDIR /app
+    # copy code, install npm dependencies
+    COPY index.js /app/index.js
+    COPY package.json /app/package.json
+    RUN npm install
+
+    Create a Docker compose file and name it docker-compose.yml:
+    version: "2"
+    services:
+    gin:
+        build: .
+        ports:
+        - "3000:3000"
+
+    If needed, copy your code to the remote machine. After this is done, at the command line, enter docker-compose up:
+
+    docker-compose up
+    --------------------------------
+    How To Install Docker On Ubuntu:
+    Step 1 — Installing Docker
+    The Docker installation package available in the official Ubuntu 16.04 repository may not be the latest version. To get the latest version, install Docker from the official Docker repository. This section shows you how to do that.
+
+    First, add the GPG key for the official Docker repository to the system:
+
+    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+    Add the Docker repository to APT sources:
+
+    $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+    Next, update the package database with the Docker packages from the newly added repository:
+
+    $ sudo apt-get update
+
+    Ensure that you install from the Docker repo instead of the default Ubuntu 16.04 repo:
+
+    apt-cache policy docker-ce
+
+    You should see output similar to the following:
+
+    Output of apt-cache policy docker-ce
+
+    docker-ce:
+
+    Installed: (none)
+
+    Candidate: 17.03.1~ce-0~ubuntu-xenial
+
+    Version table:
+
+    17.03.1~ce-0~ubuntu-xenial 500
+
+    500 https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+
+    17.03.0~ce-0~ubuntu-xenial 500
+
+    500 https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+
+    Notice that docker-ce is not installed, but the candidate for installation is from the Docker repository for Ubuntu 16.04. Also note that the docker-ce version number might be different.
+
+    Finally, install Docker:
+
+    $ sudo apt-get install -y docker-ce
+
+    Docker should now be installed, the daemon started, and the process enabled to start on boot. Check that it's running:
+
+    $ sudo systemctl status docker
+
+    The output should be similar to the following, showing that the service is active and running:
+
+    Output
+
+    docker.service - Docker Application Container Engine
+    Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+
+    Active: active (running) since Sun 2016-05-01 06:53:52 CDT; 1 weeks 3 days ago
+
+    Docs: https://docs.docker.com
+
+    Main PID: 749 (docker)
+
+    
+
+    The installation of Docker gives you not just the Docker service (daemon) but also the Docker command line utility or the Docker client. We'll explore how to use the Docker command later in this tutorial.
+
+    Step 2 — Executing The Docker Command Without Sudo (Optional)
+    By default, running the Docker command requires root privileges; therefore, you have to prefix the command with sudo. It can also be run by a user in the Docker group, which is automatically created during the Docker Installation. If you attempt to run the Docker command without prefixing it with sudo or without being in the docker group, you'll get an output like this:
+
+    Output
+
+    docker: Cannot connect to the Docker daemon. Is the docker daemon running on this host?.
+
+    See 'docker run --help'.
+
+    If you want to avoid typing sudo whenever you run the Docker command, add your username to the Docker group:
+
+    $ sudo usermod -aG docker ${USER}
+
+    To apply the new group membership, log out of the server, then log back in.
+    ----------------------------------------------------------------
+
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
