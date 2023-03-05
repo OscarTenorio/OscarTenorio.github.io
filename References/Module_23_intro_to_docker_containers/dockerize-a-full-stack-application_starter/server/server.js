@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const connectDb = require('./src/database');
+const connectDb = require('./src/database.js');
 const faker = require('faker');
 
 const User = require('./src/models/user.model');
