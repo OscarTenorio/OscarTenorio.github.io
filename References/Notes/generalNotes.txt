@@ -185,6 +185,167 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     - connect to "mongod" using "mongosh", run the "shutdown" command (google these terms to know more)
     Notes taken from here: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
 
+- Docker - a service of creating copies, or images, of your code into a docker server to have it as a neat package, or container, so others can run your code on the docker servers without needoing to download dependencies and such locally.
+    To "dockerize" your project (first explaining the set up, then after I'll explain the actually creating of the container), download the Docker desktop app first at https://www.docker.com/products/docker-desktop/ <- it'll make this a lot easier:
+
+    - create a "docker-compose.yml" file in the root directory of the project. This will give instructions to docker commands you will run later on the structure of the project.
+        --- Example docker-compose.yml contents for non-nested project (super basic):
+            version: "3"
+
+            services:
+            node:
+            build: .
+            ports:
+            - "3000:3000"
+            command: node index.js
+
+
+            You're telling docker that when you run the docker command (that will create an image of your project), use version 3, use ports 3000 (I think that's on the mdocker machine), and to run the code use the command "node index.js" to get it started
+                NOTE: in this simple example all the files are in the same directory so they are all accessible without further navigation
+
+        
+        --- Example docker-compose.yml contents for multi-tiered application:
+            version: '2'
+            services:
+            client:
+                build: './client'
+                ports:
+                - '3000:3000'
+                depends_on:
+                - server
+            server:
+                build: './server'
+                ports:
+                - '8080:8080'
+                depends_on:
+                - mongo
+            mongo:
+                image: mongo
+                ports:
+                - '27017:27017'
+
+
+            You're telling docker that when you run the docker command (that will create an image of your project):
+                - user version 2
+                - there is a client part to this app
+                    - it's in the client folder that's in the same directory as where you're running the docker build command from
+                    - use port 3000 for this client app
+                    - it relies on the server part of the app, defined next
+                - there is a server part to this app
+                    - it's in the server folder also in the same directory
+                    - use prt 8080 (since 3000 is taken from running the Client code)
+                    - relies on Mongo (database)
+                - there's a database (Mongo) part to this app
+                    - look online for the publicly available Mongo image and use that
+                    - use port 27017 for this functionality
+
+
+    - create further instructions to upload the image into a Docker container by creating a "Dockerfile" (notice it doesn't have a file-type like .js or something):
+        --- Example Dockerfile contents:
+            FROM node:slim
+
+            LABEL oscar otenorio90@gmail.com
+
+            WORKDIR /app
+
+            COPY index.js /app/index.js
+            COPY package.json /app/package.json
+            RUN npm install
+            EXPOSE 3000
+            ENTRYPOINT node index.js
+
+
+            You're telling the docker command (which I haven't given yet, this is still part of setup):
+                - use a starting template of a node app (slim version so it's smaller)
+                - make a LABEL that will note who made/maintains this code
+                - create a folder on the docker machine -side called app (where the files will go)
+                - grab the contents of the index.js file (note syntax since it's in the same directory as this Dockerfile) and place them into an index.js file you'll create in the app directory
+                - do the same for package.json
+                - run "npm install" (uses the contents of package.json to download dependencies on the docker machine)
+                - open up port 3000
+                - use the command "node index.js" to run this code
+            NOTE: this applies to any complexity of the app (simple or multi-tiered) but the convention seems to be that you make a Dockerfile for each tier.
+                Example:
+                √  project-directory
+                    √  Client-code
+                        >  node_modules
+                        >  img
+                        √  folder-containing-source-files
+                        package.json
+                        .gitignore
+                        Dockerfile  <-----
+                    √  Server-code
+                        >  node_modules
+                        index.js
+                        package.json
+                        .gitignore
+                        Dockerfile  <-----
+                    docker-compose.yml   <----------- NOTE: the yml file should live in the project root where you call the docker build command - it'll go looking into child directories for the Dockerfiles
+
+
+    - FINALLY actually run the docker build command to dockerize this puppy:
+        Run this command from the root directory of the project (where the docker-compose.yml file is):
+        - first time running the command use:  docker-compose up
+            - creates the image into a container wil default naming conventions based on folder arcchitecture (recommended)
+        - following times use:  docker-compose build
+            - overwrites the image using the same naming convention (recommended to overwrite your other work). I think "docker-compose up" will fail if it already exists
+        
+
+
+    Docker hub is like the github of docker containers, where you can share your work and others can run it without downloading a bunch of stuff on their machines.
+
+    To add to docker hub:
+    - NOTE: first you should go to https://hub.docker.com and create a file. Created my username as "oscartenorio", so wherever you see that in further notes just know that's your username
+    - Navigate to root of project that you want to put up into docker hub
+    - Run:
+        docker build -t oscartenorio/project_name .
+        -----a------ -b -----c-----  -----d------ -e
+        a. command to create the docker container
+        b. adds a tag
+        c. corresponds to your docker hub username (must make an account first for this to work)
+        d. name of the project (it'll be in the url later)
+        e. not sure, but I think it runs the application once built or something?
+    - this will upload an image of your project to docker hub, where you can send the URL to anyone (I gugess depending on privacy/permission settings) and have them run your code
+
+    To test that it worked:
+        - Run (from the same place in the directory as above, I think):
+            docker run -p 8080:3000 --name project_nameInstance -t oscartenorio/project_name
+            -----a---- -b -c-- --d- ---e-- --------f----------  ------------g---------------
+            a. run command
+            b. port tag
+            c. port to expose on your machine (D1 local)
+            d. port inside of the container
+            e. name tag
+            f. the name of the container / name of the instanced image (notice the naming convention, so like "exampleInstance" or "myProjectInstance")
+            g. destination to run from (same that we created above)
+        - To stop it from running:
+            - run  docker ps -a  to get a list of the running processes in a NEW terminal, and grab the id of the running container
+            - run  docker stop id_you_grabbed  to terminate the process
+
+
+    To push / pull from Docker hub, you need to log in first:
+        docker login -u "myusername" -p "mypassword" docker.io
+        - where "myusername" and "mypassword" are replaced with actual username and password (no quotes)
+
+    To push to Docker hub:
+        - Run:
+            docker push oscartenorio/project_name
+
+    To pull from Docker hub:
+    - Run:
+        docker pull oscartenorio/project_name
+
+    To remove the container/images:
+        - ffrom local machine:
+            docker ps -a
+            - grab id of the local image
+            docker rm id_you_grabbed
+        - from docker hub
+            docker images
+            - grab id of the docker container
+            docker rmi id_you_grabbed
+
+
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
 --------------------------------------------------------------------------------

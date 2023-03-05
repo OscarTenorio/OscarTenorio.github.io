@@ -1,0 +1,24 @@
+To add to docker hub:
+    - NOTE: first you should go to https://hub.docker.com and create a file. Created my username as "oscartenorio", so wherever you see that in further notes just know that's your username
+    - Navigate to root of project that you want to put up into docker hub
+    - Run:
+        docker build -t oscartenorio/project_name .
+        -----a------ -b -----c-----  -----d------ -e
+        a. command to create the docker container
+        b. adds a tag
+        c. corresponds to your docker hub username (must make an account first for this to work)
+        d. name of the project (it'll be in the url later)
+        e. not sure, but I think it runs the application once built or something?
+- this will upload an image of your project to docker hub, where you can send the URL to anyone (I gugess depending on privacy/permission settings) and have them run your code
+
+To test that it worked:
+    - Run (from the same place in the directory as above, I think):
+        docker run -p 8080:3000 --name project_nameInstance -t oscartenorio/project_name
+        -----a---- -b -c-- --d- ---e-- --------f----------  ------------g---------------
+        a. run command
+        b. port tag
+        c. port to expose on your machine (D1 local)
+        d. port inside of the container
+        e. name tag
+        f. the name of the container / name of the instanced image (notice the naming convention, so like "exampleInstance" or "myProjectInstance")
+        g. destination to run from (same that we created above)

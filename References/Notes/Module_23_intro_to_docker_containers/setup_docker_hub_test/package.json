@@ -1,0 +1,14 @@
+{
+    "name":"cabinfever",
+    "version":"1.0.0",
+    "description":"barebones node on docker",
+    "main":"index.js",
+    "scripts": {
+        "test":"echo 'Error: no test specified' && exit 1"
+    },
+    "author":"otenorio90@gmail.com",
+    "license":"MIT",
+    "dependencies": {
+        "express":"^4.15.5"
+    }
+}
