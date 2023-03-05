@@ -22,3 +22,5 @@ To test that it worked:
         e. name tag
         f. the name of the container / name of the instanced image (notice the naming convention, so like "exampleInstance" or "myProjectInstance")
         g. destination to run from (same that we created above)
+
+See generalNotes.txt file (at the root of this github directory I believe) for much more thorough notes

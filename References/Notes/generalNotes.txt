@@ -260,6 +260,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
                 - make a LABEL that will note who made/maintains this code
                 - create a folder on the docker machine -side called app (where the files will go)
                 - grab the contents of the index.js file (note syntax since it's in the same directory as this Dockerfile) and place them into an index.js file you'll create in the app directory
+                    NOTE: you can alos just use "COPY . ." to copy all the files in the current directory into a copy in the docker directory
                 - do the same for package.json
                 - run "npm install" (uses the contents of package.json to download dependencies on the docker machine)
                 - open up port 3000
