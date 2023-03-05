@@ -337,7 +337,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
         docker pull oscartenorio/project_name
 
     To remove the container/images:
-        - ffrom local machine:
+        - from local machine:
             docker ps -a
             - grab id of the local image
             docker rm id_you_grabbed
