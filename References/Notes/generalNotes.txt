@@ -346,6 +346,18 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
             - grab id of the docker container
             docker rmi id_you_grabbed
 
+- JSON Web Tokens - (JWT) kinda like cookies, these are "keys" that are held client-side that are signed and given out by servers to authenticate a user,
+    - though the server does not maintain state (actually remember the user, per se), it has a mechanism of extracting it's secret key from tokens it has handed out to know it's a legit token and thus a legit user
+    - it's made up of three parts: header, payload, and signature
+        header: contains information about the token itself. It defines the token type and the encryption algorithm it should use
+        payload: the most important part of a JWT. It contains information about the client
+        signature: a hash that is computed following these steps:
+            - Concatenate the encoded header and the encoded payload using a dot
+            - Hash the result using the encryption algorithm specified in the header part and a private key
+            - Encode the result as a Base64 string
+
+        These are converted from JSON to a base64 string and concatenated using a dot between each part: header.payload.signature
+
 
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
@@ -640,6 +652,17 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
     To apply the new group membership, log out of the server, then log back in.
     ----------------------------------------------------------------
+
+
+----------------------------------------------------------------
+- Why Use JSON Web Tokens?
+
+    JSON Web Tokens (JWTs) provide a better alternative than session IDs to solving the client–server communication problem. 
+
+    They define a way to transmit information related to authentication and authorization between two parties. 
+    Each token issued is digitally signed and contains all the information for the server to allow or deny a given request. This means that the server does not have to access a database to verify a request, which would expose the application to security threats.
+    Tokens are stored in the client, so they can be verified by the server without accessing a database. This reduces the security threat of multiple database queries and also reduces the time it would take for the token to be verified. 
+    JSON Web Tokens provide a secure and efficient solution to the client-server communication problem.
 
 
 --------------------------------------------------------------------------------
