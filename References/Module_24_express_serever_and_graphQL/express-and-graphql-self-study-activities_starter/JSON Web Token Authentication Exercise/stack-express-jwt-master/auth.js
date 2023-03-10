@@ -17,13 +17,13 @@ const users = [
         password: 'password123member',
         role: 'member'
     }
-]
+] 
 
 const refreshTokens = [];
 
 app.use(bodyParser.json());
 
-app.post('/login', (req, res) => {
+app.get('/login', (req, res) => {
     // read username and password from request body
     const { username, password } = req.body;
 
