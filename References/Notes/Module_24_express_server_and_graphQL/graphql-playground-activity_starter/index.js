@@ -62,7 +62,20 @@ var schema = buildSchema(`
   type Game {
     title: String
     publisher: String
-}
+    developer: String
+    releaseDate: String
+    platforms: [Platform]
+    esrbRating: EsrbRating
+  },
+  type EsrbRating {
+    id: Int
+    code: String
+    name: String
+  },
+  type Platform {
+    id: Int
+    name: String
+  }
  
 `);
 
