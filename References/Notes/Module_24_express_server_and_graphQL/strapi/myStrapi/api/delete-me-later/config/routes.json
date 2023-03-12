@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/delete-me-laters",
+      "handler": "delete-me-later.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/delete-me-laters/count",
+      "handler": "delete-me-later.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/delete-me-laters/:id",
+      "handler": "delete-me-later.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/delete-me-laters",
+      "handler": "delete-me-later.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/delete-me-laters/:id",
+      "handler": "delete-me-later.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/delete-me-laters/:id",
+      "handler": "delete-me-later.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

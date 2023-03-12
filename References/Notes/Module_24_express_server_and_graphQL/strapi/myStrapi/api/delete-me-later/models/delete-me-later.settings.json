@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delete_me_laters",
+  "info": {
+    "name": "delete me later"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "deleteMeLater": {
+      "type": "string"
+    }
+  }
+}
