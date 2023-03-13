@@ -1,6 +1,8 @@
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema, assertInputType } = require('graphql');
 var express = require('express');
+const { URLSearchParams } = require('url');
+global.URLSearchParams = URLSearchParams;
 
 // Construct a schema, using GraphQL schema language
 var contacts = [
@@ -68,7 +70,7 @@ type Mutation{
 `);
 // The root provides a resolver function for each API endpoint
 
-
+ 
 var root = {
   contact : (arg)=>contacts[arg.id],
   contacts : ()=> contacts,

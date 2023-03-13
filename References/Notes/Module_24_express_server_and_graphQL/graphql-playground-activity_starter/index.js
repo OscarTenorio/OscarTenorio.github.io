@@ -1,6 +1,8 @@
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
+const { URLSearchParams } = require('url');
+global.URLSearchParams = URLSearchParams;
 
 var gameCatalogue = [
     {

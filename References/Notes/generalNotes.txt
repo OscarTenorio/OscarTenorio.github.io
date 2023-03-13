@@ -62,9 +62,11 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     b. "And" operator
     c. element to be rendered
     This way, the element only renders if both sides of the operator are evaluated to true (simply defining an element evaluates to true)
+    
 - For making CRUD database insertions using GraphQL (so importnat for the Bad Bank exercise), see the following file:
-    /Users/otenorio/Desktop/MIT_MERN_fullstack/oscartenorio.github.io/References/Notes/Module_24_express_server_and_graphQL/expressgraphQL01/index.js
+    /Users/otenorio/Desktop/MIT_MERN_fullstack/oscartenorio.github.io/References/Notes/Module_24_express_server_and_graphQL/expressgraphQL01/index.js line 75
     NOTE: where exactly the file is located will be dependant on where you're viewing this from, but just following tthe above path from oscartenorio.github.io on should do the trick
+    - you can see it done for restaurants at the following as well: /Users/otenorio/Desktop/MIT_MERN_fullstack/oscartenorio.github.io/References/Notes/Module_24_express_server_and_graphQL/graphql-restaurant-data-exercise_starter/index.js
 
 
 --------------------------------------------------------------------------------
