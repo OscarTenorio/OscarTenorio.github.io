@@ -721,6 +721,168 @@ What is API Documentation?
     Keep It Up-to-Date
     It is important to maintain your documentation. Out-of-date API documentation can lead a developer in the wrong direction and waste their time.
 
+----------------------------------------------------------------
+
+- Asynchronous Callbacks
+    With an asynchronous callback like setTimeout, for example, you can make JavaScript wait to fire a function for five seconds while it runs another block of code in the meantime, as shown below:
+
+    console.log("Hello");
+    setTimeout(function() {
+    console.log("world!");
+    }, 5000);
+
+    console.log("MITxPRO Coding Course!")
+
+    When you run this, it will show up in your console as follows:
+
+    Hello
+    MITxPRO Coding Course 
+    //5 seconds later
+    world!
+    If you use setTimeout, your code can become complicated. You could end up with nested setTimeout functions inside of each other as you try to execute blocks of code in a timed sequence. For example, suppose you have a basic shape that you want to animate, as in the following sequence:
+
+    Change the inner text into “Let’s go!” after 500 ms
+    Turn the square into a diamond after 2000 ms
+    Turn the diamond green after 500 ms
+    Turn the diamond into a square after 250 ms
+    Turn the square purple after 300 ms
+    Fade the entire shape out after 500 ms
+
+    The code would look something like this: 
+
+    <script>
+    const go = document.querySelector('.go');
+    go.addEventListener('click', function(e) {
+        const el = e.currentTarget;
+        el.textContent = "LET’S GO!"
+        setTimeout(function() {
+        el.classList.add('diamond');
+        setTimeout(function() {
+            el.classList.add('green');
+            setTimeout(function(){
+            el.classList.remove('circle');
+            el.classList.add(‘square’);
+            setTimeout(function(){
+                el.classList.remove('green');
+                el.classList.add('purple');
+                setTimeout(function() {
+                el.classList.add('fadeout');
+                }, 500)
+            }, 300)
+            }, 250)
+        }, 500)
+        }, 2000)
+    });
+    
+    </script>
+    
+
+    As you can see, this is inefficient and can lead to confusion. This is where promises can help.
+
+    Promises
+    Promises help you write asynchronous JavaScript in a concise manner. A promise “promises” to return a response for something that will happen in the future, which is how it got its name.
+
+    Suppose you request data from an external API. You would not receive the data immediately; instead, you would receive a promise from the API, which is like a ticket that says, “Okay, your request  has been received, and you’ll receive that data soon.” A real-world example of a promise is going to a restaurant, ordering food, and then receiving a ticket with a number that the staff will call when your food is ready.
+
+    To illustrate how promises work, let’s imagine that you’re at a sandwich shop. When you write a promise, you’ll create the code for the request and the response. 
+
+    function makeSandwich() {
+
+        const sandwichPromise = new Promise();
+
+        return sandwichPromise;
+
+    }
+    The promise is not fulfilled or resolved until the response is ready (or, in this case, until the sandwich is done). The promise request is made immediately, but the response is resolved later.
+
+    Resolve And Reject Functions
+
+    A promise will give you a resolve and a reject function. Call the resolve function fulfills the promise and returns whatever value you passed to it. Call the reject function when there is something unexpected or an error in your promise that you want to return. 
+
+    function makeSandwich(fillings) {
+
+        const sandwichPromise = new Promise(function(resolve, reject){
+
+        //when you're ready, you can resolve the promise
+
+        resolve(`here is your sub! Your fillings are ${toppings.join(' ')}`)
+
+        //if something went wrong, you can reject this promise
+        reject({error:’something went wrong’})
+
+        });
+
+        return sandwichPromise;
+
+    }
+    .Then
+
+    Now, how do you access what you resolved inside of the promise? (In this case, the sandwich object). You need to add .then to the promise chain in order to return the object that resolved the promise. It will look like this:
+
+    function makeSandwich(fillings) {
+
+        const sandwichPromise = new Promise(function(resolve, reject){
+
+        //when you're ready, you can resolve the promise
+
+        resolve(`here is your sub! Your fillings are ${fillings.join(' ')}`)
+
+        //if something went wrong, you can reject this promise
+
+        });
+
+        return sandwichPromise;
+
+    }
+
+    const italianSandwichPromise = makeSandwich(['salami', 'provolone', 'ham']);
+
+    const tunaSandwichPromise = makeSandwich(['tuna', 'lettuce', 'tomato']);
+
+    italianSandwichPromise.then(function(sandwich){
+
+        console.log(sandwich)
+
+    })
+    Now, if you were to drag and drop that code into your console (with the appropriate HTML and script tags), you would see this:
+
+    here is your sandwich! Your fillings are salami provolone ham
+
+    Why is this more useful? 
+
+    If you want to make multiple API calls to multiple sources, you can do so by chaining multiple promises together in a row with .then statements only one level deep, as illustrated with the sandwich example below. This is more efficient than using nested callbacks.
+
+    makeSandwich(['tuna'])
+
+    .then(function(sandwich){
+
+        console.log(sandwich);
+
+        return makeSandwich(['meatballs']);
+
+    })
+
+    .then(function(sandwich){
+
+        console.log(sandwich);
+
+        return makeSandwich(['roast beef', 'swiss', 'mayo']);
+
+    }).then(function(sandwich){
+
+        console.log(sandwich)
+
+    })
+    
+
+    In your console, you’ll see the output of the .then statements:
+
+        here is your sub! Your fillings are salami provolone ham
+
+        here is your sub! Your fillings are meatballs
+
+        here is your sub! Your fillings are roast beef swiss mayo
+
 
 -------------------------------------------------------------------------------------------------
 --------------------- List of Programs/Langauges/Frameworks used so far -------------------------
@@ -739,6 +901,7 @@ What is API Documentation?
 - Swaggger - auto-generates API documentation
 - GraphQL - interface to query databases
 - LowDB - small JSON database for Node
+- Babel - makes newer Javascript backwards compatible (for older browsers)
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
