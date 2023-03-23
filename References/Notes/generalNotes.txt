@@ -363,6 +363,38 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 
         These are converted from JSON to a base64 string and concatenated using a dot between each part: header.payload.signature
 
+- Swagger - a framework that automatically generates (rather sophisticated) documentation on an application's API.
+    You enter some YAML data in comments and it generates a page that clearly communicates how your API works (defining GET syntax, kinds of possible status codes thatt can be received based on your code, etc.)
+    Example entry:
+        const swaggerDocs = swaggerJsDoc(swaggerOptions);
+        app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
+        /**                                 <--------- a
+        * @swagger                          <-----/
+        * /books:                           <----- \
+        *   get:                                    \
+        *     description: Get all books             \
+        *     responses:                              ------ b
+        *       200:                                 /
+        *         description: Success              /
+        *                                          /
+        */                                  <-----/
+        app.get('/books', (req,res) => {                            <----\
+            res.send([                                                    \
+                {                                                          \
+                    isbn : '9781781100486',                                 \
+                    title: 'Harry Potter and the Sorcerer\'s Stone',         \
+                    author: 'J.K. Rowling',                                   -------- c  
+                    publisher: 'Scholastic'                                  /
+                }                                                           /
+            ]);                                                            /
+        });                                                         <-----/
+
+        a. header that denotes that swagger yaml is being inserted as a comment
+        b. uses YAML syntax embedded in the code as a comment, which swaggger will read to generate the documentation page
+        c. the uncommented code that actually creates the route being documented. By visiting locahost:whateverPort/api-docs (that path was defined at the top of this example, it can be whatever you want it to be) you can see the generated documentation
+        For more on the example provided, see References/Module_25_api_and_holy_grail/api-documentation-and-introduction-to-databases-self-study-activities_starter/Automatic Documentation/app.js
+
 
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
@@ -669,6 +701,44 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     Tokens are stored in the client, so they can be verified by the server without accessing a database. This reduces the security threat of multiple database queries and also reduces the time it would take for the token to be verified. 
     JSON Web Tokens provide a secure and efficient solution to the client-server communication problem.
 
+----------------------------------------------------------------
+
+What is API Documentation?
+    API documentation contains clear and concise instructions on how to use and integrate an API. 
+
+    API Documentation Best Practices
+    Write Documentation for Nontechnical People
+    All users will have different levels of experience and knowledge, so it is important that you write documentation in simple, clear language.
+
+    Review the documentation for Twilio’s APIsLinks to an external site., for instance. The writers describe and define what an API is and how it works at the very beginning of the guide. They don’t assume that everyone reading this documentation is an expert.
+
+    Include Explicit Request and Response Cycles
+    Those using your API need to know what your endpoint expects within the request body and what it could return as a response. For example, if your endpoint runs into an error, what response status and message will be returned? Detailing that in the documentation will help users understand what to expect and what’s needed.
+
+    Keep It as Simple as Possible
+    A user trying to read through three paragraphs of text on one single endpoint will feel frustrated. Where possible, keep your documentation simple and short, without sacrificing readability.
+
+    Keep It Up-to-Date
+    It is important to maintain your documentation. Out-of-date API documentation can lead a developer in the wrong direction and waste their time.
+
+
+-------------------------------------------------------------------------------------------------
+--------------------- List of Programs/Langauges/Frameworks used so far -------------------------
+-------------------------------------------------------------------------------------------------
+
+- JavaScript - language
+- React - Javascript library to have reactive apps
+- Node JS - javascript runtime environment
+- Express - backend framework built on Javascript
+- Postman - API platform for testing APIs
+- MongoDB - database
+- Strapi - lightweight database
+- Docker - essentially Virtual Machine service packaged into containers
+- Kubernetes - cluster of Docker containers
+- Nodemon - auto-refreshes apps once changes saved
+- Swaggger - auto-generates API documentation
+- GraphQL - interface to query databases
+- LowDB - small JSON database for Node
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
