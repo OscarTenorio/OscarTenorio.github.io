@@ -902,6 +902,8 @@ What is API Documentation?
 - GraphQL - interface to query databases
 - LowDB - small JSON database for Node
 - Babel - makes newer Javascript backwards compatible (for older browsers)
+- Superagent - http request library for node.js
+- Redis - database
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
