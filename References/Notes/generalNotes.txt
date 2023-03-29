@@ -395,6 +395,9 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
         c. the uncommented code that actually creates the route being documented. By visiting locahost:whateverPort/api-docs (that path was defined at the top of this example, it can be whatever you want it to be) you can see the generated documentation
         For more on the example provided, see References/Module_25_api_and_holy_grail/api-documentation-and-introduction-to-databases-self-study-activities_starter/Automatic Documentation/app.js
 
+- SDK - Software Developer Kit - A software development kit is a collection of software development tools in one installable package. They facilitate the creation of applications by having a compiler, debugger and sometimes a software framework.
+    They are normally specific to a hardware platform and operating system combination
+
 
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
@@ -883,6 +886,19 @@ What is API Documentation?
 
         here is your sub! Your fillings are roast beef swiss mayo
 
+- Firebasee App Pattern
+
+    Before writing a Firebase application, it’s important to review the pattern of the application architecture. You’ll need to reference the Firebase library on the main HTML page,
+    as well as referencing the relevant Firebase libraries for each of the specific features you intend to use. To see a list of firebase libraries that you may need to add to your application, review the Firebase documentation (https://firebase.google.com/docs/web/setup#available-libraries).
+    For example, if you need to use firebase authentication, then you would add the corresponding script tag, listed in the documentation, to your application’s HTML page.
+
+    Core elements needed to use Firebase:
+    1. Create an account at firebase.google.com
+    2. Script tags in HTML page:
+        - General library
+        - libraries for the speicifc functionality you need (authentication, database, etc)
+        - JS file hosting other code needed for above libraries to function (i.e. initializing config, database, handles, etc)
+
 
 -------------------------------------------------------------------------------------------------
 --------------------- List of Programs/Langauges/Frameworks used so far -------------------------
@@ -904,6 +920,7 @@ What is API Documentation?
 - Babel - makes newer Javascript backwards compatible (for older browsers)
 - Superagent - http request library for node.js
 - Redis - database
+- Firebase - google backend computing service to host databses, services, authentication, etc (ties to youyr gmail account)
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
