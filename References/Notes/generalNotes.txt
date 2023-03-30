@@ -886,7 +886,9 @@ What is API Documentation?
 
         here is your sub! Your fillings are roast beef swiss mayo
 
-- Firebasee App Pattern
+----------------------------------------------------------------
+
+- Firebase App Pattern
 
     Before writing a Firebase application, it’s important to review the pattern of the application architecture. You’ll need to reference the Firebase library on the main HTML page,
     as well as referencing the relevant Firebase libraries for each of the specific features you intend to use. To see a list of firebase libraries that you may need to add to your application, review the Firebase documentation (https://firebase.google.com/docs/web/setup#available-libraries).
@@ -898,6 +900,30 @@ What is API Documentation?
         - General library
         - libraries for the speicifc functionality you need (authentication, database, etc)
         - JS file hosting other code needed for above libraries to function (i.e. initializing config, database, handles, etc)
+
+----------------------------------------------------------------
+
+- Cloud Functions
+    Cloud functions (https://cloud.google.com/functions) allow you to write and group functions and deploy them for use across different applications. In this video, you’ll deploy a function via Firebase.
+    You could then incorporate this function into another application, without worrying about maintaining it as you would if you had to manage a traditional server.
+
+    Note: While Firebase functions offer a free usage tier, Firebase requires that you upgrade your account billing to the “Blaze plan” which will require a payment method.
+    It is unlikely that you will exceed the Firebase free usage tier. Moreover, this is an optional activity and you are not required to use cloud functions.
+
+    To use cloud functions, you can:
+
+    - Start by creating a directory in your terminal window and installing firebase tools. 
+        - Note that, in the video, Dr. Sanchez uses the sudo npm install -g firebase-tools command. This command will only work for Mac users. If you use Windows or Linux, you can write npm install -g firebase-tools.
+    - Log in (you will need to authenticate with a Google account).
+    - Initialize Firebase.
+    - Select functions.
+    - Use an existing project: in this case, courso.
+    - Select JavaScript and say no to linting.
+    - Install dependencies for cloud functions.
+    - Open your index.js file, uncomment the code, and save it.
+    - Deploy to the cloud.
+
+----------------------------------------------------------------
 
 
 -------------------------------------------------------------------------------------------------
