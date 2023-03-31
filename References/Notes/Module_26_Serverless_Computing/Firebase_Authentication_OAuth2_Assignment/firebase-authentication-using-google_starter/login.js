@@ -9,13 +9,14 @@ import {
 
 (function () {
   // Your web app's Firebase configuration, get it from your firebase project settings page on the General tab.
+  // my keys were used to confirm it worked, then removed so the keys would not be shared so publicly
   const firebaseConfig = {
-    apiKey: "AIzaSyCFzczwTerSN6Pdem81HW7ellKJforlC8o",
-    authDomain: "oscarmernclasstest.firebaseapp.com",
-    projectId: "oscarmernclasstest",
-    storageBucket: "oscarmernclasstest.appspot.com",
-    messagingSenderId: "927135097569",
-    appId: "1:927135097569:web:4e4271fe6abeaac0120da0"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   };
   // Initialize Firebase
   // firebase.initializeApp(firebaseConfig);

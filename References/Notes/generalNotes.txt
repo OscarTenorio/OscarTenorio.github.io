@@ -947,6 +947,7 @@ What is API Documentation?
 - Superagent - http request library for node.js
 - Redis - database
 - Firebase - google backend computing service to host databses, services, authentication, etc (ties to youyr gmail account)
+- Maven - automated build tool primarily used for Java, C#, Ruby, etc (not used in class but mentioned)
 
 --------------------------------------------------------------------------------
 ------------------------------- Useful Links -----------------------------------
