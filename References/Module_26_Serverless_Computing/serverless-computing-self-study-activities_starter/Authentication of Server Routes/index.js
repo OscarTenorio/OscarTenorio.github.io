@@ -14,7 +14,7 @@ app.get('/auth', function(req,res){
     console.log('header:', idToken);
 
     // verify token
-    admin.auth().verifyIdToken(idToken)
+    admin.auth().verifyIdToken(idToken)     // NOTE: verifying the token decodes it        
         .then(function(decodedToken) {
             console.log('decodedToken:',decodedToken);
             res.send('Authentication Sucess!');
