@@ -1,0 +1,8 @@
+/node_modules
+.DS_Store
+
+# keys generated from Firebase project (project settings > service accounts > generate new private key)
+MIT-Auth-Routes.json
+
+# firebaseConfig (Project Settings > scroll to "SDK Setup and Configuration")
+firebaseConfig.json
