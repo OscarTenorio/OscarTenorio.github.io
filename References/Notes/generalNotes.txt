@@ -169,7 +169,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     You can see that the app is looking in the 'posts' part of the database, and the further parts are just parameters being passed in
     Let's look at what the URL looks like once the information is returned:
         - ex: http://localhost:3000/post/Hello/91991/false
-                    -----a------  -b-  --c-- --d-- --e--
+                      -----a------  -b-  --c-- --d-- --e--
                                         -------i---------
             a. which port you are currently connected to
             b. Route - the higher up umbrella group. In this case, we're looking at a post (like blog post)
@@ -398,6 +398,16 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
 - SDK - Software Developer Kit - A software development kit is a collection of software development tools in one installable package. They facilitate the creation of applications by having a compiler, debugger and sometimes a software framework.
     They are normally specific to a hardware platform and operating system combination
 
+- Event Loop - In Javascript, the Event Loop is a little piece of code that helps facilitate processes that run separate from the current Stack that would be queued onto the Stack once certain criteria is met.
+    That criteria is usually defined by an async method that requests an action to be taken outside the normal call stack (like making a request to an api/url, where you're not sure how long it'll take to get a response - since you're communicating with an outside resource)
+    A placeholder, or promise, is made stored outside the Stack in the browser's web api that waits for that critereia to be met (think like setTimeout waiting for 5 secs)
+    Once the criteria is met, the task gets sent to a task queue -
+    the Event Loop is the code that checks for the empty Stack, and once empty grabs a task from the task queue and places it in the Stack to be executed
+
+    Stack - the space where code gets executed. It's single-threaded, meaning it does one task at a time. When given an async function, it passes it to the Web api
+    Web Api - where processes are run outside of the task that were assigned from the Stack, like where a setTimeout for 5 secs has it's timer actually running in. Once complete, it passes the task to the Task Queue
+    Task Queue - taska are stored here until called upon by the Event Loop
+    Event Loop - bit of code that waits for the Stack to be empty, then passes a task from the Task Queue onto the Stack
 
 --------------------------------------------------------------------------------
 ----------------------------- Copied from Class --------------------------------
@@ -922,6 +932,38 @@ What is API Documentation?
     - Install dependencies for cloud functions.
     - Open your index.js file, uncomment the code, and save it.
     - Deploy to the cloud.
+
+----------------------------------------------------------------
+
+
+- Cloud Services vs. Microservices
+    Cloud services can often be confused with the term microservices. Cloud services are infrastructure, platforms, or software that are hosted by third-party providers, such as Google, Amazon, and Microsoft. These services can be used to host your application or database, send emails and sms messages, build mobile applications, handle user authentication, and much more.
+
+    Microservices describes a specific architecture that includes single-function modules (hence, “micro”). These single-function modules have well-defined interfaces and operations. You would likely use cloud services to host these single-function modules; in fact, different modules may be hosted by different cloud services. It’s important to remember that microservices describe an architectural decision, not a technology.
+
+    Cloud Service Providers
+    This week, you learned about Firebase, which allows you to use multiple Google Cloud services in an easy-to-use interface. There are multiple cloud service providers to choose from, and most offer very similar services but with different naming conventions and pricing strategies. This can make it confusing when trying to find a solution for your application. While there are many Cloud Service Providers, this discussion will focus on the big three: Google Cloud Platform (GCP), Amazon Web Services (AWS), and Microsoft Azure. Let’s look at some of the popular services across all three providers.
+
+    Cloud Storage
+    Cloud storage can be used to store files, as well as host single-page web applications. All three cloud providers charge based on storage and the amount of bandwidth used to read and write the data.
+
+    Google Cloud  |	AWS   |	 Microsoft Azure
+    Cloud Storage	|   S3   |	Azure Blob Storage
+
+
+    Cloud Functions
+    Cloud functions allow you to run your code without server management and automatically scale up or down depending on the use. You only pay for usage, so if your cloud functions are not being used, then you’re not incurring any charges.
+
+    Google Cloud  |	AWS  |	Microsoft Azure
+    Firebase/Cloud Functions  |	AWS Lambda	|  Azure Functions
+
+
+    Virtual Machines
+    Virtual machines (VMs) are full-fledged servers that you can customize. With that flexibility comes the cost of maintaining them. All three providers charge based on the size of the VM, but also offer free credits so you can try them before paying for the service.
+
+    Google Cloud  |	AWS  |	Microsoft Azure
+    Compute Engine   |	Elastic Compute Cloud (EC2)  |	Azure Virtual Machines
+    These are just some of the services provided by these three cloud providers
 
 ----------------------------------------------------------------
 
