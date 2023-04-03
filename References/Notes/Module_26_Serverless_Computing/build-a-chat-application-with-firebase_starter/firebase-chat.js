@@ -2,12 +2,13 @@
   // TODO: replace this with your own firebase config object after creating app in your firebase console
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: 'AIzaSyBkKiHuQKzxaojiI6YWp2DFvPFDMAU2wJ0',
-    authDomain: 'fir-chat-6e6f7.firebaseapp.com',
-    projectId: 'fir-chat-6e6f7',
-    storageBucket: 'fir-chat-6e6f7.appspot.com',
-    messagingSenderId: '118595217119',
-    appId: '1:118595217119:web:cd0f04e2ed218df2aeab6a',
+    apiKey: "AIzaSyCgoXjSzkmtoxxegiQ1edLs6vKeT8HSvcw",
+    authDomain: "mitmernchatbotassignment.firebaseapp.com",
+    databaseURL: "https://mitmernchatbotassignment-default-rtdb.firebaseio.com",
+    projectId: "mitmernchatbotassignment",
+    storageBucket: "mitmernchatbotassignment.appspot.com",
+    messagingSenderId: "268660854518",
+    appId: "1:268660854518:web:3270c72d7c4799b44b26d7"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -39,9 +40,10 @@
     // TODO: Add the value of currentUserEmail when writing to the database under the field name of "sender"
     messages
       .child(id)
-      .set({ message: message.value })
+      .set({ message: message.value, sender: currentUserEmail })
       .then(function () {
         console.log('Wrote to DB!');
+        handleRead();
       });
   });
 
@@ -52,6 +54,12 @@
 
   // TODO: use this provided messagesRef to listen for updates and update the chat div on any update, not just when the 'Update Chat' button is clicked
   const messagesRef = db.ref('messages');
+
+  // Update on change
+  messagesRef.on('value', (dataSnapshot) => {
+    handleRead();
+  });
+
 
   function handleRead() {
     status.innerHTML = '';
@@ -67,7 +75,7 @@
           console.log(data[key]);
           chat.innerHTML +=
             (data[key]['sender'] || '') +
-            '   :   ' +
+            ':   ' +
             data[key].message +
             '<br><br>';
         });
@@ -76,7 +84,10 @@
   }
 
   // TODO: in this function you should set the userNameDisplay.innerHTML to the passed in userEmail as well as updating the currentUserEmail variable to that same value
-  function updateCurrentUser(userEmail) {}
+  function updateCurrentUser(userEmail) {
+    currentUserEmail = userEmail;
+    userNameDisplay.innerHTML = userEmail;
+  }
 
   // login
   login.addEventListener('click', (e) => {
@@ -92,6 +103,7 @@
       signup.style.display = 'none';
       write.style.display = 'inline';
       updateCurrentUser(resp.user.email);
+      handleRead();
     });
     promise.catch((e) => console.log(e.message));
   });
