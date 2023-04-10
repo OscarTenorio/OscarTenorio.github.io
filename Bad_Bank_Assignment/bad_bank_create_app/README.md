@@ -23,8 +23,9 @@ This is an application designed to show the core cconcepts of a three-tiered app
 
 The project is called Bad Bank - simply because security was not a concern when developing it (since it is primarily concerned with exercising concepts explored as part of the MIT MERN Bootcamp syllabus). It is designed for managing common banking features like deposits, withdrawals, viewing activity history, and switching between different users.
 
-### Built With
 
+
+### Built With
 <ul>
  <li>Node JS</li>
  <li>React</li>
@@ -107,12 +108,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+
+
 <!-- LICENSE -->
 ## License
 
 This README.md file was build off a template found here: [https://github.com/othneildrew/Best-README-Template/blob/master/README.md](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
 
 Licensed under MIT
+
+
 
 
 <!-- CONTACT -->
@@ -123,6 +128,7 @@ Oscar Tenorio: otenorio90@gmail.com
 Project Link: [https://github.com/OscarTenorio/oscartenorio.github.io](https://github.com/OscarTenorio/oscartenorio.github.io)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
