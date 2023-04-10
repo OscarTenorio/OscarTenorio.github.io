@@ -107,8 +107,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-
+<br><br>
 
 <!-- LICENSE -->
 ## License
@@ -117,8 +116,7 @@ This README.md file was build off a template found here: [https://github.com/oth
 
 Licensed under MIT
 
-
-
+<br><br>
 
 <!-- CONTACT -->
 ## Contact
