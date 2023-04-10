@@ -967,6 +967,72 @@ What is API Documentation?
 
 ----------------------------------------------------------------
 
+- Relational VS Non-Relational Databases
+
+    Relational Databases
+    A relational database stores data in a structure of multiple tables; each table is called an entity. The relationships between entities are structured and well defined, but not very flexible.
+
+    Relational databases are also called SQL databases. SQL stands for Structured Query Language, and it’s the language in which relational databases are written. SQL is used to execute queries, retrieve data, and edit data by updating, deleting, or creating new records.
+
+    Popular SQL databases include: 
+    - SQL Server
+    - MySQL
+    - PostgreSQL
+    - Advantages Of Relational Databases
+
+    Relational databases offer features that remain critical today as developers build the next generation of applications: 
+    - Indexed data rows and a query language
+        SQL allows you to easily query data and build well-defined views of it. You can access and manipulate data by using indexes or row ids. 
+    - Consistency
+        Relational databases are structured to promote greater data consistency. This allows applications to immediately read what has been written to the database. 
+    - Enterprise Management and Integration
+        Organizations need a database that can be secured, monitored, automated, and integrated with their existing technology infrastructure, processes, and staff. Relational databases fit into the enterprise application infrastructure easily.
+
+    Disadvantages of Relational Database
+    - Flexibility
+        Relational databases require data to be structured within entity-relationship diagrams. Relational databases cannot accommodate unstructured data, which is often produced by modern applications. 
+    - Scalability
+        Relational databases often experience latency issues when accomodating large amounts of data.
+
+
+    Non-relational Databases
+    A non-relational database does not use tables and columns to store data. Instead, its storage model is optimized for the type of data it’s storing. Non-relational databases are also known as NoSQL databases, which stands for Not Only SQL. Whereas relational databases only use SQL, non-relational databases can use other types of query languages.
+
+    There are four different types of NoSQL databases: 
+    - Document-oriented databases
+    - Key-value stores 
+    - Wide-column stores 
+    - Graph stores 
+    This course focuses on document-oriented databases, also known as document stores. Document databases pair each key with a complex data structure called a document. 
+
+    Popular document-oriented databases include:
+    - MongoDB
+    - RedisDB
+
+    Advantages Of Non-relational Databases
+
+    Modern applications impose requirements that are not addressed by relational databases. This has driven the development of NoSQL databases that offer the following:
+    - A flexible data model
+        NoSQL databases offer flexible data models that make it easy to store and combine data in any structure and allow the dynamic modification of the data structure without impacting the application. 
+    - Scalability and Performance
+        NoSQL databases were all built with a focus on scalability. This allows the database to scale out on hardware deployed on-premises or in the cloud and thus enables almost unlimited growth with higher throughput and lower latency than that offered by relational databases.
+
+    Disadvantages of Non-relational Databases:
+    - Structure and Consistency
+        Because non-relational databases don’t require a predefined data structure, they are not well suited for use cases that require consistent, structured data.  
+    - Enterprise applications
+        Legacy enterprise systems and teams are often to expect a specific data structure from a relational database. It would be difficult to adapt these systems to rely on a non-relational database. 
+
+    What Type of Database Should You Use?
+
+    Ultimately, the choice of database depends on the data structure, data size, and how the data will be used and analyzed. However, a recommended starting point is to answer these questions:
+    - Which type of data will you be storing?  Does your data fit into rows and columns, or is it better suited to a more flexible structure?  
+    - How much data are you handling? The bigger the data set, the more likely a non-relational database is a better fit. Non-relational databases can store large amounts of data and give you the flexibility to change the data type at any point without breaking the database model.
+    
+    In this course, you’ll be focusing on NoSQL databases, as these offer the flexibility needed when developing MERN applications.
+
+----------------------------------------------------------------
+
 
 -------------------------------------------------------------------------------------------------
 --------------------- List of Programs/Langauges/Frameworks used so far -------------------------
