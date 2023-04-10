@@ -7,7 +7,7 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-      <a href="#getting-started-with-create-react-app">Getting Started with Create React App</a>
+      <a href="#getting-started-with-create-react-app">Getting Started</a>
       <ul>
         <li><a href="#available-scripts">Available Scripts</a></li>
       </ul>
@@ -35,6 +35,7 @@ The project is called Bad Bank - simply because security was not a concern when 
  <li>Docker</li>
 </ul>
 
+<br><br>
 
 # Getting Started with Create React App
 
