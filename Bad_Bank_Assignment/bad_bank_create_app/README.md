@@ -113,10 +113,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Installation
 
-Clone the repo:
+Clone the repo:<br>
 `git clone https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Bad_Bank_Assignment/bad_bank_create_app`
 
-Install dependencies:
+Install dependencies:<br>
 `npm install`
 
 <br><br>
