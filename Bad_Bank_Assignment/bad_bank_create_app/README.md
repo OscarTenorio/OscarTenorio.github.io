@@ -12,6 +12,7 @@
         <li><a href="#available-scripts">Available Scripts</a></li>
       </ul>
     </li>
+    <li><a href="#installation">Installation</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -107,6 +108,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<br><br>
+
+## Installation
+
+Clone the repo:
+### `git clone https://github.com/OscarTenorio/oscartenorio.github.io/tree/main/Bad_Bank_Assignment/bad_bank_create_app`
+
+Install dependencies:
+### `npm install`
 
 <br><br>
 
