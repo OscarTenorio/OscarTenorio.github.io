@@ -89,6 +89,26 @@ function AllData() {
 		</>
 	);
 
+	// gotta figure out where to toss this, this is how the lecture connected the front-end to the back-end
+	// const [data, setData] = React.useState('');
+
+	// React.useEffect(() => {
+	// 	// fetch all accounts from API
+	// 	fetch('/account/all')
+	// 		.then(response => response.json())
+	// 		.then(data => {
+	// 			console.log(data);
+	// 			setData(JSON.stringify(data));
+	// 	});
+	// }, []);
+
+	// return (<>
+	// 	<h5>All Data in Store:</h5>
+	// 	{data}
+	// </>);
+
+
+
 } // end AllData()
 
 export default AllData;

@@ -36,6 +36,16 @@ function CreateAccount() {
 		ctx.users.push({name:name, email:email, password:password, balance:balance, history:[], blank:true});
 		setShow(false);
 		console.log('Create Account context: ',ctx);
+
+		// copied from slides on connecting fromnt end to database
+		// console.log(name, email, password);
+		// const url = `/account/create/${name}/${email}/${password}`;
+		// (async () => {		// <--- notice how it's wrapped in parenthesis
+		// 	var res = await fetch(url);
+		// 	var data = await res.json();
+		// 	console.log(data);
+		// })();  // <--- guess we gotta let the code know that this is a function within the first set of paranthesis or something?
+		// setShow(false);
 	}
 
 	function buttonClass() {
