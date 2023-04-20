@@ -1,5 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
+import User from './user';
+import UserContext from "./userContext";
 
 function NavBar() {
   // navbar tab states, used to render which is active
@@ -42,22 +44,30 @@ function NavBar() {
     return state ? "nav-link active" : 'nav-link';
   }
 
+  console.log('Context: ', UserContext)
+
   return(
     <>
-      <ul className="nav nav-tabs">
-        <li className="nav-item">
-          <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bad Bank Home</a>
-        </li>
-        <li className="nav-item">
-          <a className={className(depwithIsActive)} name="DepWith" href="#/depositwithdraw/" onClick={toggleDepwithActive}>Deposit/Withdraw</a>
-        </li>
-        <li className="nav-item">
-          <a className={className(historyIsActive)} name="History" href="#/balancehistory/" onClick={toggleHistoryActive}>All Data</a>
-        </li>
-        <li className="nav-item">
-          <a className={className(alldatagradeIsActive)} name="alldatagrade" href="#/alldatagraderequirement/" onClick={alldatagradeActive}>All Data (Grade Requirement)</a>
-        </li>
-      </ul>
+      <UserContext.Provider value={{UserContext}}>
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
+            <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bad Bank Home</a>
+          </li>
+          <li className="nav-item">
+            <a className={className(depwithIsActive)} name="DepWith" href="#/depositwithdraw/" onClick={toggleDepwithActive}>Deposit/Withdraw</a>
+          </li>
+          <li className="nav-item">
+            <a className={className(historyIsActive)} name="History" href="#/balancehistory/" onClick={toggleHistoryActive}>All Data</a>
+          </li>
+          <li className="nav-item">
+            <a className={className(alldatagradeIsActive)} name="alldatagrade" href="#/alldatagraderequirement/" onClick={alldatagradeActive}>All Data (Grade Requirement)</a>
+          </li>
+        </ul>
+      </UserContext.Provider>
+
+      
+
+      <User/>
     </>
   );
 }
