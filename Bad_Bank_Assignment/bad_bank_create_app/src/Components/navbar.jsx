@@ -44,11 +44,8 @@ function NavBar() {
     return state ? "nav-link active" : 'nav-link';
   }
 
-  console.log('Context: ', UserContext)
-
   return(
     <>
-      <UserContext.Provider value={{UserContext}}>
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bad Bank Home</a>
@@ -62,11 +59,7 @@ function NavBar() {
           <li className="nav-item">
             <a className={className(alldatagradeIsActive)} name="alldatagrade" href="#/alldatagraderequirement/" onClick={alldatagradeActive}>All Data (Grade Requirement)</a>
           </li>
-        </ul>
-      </UserContext.Provider>
-
-      
-
+        </ul>      
       <User/>
     </>
   );

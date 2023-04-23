@@ -84,7 +84,7 @@ function AllData() {
 			<div className="p-5">
 				<h1 className="text-center mb-0">All Data</h1>
 				<p className="text-center font-italic mb-4">across all accounts</p>
-				<AllUsersHistory users={ctx.users} key={1} id={1}/>
+				<AllUsersHistory users={ctx} key={1} id={1}/>
 			</div>
 		</>
 	);
