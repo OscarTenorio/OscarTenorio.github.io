@@ -1,6 +1,6 @@
---------------------------------------------------------------------------------
--------------------------------- Major Concepts --------------------------------
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------- Major Concepts --------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ===== useState()
@@ -51,9 +51,9 @@ syntax (using it): const [variableName, doSomething] = useCustomHook(arg1, arg2)
     d. calling the custom hook previously defined
     e. parameters passed into the custom hook (should match the number of arguments defined when the custom hook was defined)
 
---------------------------------------------------------------------------------
--------------------------------- Tips & Tricks ---------------------------------
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------- Tips & Tricks --------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 - Conditionally render an element:
 syntax: { truthyOrFalseyVariable && <elementToRender />}
@@ -68,10 +68,14 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     NOTE: where exactly the file is located will be dependant on where you're viewing this from, but just following tthe above path from oscartenorio.github.io on should do the trick
     - you can see it done for restaurants at the following as well: /Users/otenorio/Desktop/MIT_MERN_fullstack/oscartenorio.github.io/References/Notes/Module_24_express_server_and_graphQL/graphql-restaurant-data-exercise_starter/index.js
 
+- Jest (testing) conventions:
+    - testing file names should be file_name_being_tested.test.file_extension
+        So, for example, the file "http_server.js" would have a jest test file of "http_server.test.js"
 
---------------------------------------------------------------------------------
---------------------------- Other Terms to Recognize ---------------------------
---------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------- Other Terms to Recognize --------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 * Any commands to run in your console/terminal will be denoted using " " around the command. Run these without the " " *
 
 - Running React program
@@ -409,9 +413,9 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     Task Queue - taska are stored here until called upon by the Event Loop
     Event Loop - bit of code that waits for the Stack to be empty, then passes a task from the Task Queue onto the Stack
 
---------------------------------------------------------------------------------
------------------------------ Copied from Class --------------------------------
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------- Copied from Class --------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 - REST (REpresentational State Transfer): copied from a lecture slide:
     Representational state transfer (REST) is a standard for communication between an application’s server and its client. It is considered the industry-standard protocol for web APIs, so you will likely answer questions about REST during software development interviews. It’s important to understand that REST is not a technology or framework; it’s an architectural style to support any API design. 
@@ -1033,10 +1037,75 @@ What is API Documentation?
 
 ----------------------------------------------------------------
 
+- Testing Levels
+    Creating a production-ready application requires rigorous testing. Instead of relying on teams of manual software testers, development teams now automate
+    the majority of their testing efforts.  Automated testing enables quick feedback to validate that every feature of the application performs as expected.
+    The testing pyramid is a visualization that displays each level of testing and helps you decide how much testing is necessary for your application.
 
--------------------------------------------------------------------------------------------------
---------------------- List of Programs/Langauges/Frameworks used so far -------------------------
--------------------------------------------------------------------------------------------------
+    - Level 1: Unit tests
+    These form the base of the testing pyramid. They test whether individual components work as expected in isolated conditions. It’s important to run many scenarios in unit tests, such as:
+
+        - Happy path: using a known input that executes without exception and produces an expected output.
+        - Error handling: exploring alternative paths resulting from a faulty condition.
+    The unit test suite must be updated and run to test new features as they are added to an application. A test-driven development (TDD) approach will help you build a robust unit test suite.
+    Since TDD requires a test to be written before any code, the resulting code is simple and functional.
+
+    - Level 2: Integration tests
+    Integration tests validate the interaction between a component, such as a form, and external dependencies, such as a database, API, or web service. The component needs to communicate with external services to function as intended.
+    Since integration tests are the second level of the pyramid, they do not need to be run as frequently as unit tests. 
+
+    - Level 3: End-to-end tests
+    End-to-end tests are at the top of the pyramid. These ensure that the entire application functions as intended. When writing these tests, it’s important to imagine the user’s perspective.
+    How would an actual user interact with the app? How can tests be written to replicate that interaction?
+
+
+    Testing Summary
+    You can use the simple structure of the test pyramid to create your own test suite. Each level of testing requires a different approach. Fewer tests are required at the higher levels of the pyramid.
+
+----------------------------------------------------------------
+
+- Using Faker For Testing
+
+    Faker is a JavaScript library that generates fake data for testing an application. Faker can generate addresses, names, and images. In the example below, Faker is used with Node.js to create a fake name, email, and contact card.
+
+        var faker = require('faker');
+
+        var randomName = faker.name.findName(); // Rowan Nikolaus
+        var randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
+        var randomCard = faker.helpers.createCard(); // random contact card containing many properties
+
+    Faker allows you to:
+
+        - Test your application without using sensitive user data or fetching data from external resources
+        - Generate large amounts of data quickly to test software at capacity
+
+    - How To Use Faker
+
+    To use Faker in practice, it’s important to refer to the documentationLinks to an external site.. Suppose you want to fake address data. 
+
+        - First, review the documentation and learn how to call a particular address field. 
+        - Next, find the API method that matches it. 
+        - Finally, call the API method and reference the specific piece of data using dot notation on that API method.
+
+    - Faker Example: First Name and Address
+
+    Suppose you want to fake a user’s first name and address. 
+
+    Start by searching for a name API method in the official documentation (https://www.npmjs.com/package/faker).
+    Then, find the particular method inside that API that sets a first name.
+
+    Set the data point to a variable using dot notation:
+
+        var randomName = faker.name.firstName(); // John
+
+    Now, find an address API method. Then, find the method that correlates to a street address. Set that data point to a variable:
+
+        var address = faker.address.streetAddress(); // 1234 S. Main Street
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------- List of Programs/Langauges/Frameworks used so far --------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 - JavaScript - language
 - React - Javascript library to have reactive apps
@@ -1048,7 +1117,7 @@ What is API Documentation?
 - Docker - essentially Virtual Machine service packaged into containers
 - Kubernetes - cluster of Docker containers
 - Nodemon - auto-refreshes apps once changes saved
-- Swaggger - auto-generates API documentation
+- Swagger - auto-generates API documentation
 - GraphQL - interface to query databases
 - LowDB - small JSON database for Node
 - Babel - makes newer Javascript backwards compatible (for older browsers)
@@ -1057,9 +1126,9 @@ What is API Documentation?
 - Firebase - google backend computing service to host databses, services, authentication, etc (ties to youyr gmail account)
 - Maven - automated build tool primarily used for Java, C#, Ruby, etc (not used in class but mentioned)
 
---------------------------------------------------------------------------------
-------------------------------- Useful Links -----------------------------------
---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------- Useful Links --------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 - https://reactjs.org/ - React JS documentation and resources
 
