@@ -6,7 +6,6 @@ function NavBar() {
   const [homeIsActive, setHomeIsActive]       = React.useState(true);
   const [depwithIsActive, setDepwithIsActive] = React.useState(false);
   const [historyIsActive, setHistoryIsActive] = React.useState(false);
-  const [alldatagradeIsActive, setAlldatagradeIsActive] = React.useState(false);
 
 
   // sorry it's a bit hardcoded, running into too-many-re-render errors so had to try this
@@ -14,28 +13,18 @@ function NavBar() {
     setHomeIsActive(true);
     setDepwithIsActive(false);
     setHistoryIsActive(false);
-    setAlldatagradeIsActive(false);
   }
 
   function toggleDepwithActive(){
     setHomeIsActive(false);
     setDepwithIsActive(true);
     setHistoryIsActive(false);
-    setAlldatagradeIsActive(false);
   }
 
   function toggleHistoryActive(){
     setHomeIsActive(false);
     setDepwithIsActive(false);
     setHistoryIsActive(true);
-    setAlldatagradeIsActive(false);
-  }
-
-  function alldatagradeActive(){
-    setHomeIsActive(false);
-    setDepwithIsActive(false);
-    setHistoryIsActive(false);
-    setAlldatagradeIsActive(true);
   }
 
   function className(state){
@@ -53,9 +42,6 @@ function NavBar() {
         </li>
         <li className="nav-item">
           <a className={className(historyIsActive)} name="History" href="#/balancehistory/" onClick={toggleHistoryActive}>All Data</a>
-        </li>
-        <li className="nav-item">
-          <a className={className(alldatagradeIsActive)} name="alldatagrade" href="#/alldatagraderequirement/" onClick={alldatagradeActive}>All Data (Grade Requirement)</a>
         </li>
       </ul>
     </>
