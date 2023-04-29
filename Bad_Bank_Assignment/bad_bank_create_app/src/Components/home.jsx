@@ -46,7 +46,7 @@ function Home() {
 
 
 			<UserContext.Consumer>
-				{ context => test(context.currentValue)}
+				{ consumerContext => test(consumerContext.UserContext._currentValue)}
 			</UserContext.Consumer>
 
 			<div className="d-flex justify-content-center">
@@ -60,7 +60,7 @@ function Home() {
 								<p>- or -</p>
 							</div>
 						</div>
-						{/* <Login/> */}
+						<Login/>
 					</>
 				) : (
 					<></>

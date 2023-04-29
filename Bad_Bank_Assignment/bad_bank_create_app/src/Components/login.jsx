@@ -22,7 +22,7 @@ function Login() {
 	function handleLogin(context) {
 		if (!validate(email, 		'email')) return;
 		if (!validate(password, 'password')) return;
-		console.log("ctx", ctx);
+		console.log("handleLogin context: ", context);
 		context.forEach(entry => {
 			if (entry.loggedIn === true) {
 				entry.loggedIn = false;
@@ -81,14 +81,12 @@ function Login() {
 					</>
 				}
 			/>
-			<UserContext.Consumer>
-				{ context => {
+				{ ctx => {
 					return (<div className="text-center">
-						<button type="submit" className={buttonClass()} style={{minWidth:"7rem"}} onClick={handleLogin(context.currentValue)}>Login</button>
+						<button type="submit" className={buttonClass()} style={{minWidth:"7rem"}} onClick={handleLogin(ctx.currentValue)}>Login</button>
 					</div>)
 					}
 				}
-			</UserContext.Consumer>
 		</div>
 	)
 }

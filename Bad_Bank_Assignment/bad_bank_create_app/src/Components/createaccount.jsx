@@ -10,7 +10,7 @@ function CreateAccount() {
 	const [password, setPassword] 				= React.useState('');
 	const [balance, setBalance] 					= React.useState(0);
 	const [createButton, setCreateButton]	= React.useState(false)
-	// const ctx = React.useContext(UserContext);
+	const ctx = React.useContext(UserContext);
 
 	function validate(field, label) {					// basic validation stuff
 		if (!field) {
@@ -45,7 +45,8 @@ function CreateAccount() {
 		setStatus('');
 		console.log('CREATE ACCOUNT showCreateAccount: ',showCreateAccount);
 
-		// copied from slides on connecting fromnt end to database
+		// <------- NOTE: copied from slides on connecting fromnt end to database ------->
+		// <----------------------------------------------------------------------------->
 		// console.log(name, email, password);
 		// const url = `/account/create/${name}/${email}/${password}`;
 		// (async () => {		// <--- notice how it's wrapped in parenthesis
@@ -137,7 +138,6 @@ function CreateAccount() {
 					</>
 				)}
 			/>
-			<UserContext.Consumer>
 			{ context => 
 				(<div className="text-center">
 					{ showCreateAccount ? (
@@ -146,7 +146,6 @@ function CreateAccount() {
 						<></>
 					)}
 				</div>)}
-			</UserContext.Consumer>
 		</div>
 	);
 } 
