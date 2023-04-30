@@ -3,26 +3,25 @@ import Card from './card';
 import UserContext from './userContext';
 
 function CreateAccount() {
-	const [show, setShow] 								= React.useState(true);
+	const [show, setShow] 													= React.useState(true);
 	const [showCreateAccount, setShowCreateAccount]	= React.useState(true);
-	const [status, setStatus] 						= React.useState('');
-	const [name, setName] 								= React.useState('');
-	const [email, setEmail] 							= React.useState('');
-	const [password, setPassword] 				= React.useState('');
-	// const [balance, setBalance] 					= React.useState(0);
-	const [createButton, setCreateButton] = React.useState(false)
-	const ctx = React.useContext(UserContext);
+	const [status, setStatus] 											= React.useState('* Required');
+	const [name, setName] 													= React.useState('');
+	const [email, setEmail] 												= React.useState('');
+	const [password, setPassword] 									= React.useState('');
+	const [createButton, setCreateButton] 					= React.useState(false)
+	const {user, setUser} 													= React.useContext(UserContext);
+	// const {accountCreated, setAccountCreated} 			= React.useContext(createdValue);
+
 
 	function validate(field, label) {					// basic validation stuff
 		if (!field) {
 			setStatus('ERROR: ' + label + ' cannot be blank');
-			// alert('ERROR: ' + label + ' cannot be blank');
-			setTimeout(() => setStatus(''), 5000);
+			setTimeout(() => setStatus('* Required'), 5000);
 			return false;
 		} else if (label === 'password' && password.length < 8) {
 			setStatus('ERROR: ' + label + ' must be at least 8 characters');
-			// alert('ERROR: password must be at least 8 characters');
-			setTimeout(() => setStatus(''), 5000);
+			setTimeout(() => setStatus('* Required'), 5000);
 			return false;
 		}
 		setCreateButton(true);
@@ -35,21 +34,21 @@ function CreateAccount() {
 		if (!validate(name, 		'name')) return;
 		if (!validate(email, 		'email')) return;
 		if (!validate(password, 'password')) return;
-		console.log("Name: ",String(name),", Email: ",String(email),", Password: ",String(password));
-		// ctx.users.push({name:name, email:email, password:password, history:[], blank:true});
-		setShow(false);
-		console.log('Create Account context: ',ctx);
+		console.log("HANDLE CREATE: Name: ",String(name),", Email: ",String(email),", Password: ",String(password));
 
-		// copied from slides on connecting front end to database
-		console.log('COPIED from slides createAccountline41: name, email, password: ', name, email, password);
+		//store in database =======================
 		(async () => {
 			var res = await fetch(endpointUrl + `/account/create/${name}/${email}/${password}`);
 			var jsonResponse = await res.json();
 			console.log('ASYNC CreateAccount db call - Data: ',jsonResponse);
 		})();
+
 		setShow(false);
 		setShowCreateAccount(false);
-		ctx = {user:{name:name,email:email,password:password,balance:0, history:[], blank:true}};
+		// update current user state after 5 seconds
+		setTimeout(() => {
+			setUser({user:{name:name, email:email, password:password, balance:0, history:[], blank:true}});
+		}, 5000);
 	}
 
 	function buttonClass() {
@@ -59,12 +58,21 @@ function CreateAccount() {
 			return 'btn btn-primary text-center disabled'
 	}
 
-	function clearForm() {
-		setName('');
-		setEmail('');
-		setPassword('');
-		setCreateButton(true);
-		setShow(true);
+	// function clearForm() {
+	// 	setName('');
+	// 	setEmail('');
+	// 	setPassword('');
+	// 	setCreateButton(true);
+	// 	setShowCreateAccount(false);
+	// 	setShow(true);
+	// }
+
+	function handleCreateButton() {
+		if (name.length > 1 && email.length > 1 && password.length > 1) {
+			setCreateButton(true);
+		} else {
+			setCreateButton(false);
+		}
 	}
 
 	return (
@@ -72,28 +80,28 @@ function CreateAccount() {
 			<Card 
 				bgcolor="primary"
 				header="Create Account"
-				status={status}
+				status={showCreateAccount ? status : ''}
 				margin="mx-5 mt-5 mb-3"
 				extra="d-inline-block"
 				text={show ? (
 					<>
-						<p>Name
-							<input type="input" className="form-control" id="name" placeholder="Enter Name" value={name} onChange={e => { setName(e.currentTarget.value); setCreateButton(true)}}/>
+						<p>Name <span className="text-info">*</span>
+							<input type="input" className="form-control" id="name" placeholder="Enter Name" value={name} onChange={e => { setName(e.currentTarget.value); handleCreateButton()}}/>
 						</p>
-						<p>Email Address
-							<input type="input" className="form-control" id="email" placeholder="Enter Email" value={email} onChange={e => { setEmail(e.currentTarget.value); setCreateButton(true)}}/>
+						<p>Email Address <span className="text-info">*</span>
+							<input type="input" className="form-control" id="email" placeholder="Enter Email" value={email} onChange={e => { setEmail(e.currentTarget.value); handleCreateButton()}}/>
 						</p>
-						<p>Password
-							<input type="password" className="form-control" id="password" placeholder="Enter Password" value={password} onChange={e => { setPassword(e.currentTarget.value); setCreateButton(true)}}/>
+						<p>Password <span className="text-info">*</span>
+							<input type="password" className="form-control" id="password" placeholder="Enter Password" value={password} onChange={e => { setPassword(e.currentTarget.value); handleCreateButton()}}/>
 						</p>
 					</>
 				) : (
 					<>
-						<h5 className="text-center">Success!</h5>
-						<p className="text-center my-2">Navigate to other pages through the NavBar, or start over with account creation.</p>
-						<div className="text-center">
-							<button type="submit" className="btn btn-outline-light my-3" onClick={clearForm}>Create a different account</button>
-						</div>
+						<h1 className="text-center">Success!</h1>
+						<p className="text-center my-2">Hold tight, we're redirecting you to the Homepage...</p>
+						{(<img src={process.env.PUBLIC_URL + '/gold_coins.png'}
+						className="mx-auto d-block" alt="Gold Coins PNG" style={{maxWidth:'100%', maxHeight:'200px'}}
+					></img>)}
 					</>
 				)}
 			/>
