@@ -30,6 +30,8 @@ function CreateAccount() {
 	}
 
 	function handleCreate() {
+		const endpointUrl = 'http://localhost:3001';
+
 		if (!validate(name, 		'name')) return;
 		if (!validate(email, 		'email')) return;
 		if (!validate(password, 'password')) return;
@@ -38,16 +40,16 @@ function CreateAccount() {
 		setShow(false);
 		console.log('Create Account context: ',ctx);
 
-		// copied from slides on connecting fromnt end to database
+		// copied from slides on connecting front end to database
 		console.log('COPIED from slides createAccountline41: name, email, password: ', name, email, password);
-		const url = `/account/create/${name}/${email}/${password}`;
 		(async () => {
-			var res = await fetch(url);
+			var res = await fetch(endpointUrl + `/account/create/${name}/${email}/${password}`);
 			var jsonResponse = await res.json();
 			console.log('ASYNC CreateAccount db call - Data: ',jsonResponse);
 		})();
 		setShow(false);
 		setShowCreateAccount(false);
+		ctx = {user:{name:name,email:email,password:password,balance:0, history:[], blank:true}};
 	}
 
 	function buttonClass() {
@@ -61,7 +63,7 @@ function CreateAccount() {
 		setName('');
 		setEmail('');
 		setPassword('');
-		setCreateButton(false);
+		setCreateButton(true);
 		setShow(true);
 	}
 

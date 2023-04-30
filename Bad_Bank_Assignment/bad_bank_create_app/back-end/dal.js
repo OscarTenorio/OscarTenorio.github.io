@@ -6,8 +6,8 @@ let db              = null;
 MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
     console.log("Connected successfully to db server");
 
-    // connect to myproject database
-    db = client.db('myproject');
+    // connect to project database
+    db = client.db('badbank_capstone');
 });
 
 // create user account using the collection.insertOne function
@@ -17,7 +17,7 @@ function create(name, email, password) {
         console.log('DAL Collection value: ',collection);
         const entry = {name: name, email: email, password: password};
         collection.insertOne(entry, {w:1}, function(err, result){
-            err ? reject(err) : resolve(doc);
+            err ? reject(err) : resolve(entry);
         });
     });
 }

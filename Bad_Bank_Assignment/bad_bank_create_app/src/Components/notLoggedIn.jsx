@@ -5,15 +5,15 @@ import CreateAccount from './createaccount';
 import ReferenceLinks from './referencelinks';
 import Login from './login';
 
-function Home() {
+function NotLoggedIn() {
 
 	const ctx = React.useContext(UserContext);
 
 	return(
 		<>
-			<div className="d-flex justify-content-center">
-				<div className="text-center">
-					<h1 className='fs-1 mt-3'>Welcome to the Bank!</h1>
+			<div className="d-flex justify-content-center mt-5">
+				<div className="text-center mt-5">
+					<h1 className='fs-1'>Welcome to the Bank!</h1>
 					<p>To get started, Create an Account or<br></br>Login with previously created credentials</p>
 				</div>
 			</div>
@@ -46,4 +46,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default NotLoggedIn;
