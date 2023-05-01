@@ -3,13 +3,13 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 // Components =================
 import NotLoggedIn from './notLoggedIn';
-import LoggedIn from './LoggedIn';
+import LoggedIn from './loggedIn';
 import NavBar from './navbar';
 import Depositwithdraw from "./depositwithdraw";
 import AllData from "./alldata";
 import UserContext from './userContext';
 import AllDataGradeRequirement from './alldatagraderequirement';
-import LoggedInUser from './userInfo';
+import LoggedInUser from './loggedInUser';
 import ReferenceLinks from './referencelinks';
 
 function Spa() {
@@ -24,17 +24,17 @@ function Spa() {
         { Object.keys(userValue.user).length > 0 ? (
           <>
             <NavBar/>
-            <LoggedInUser/>
+            <LoggedInUser user={userValue}/>
           </>
         ) : (
           <></>
         )}
         <UserContext.Provider value={userValue}>
           <Routes>
-            { Object.keys(userValue.user).length > 0 ? (<Route path="/" element={<LoggedIn/>} exact/>) : (<Route path="/" element={<NotLoggedIn/>} exact/>)}
+            { Object.keys(userValue.user).length > 0 ? (<Route path="/" element={<LoggedIn user={userValue}/>} exact/>) : (<Route path="/" element={<NotLoggedIn/>} exact/>)}
             <Route path="/depositwithdraw/" element={<Depositwithdraw/>}/>
             <Route path="/balancehistory/" element={<AllData/>}/>
-            <Route path="/alldatagraderequirement/" element={<AllDataGradeRequirement/>}/>
+            {/* <Route path="/alldatagraderequirement/" element={<AllDataGradeRequirement/>}/> */}
           </Routes>
         </UserContext.Provider>
       </HashRouter>

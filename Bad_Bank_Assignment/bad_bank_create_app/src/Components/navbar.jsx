@@ -35,7 +35,7 @@ function NavBar() {
     <>
       <ul className="nav nav-tabs">
         <li className="nav-item">
-          <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bad Bank Home</a>
+          <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bank Home</a>
         </li>
         <li className="nav-item">
           <a className={className(depwithIsActive)} name="DepWith" href="#/depositwithdraw/" onClick={toggleDepwithActive}>Deposit/Withdraw</a>

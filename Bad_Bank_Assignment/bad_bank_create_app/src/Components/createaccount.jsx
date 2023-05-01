@@ -45,9 +45,10 @@ function CreateAccount() {
 
 		setShow(false);
 		setShowCreateAccount(false);
+		
 		// update current user state after 5 seconds
 		setTimeout(() => {
-			setUser({user:{name:name, email:email, password:password, balance:0, history:[], blank:true}});
+			setUser({name:name, email:email, password:password, balance:0, history:[]});
 		}, 5000);
 	}
 
