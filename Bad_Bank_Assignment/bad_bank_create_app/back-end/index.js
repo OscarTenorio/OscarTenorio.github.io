@@ -40,15 +40,16 @@ app.get('/account/login/:email/:password', function (req, res) {
 			// if user exists, check password
 			if(user.length > 0){
 				if (user[0].password === req.params.password){
-						console.log('SERVER login: user[0].password === req.params.password');
+						// console.log('SERVER login: user[0].password === req.params.password');
+						console.log('SERVER successful Login, user data: ', user[0]);
 						res.send(user[0]);
 				} else {
 					console.log('SERVER login: Login failed: wrong password');
-					console.log('SERVER login: Login failed: user password: ', user[0].password);
+					// console.log('SERVER login: Login failed: user password: ', user[0].password);
 					res.send('Login failed: wrong password');
 				}
 			} else {
-				console.log('SERVER Login failed: user not found');
+				// console.log('SERVER Login failed: user not found');
 				res.send('Login failed: user not found');
 			}
 	}); 

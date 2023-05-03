@@ -31,7 +31,7 @@ function LoggedIn(user) {
 					extra="d-inline-block"
 					txtcolor="black"
 					headerbgcolor="bg-muted"
-					header="Upcoming Changes Alert"
+					header="Upcoming Changes"
 					text={(<p>Here is a sample alert that can display to users to warn of incoming feature changes or releases. For example:</p>)}
 					body={(<div className="mx-auto d-block" alt="Evil Image Icon" style={{maxWidth:'100%', maxHeight:'200px'}}>
 

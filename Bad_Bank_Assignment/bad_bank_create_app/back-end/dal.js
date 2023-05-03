@@ -15,7 +15,7 @@ function create(name, email, password) {
     return new Promise((resolve, reject) => {
         const collection = db.collection('users');
         console.log('DAL Collection value: ',collection);
-        const entry = {name: name, email: email, password: password};
+        const entry = {name: name, email: email, password: password, balance: 0, history: []};
         collection.insertOne(entry, {w:1}, function(err, result){
             err ? reject(err) : resolve(entry);
         });

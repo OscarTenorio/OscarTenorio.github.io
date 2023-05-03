@@ -21,15 +21,15 @@ function Spa() {
   return (
     <>
       <HashRouter>
-        { Object.keys(userValue.user).length > 0 ? (
-          <>
-            <NavBar/>
-            <LoggedInUser user={userValue}/>
-          </>
-        ) : (
-          <></>
-        )}
         <UserContext.Provider value={userValue}>
+          { Object.keys(userValue.user).length > 0 ? (
+            <>
+              <NavBar/>
+              <LoggedInUser user={userValue}/>
+            </>
+          ) : (
+            <></>
+          )}
           <Routes>
             { Object.keys(userValue.user).length > 0 ? (<Route path="/" element={<LoggedIn user={userValue}/>} exact/>) : (<Route path="/" element={<NotLoggedIn/>} exact/>)}
             <Route path="/depositwithdraw/" element={<Depositwithdraw/>}/>

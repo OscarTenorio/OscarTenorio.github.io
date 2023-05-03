@@ -1,5 +1,5 @@
 import React from 'react';
-import UserContext from './spa';
+import UserContext from './userContext';
 import Card from './card';
 
 function Login() {
@@ -8,7 +8,7 @@ function Login() {
 	const [loginButton, setLoginButton] 			= React.useState(false)
 	const [email, setEmail] 						= React.useState('');
 	const [password, setPassword] 					= React.useState('');
-	const ctx = React.useContext(UserContext);
+	const {user, setUser}							= React.useContext(UserContext);
 
 	function validate(field, label) {					// basic validation stuff
 		if (!field) {
@@ -20,17 +20,17 @@ function Login() {
 		return true;
 	}
 
-	function handleLogin(context) {
-		if (!validate(email, 		'email')) return;
-		if (!validate(password, 'password')) return;
-		console.log("handleLogin context: ", context);
-		// context.forEach(entry => {
-		// 	if (entry.loggedIn === true) {
-		// 		entry.loggedIn = false;
-		// 	}
-		// });
-		// TODO ^^^^
-	};
+	// function handleLogin(context) {
+	// 	if (!validate(email, 		'email')) return;
+	// 	if (!validate(password, 'password')) return;
+	// 	console.log("handleLogin context: ", context);
+	// 	context.forEach(entry => {
+	// 		if (entry.loggedIn === true) {
+	// 			entry.loggedIn = false;
+	// 		}
+	// 	});
+	// 	TODO ^^^^
+	// };
 
 	function buttonClass() {
 		if (loginButton) {
@@ -71,7 +71,8 @@ function Login() {
 			console.log('ASYNC Login db call - Login Data: ', JSON.stringify(jsonResponse));
 			// update current user state after 5 seconds
 			setTimeout(() => {
-				// setUser({name:name, email:email, password:password, balance:0, history:[]});
+				setUser({name:jsonResponse.name, email:jsonResponse.email, password:jsonResponse.password, balance:jsonResponse.balance, history:jsonResponse.history});
+				// console.log('LOGIN setTimeout JSON Response Balance??: ', jsonResponse.balance);
 			}, 5000);
 		})();
 

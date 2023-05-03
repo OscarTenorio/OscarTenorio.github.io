@@ -3,14 +3,14 @@ import Card from './card';
 import UserContext from './userContext';
 
 function CreateAccount() {
-	const [show, setShow] 													= React.useState(true);
+	const [show, setShow] 							= React.useState(true);
 	const [showCreateAccount, setShowCreateAccount]	= React.useState(true);
-	const [status, setStatus] 											= React.useState('* Required');
-	const [name, setName] 													= React.useState('');
-	const [email, setEmail] 												= React.useState('');
-	const [password, setPassword] 									= React.useState('');
-	const [createButton, setCreateButton] 					= React.useState(false)
-	const {user, setUser} 													= React.useContext(UserContext);
+	const [status, setStatus] 						= React.useState('* Required');
+	const [name, setName] 							= React.useState('');
+	const [email, setEmail] 						= React.useState('');
+	const [password, setPassword] 					= React.useState('');
+	const [createButton, setCreateButton] 			= React.useState(false)
+	const {user, setUser}							= React.useContext(UserContext);
 	// const {accountCreated, setAccountCreated} 			= React.useContext(createdValue);
 
 
@@ -41,7 +41,7 @@ function CreateAccount() {
 		(async () => {
 			var res = await fetch(endpointUrl + `/account/create/${name}/${email}/${password}`);
 			var jsonResponse = await res.json();
-			console.log('ASYNC CreateAccount db call - Data: ',jsonResponse);
+			console.log('CREATE ACCOUNT JSON response: ',jsonResponse);
 		})();
 
 		setShow(false);
