@@ -35,25 +35,32 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
 
 // login user 
 app.get('/account/login/:email/:password', function (req, res) {
-
-    dal.find(req.params.email).
-        then((user) => {
-
-            // if user exists, check password
-            if(user.length > 0){
-                if (user[0].password === req.params.password){
-                    res.send(user[0]);
-                }
-                else{
-                    res.send('Login failed: wrong password');
-                }
-            }
-            else{
-                res.send('Login failed: user not found');
-            }
-    });
-    
+	dal.find(req.params.email)
+		.then((user) => {
+			// if user exists, check password
+			if(user.length > 0){
+				if (user[0].password === req.params.password){
+						console.log('SERVER login: user[0].password === req.params.password');
+						res.send(user[0]);
+				} else {
+					console.log('SERVER login: Login failed: wrong password');
+					console.log('SERVER login: Login failed: user password: ', user[0].password);
+					res.send('Login failed: wrong password');
+				}
+			} else {
+				console.log('SERVER Login failed: user not found');
+				res.send('Login failed: user not found');
+			}
+	}); 
 });
+
+// login user (commented out in the video for some reason, quess they're just not using it now)
+// app.get('/account/login/:email/:password', function(req, res){
+//     res.send({
+//         email:      req.params.email,
+//         password:   req.params.password
+//     });
+// });
 
 // find user account
 app.get('/account/find/:email', function (req, res) {

@@ -7,20 +7,21 @@ function LoggedIn(user) {
 	const userObject = user.user.user
 	// ====== Time-related code =======
 	let hour = new Date().getHours();
-	var geeting = "Hello "
+	let greeting = "Hello, "
 	if (hour > 5 && hour < 12) {
-		var greeting = "Good Morning ";
+		greeting = "Good Morning, ";
 	} else if (hour > 12 && hour < 16) {
-		var greeting = "Good Afternoon ";
+		greeting = "Good Afternoon, ";
 	} else {
-		var greeting = "Good Evening "; 
+		greeting = "Good Evening, "; 
 	}
 
 	return(
 		<>
 			<div className="d-flex justify-content-center">
 				<div className="text-center mt-5">
-					<h1 className='fs-1'>{greeting + userObject.name}</h1>
+					<h1 className='fs-1'>{greeting}</h1>
+					<h1 className='fs-1'>{userObject.name}</h1>
 				</div>
 			</div>
 			<div className="d-flex justify-content-center">

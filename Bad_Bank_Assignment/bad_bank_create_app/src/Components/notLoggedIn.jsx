@@ -19,6 +19,7 @@ function NotLoggedIn() {
 			<div className="d-flex justify-content-center">
 				<CreateAccount/>
 				{ Object.keys(userValue.user).length < 1 ? (
+					// maybe include a check for setShow in here too? to hide/display the other forms or something
 					<>
 						<div className="my-5">
 							<div className="my-5">

@@ -3,6 +3,7 @@ import UserContext from './spa';
 import Card from './card';
 
 function Login() {
+	const [show, setShow] 							= React.useState(true)
 	const [status, setStatus] 						= React.useState('* Required');
 	const [loginButton, setLoginButton] 			= React.useState(false)
 	const [email, setEmail] 						= React.useState('');
@@ -56,6 +57,29 @@ function Login() {
 		};
 	};
 
+	function handleLogin() {
+		const endpointUrl = 'http://localhost:3001';
+
+		if (!validate(email, 		'email')) return;
+		if (!validate(password, 'password')) return;
+		console.log("HANDLE LOGIN: Email: ",String(email),", Password: ",String(password));
+
+		//retrieve from database =======================
+		(async () => {
+			var res = await fetch(endpointUrl + `/account/login/${email}/${password}`);
+			var jsonResponse = await res.json();
+			console.log('ASYNC Login db call - Login Data: ', JSON.stringify(jsonResponse));
+			// update current user state after 5 seconds
+			setTimeout(() => {
+				// setUser({name:name, email:email, password:password, balance:0, history:[]});
+			}, 5000);
+		})();
+
+		setShow(false);
+		setStatus(false);
+		setLoginButton(false);
+	};
+
 
 	return (
 		<div>
@@ -65,7 +89,7 @@ function Login() {
 				status={status}
 				margin="mx-5 mt-5 mb-3"
 				extra="d-inline-block"
-				text={
+				text={ show ? (
 					<>
 						<p>Email Address <span className="text-info">*</span>
 							<input type="input" className="form-control" id="loginemail" placeholder="Enter Email" onChange={e => { {handleLoginButton('email', e.currentTarget.value)} }}/>
@@ -74,17 +98,18 @@ function Login() {
 							<input type="password" className="form-control" id="loginpassword" placeholder="Enter Password" onChange={e => { {handleLoginButton('password', e.currentTarget.value)} }}/>
 						</p>
 					</>
-				}
-			/>
-			{/* <div className="text-center">
-				{ showCreateAccount ? (
-					<button type="submit" className={buttonClass()} id="createAccountButton" onClick={handleCreate}>Create Account</button>
 				) : (
-					<></>
+					<>
+					<h1 className="text-center">Success!</h1>
+					{(<img src={process.env.PUBLIC_URL + '/green_check.png'}
+					className="mx-auto d-block" alt="Gold Coins PNG" style={{maxWidth:'100%', maxHeight:'50px'}}
+					></img>)}
+					<p className="text-center my-2">Hold tight, we're taking you to the Homepage...</p>
+				</>
 				)}
-			</div> */}
+			/>
 			<div className="text-center">
-				<button type="submit" className={buttonClass()} style={{minWidth:"7rem"}} onClick={handleLogin}>Login</button>
+				{ show && (<button type="submit" className={buttonClass()} style={{minWidth:"7rem"}} onClick={handleLogin}>Login</button>)}
 			</div>
 		</div>
 	);

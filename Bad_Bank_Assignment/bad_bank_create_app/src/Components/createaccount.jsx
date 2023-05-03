@@ -31,12 +31,13 @@ function CreateAccount() {
 	function handleCreate() {
 		const endpointUrl = 'http://localhost:3001';
 
+		// validate entry =======================
 		if (!validate(name, 		'name')) return;
 		if (!validate(email, 		'email')) return;
 		if (!validate(password, 'password')) return;
 		console.log("HANDLE CREATE: Name: ",String(name),", Email: ",String(email),", Password: ",String(password));
 
-		//store in database =======================
+		// store in database =======================
 		(async () => {
 			var res = await fetch(endpointUrl + `/account/create/${name}/${email}/${password}`);
 			var jsonResponse = await res.json();
@@ -46,7 +47,7 @@ function CreateAccount() {
 		setShow(false);
 		setShowCreateAccount(false);
 		
-		// update current user state after 5 seconds
+		// update current user state after 5 seconds =======================
 		setTimeout(() => {
 			setUser({name:name, email:email, password:password, balance:0, history:[]});
 		}, 5000);
@@ -99,19 +100,15 @@ function CreateAccount() {
 				) : (
 					<>
 						<h1 className="text-center">Success!</h1>
-						<p className="text-center my-2">Hold tight, we're redirecting you to the Homepage...</p>
+						<p className="text-center my-2">Hold tight, we're taking you to the Homepage...</p>
 						{(<img src={process.env.PUBLIC_URL + '/gold_coins.png'}
 						className="mx-auto d-block" alt="Gold Coins PNG" style={{maxWidth:'100%', maxHeight:'200px'}}
-					></img>)}
+						></img>)}
 					</>
 				)}
 			/>
 			<div className="text-center">
-				{ showCreateAccount ? (
-					<button type="submit" className={buttonClass()} id="createAccountButton" onClick={handleCreate}>Create Account</button>
-				) : (
-					<></>
-				)}
+				{ show && (<button type="submit" className={buttonClass()} id="createAccountButton" onClick={handleCreate}>Create Account</button>) }
 			</div>
 		</div>
 	);
