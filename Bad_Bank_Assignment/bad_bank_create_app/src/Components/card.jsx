@@ -5,8 +5,8 @@ import React from 'react';
 function Card(props) {
 
   function cardClasses(){
-    const bgcolor = props.bgcolor ? ' bg-' + props.bgcolor : ' ';
     const txt = props.txtcolor ? ' text-' + props.txtcolor : ' text-white';
+    const bgcolor = props.bgcolor ? ' bg-' + props.bgcolor : ' ';
     const margin = props.margin ? ' ' + props.margin : ' my-5 mx-auto';
     const extra = props.extra ? ' ' + props.extra : '';
     return 'card' + margin + bgcolor + txt + extra;

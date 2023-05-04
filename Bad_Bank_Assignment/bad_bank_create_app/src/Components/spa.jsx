@@ -8,7 +8,6 @@ import NavBar from './navbar';
 import Depositwithdraw from "./depositwithdraw";
 import AllData from "./alldata";
 import UserContext from './userContext';
-import AllDataGradeRequirement from './alldatagraderequirement';
 import LoggedInUser from './loggedInUser';
 import ReferenceLinks from './referencelinks';
 

@@ -3,12 +3,12 @@ import UserContext from './userContext';
 import Card from './card';
 
 function Login() {
-	const [show, setShow] 							= React.useState(true)
-	const [status, setStatus] 						= React.useState('* Required');
-	const [loginButton, setLoginButton] 			= React.useState(false)
-	const [email, setEmail] 						= React.useState('');
-	const [password, setPassword] 					= React.useState('');
-	const {user, setUser}							= React.useContext(UserContext);
+	const [show, setShow] 				= React.useState(true)
+	const [status, setStatus] 			= React.useState('* Required');
+	const [loginButton, setLoginButton] = React.useState(false)
+	const [email, setEmail] 			= React.useState('');
+	const [password, setPassword] 		= React.useState('');
+	const {user, setUser}				= React.useContext(UserContext);
 
 	function validate(field, label) {					// basic validation stuff
 		if (!field) {

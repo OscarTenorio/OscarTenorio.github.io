@@ -6,7 +6,8 @@ import ReferenceLinks from './referencelinks';
 
 
 function Depositwithdraw() {
-	const ctx = React.useContext(UserContext);
+	const {user, setUser}				= React.useContext(UserContext);
+	console.log('DEPWITH user value: ', user)
 
 	const [deposit, setDeposit] 								= React.useState(0);
 	const [withdraw, setWithdraw] 							= React.useState(0);
@@ -28,7 +29,7 @@ function Depositwithdraw() {
 			setWithdrawStatus('ERROR: Please enter a ' + label + ' amount number');
 			setTimeout(() => setWithdrawStatus(''), 5000);
 			return false;
-		} else if (label == 'withdraw' && field > ctx.users[ctx.users.length - 1].balance) {
+		} else if (label == 'withdraw' && field > user.balance) {
 			setWithdrawStatus('ERROR: Cannot ' + label + ' more than your Balance');
 			setTimeout(() => setWithdrawStatus(''), 5000);
 			return false;
@@ -43,15 +44,19 @@ function Depositwithdraw() {
 			clearForm();
 			return
 		};
-		ctx.users[ctx.users.length - 1].balance += parseInt(deposit);
-		ctx.users[ctx.users.length - 1].history.push({
+		user.balance += parseInt(deposit);
+		// enter deposit into DB =============
+		
+
+		// update local state =============
+		user.history.push({
 			name:"Oscar",
 			email:"emai@email.email",
 			type:"Deposit", amount:deposit,
-			balance:ctx.users[ctx.users.length - 1].balance,
+			balance:user.balance,
 			timestamp:new Date()
 		});
-		ctx.users[ctx.users.length - 1].blank = false;
+		user.blank = false;
 		setShowDesposit(false);
 	}
 
@@ -60,15 +65,15 @@ function Depositwithdraw() {
 			clearForm();
 			return
 		};
-		ctx.users[ctx.users.length - 1].balance -= parseInt(withdraw);
-		ctx.users[ctx.users.length - 1].history.push({
+		user.balance -= parseInt(withdraw);
+		user.history.push({
 			name:"Oscar",
 			email:"emai@email.email",
 			type:"Withdrawal", amount:withdraw,
-			balance:ctx.users[ctx.users.length - 1].balance,
+			balance:user.balance,
 			timestamp:new Date()
 		});
-		ctx.users[ctx.users.length - 1].blank = false;
+		user.blank = false;
 		setShowWithdraw(false);
 	}
 
@@ -92,7 +97,6 @@ function Depositwithdraw() {
 
 	return(
 		<>
-			<ReferenceLinks/>
 			<Balance/>
 			<div className="d-flex justify-content-center">
 				<Card 

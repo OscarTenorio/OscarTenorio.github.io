@@ -35,7 +35,10 @@ function NavBar() {
     <>
       <ul className="nav nav-tabs">
         <li className="nav-item">
-          <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>Bank Home</a>
+          <a className={className(homeIsActive)} name="Home" aria-current="page" href="#" onClick={toggleHomeActive}>
+            <img src={process.env.PUBLIC_URL + '/house-48.png'} className="" alt="Home Icon PNG" style={{maxWidth:'12%',marginRight:"15px"}}></img>
+            Bank Home
+          </a>
         </li>
         <li className="nav-item">
           <a className={className(depwithIsActive)} name="DepWith" href="#/depositwithdraw/" onClick={toggleDepwithActive}>Deposit/Withdraw</a>

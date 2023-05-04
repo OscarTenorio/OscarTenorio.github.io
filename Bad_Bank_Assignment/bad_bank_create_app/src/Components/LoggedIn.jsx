@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from './card';
-import UserContext from './userContext';
+import NewFeatures from './upcomingFeatures';
+import AtAGlance from './atAGlance';
 
 function LoggedIn(user) {
 	console.log('LOGGEDIN user context: ', user)
@@ -18,26 +18,14 @@ function LoggedIn(user) {
 
 	return(
 		<>
-			<div className="d-flex justify-content-center">
-				<div className="text-center mt-5">
-					<h1 className='fs-1'>{greeting}</h1>
-					<h1 className='fs-1'>{userObject.name}</h1>
+			<div className="d-flex justify-content-center my-3">
+				<div className="text-center">
+					<h1 className="fs-1">{greeting}</h1>
+					<h1 className="fs-1">{userObject.name}</h1>
 				</div>
 			</div>
-			<div className="d-flex justify-content-center">
-				<Card
-					width="60%"
-					margin="m-5"
-					extra="d-inline-block"
-					txtcolor="black"
-					headerbgcolor="bg-muted"
-					header="Upcoming Changes"
-					text={(<p>Here is a sample alert that can display to users to warn of incoming feature changes or releases. For example:</p>)}
-					body={(<div className="mx-auto d-block" alt="Evil Image Icon" style={{maxWidth:'100%', maxHeight:'200px'}}>
-
-						</div>)}
-				/>
-			</div>
+			<AtAGlance/>
+			<NewFeatures/>
 		</>
 	);
 }

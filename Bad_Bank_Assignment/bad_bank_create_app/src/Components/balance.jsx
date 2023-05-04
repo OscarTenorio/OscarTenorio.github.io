@@ -3,11 +3,8 @@ import Card from './card';
 import UserContext from './userContext';
 
 function Balance() {
-	const ctx = React.useContext(UserContext);
-
-	function changeUser() {
-		// get dropdown value and select that context
-	}
+	const {user, setUser} = React.useContext(UserContext);
+	console.log('BALANCE user balance: ', user.balance)
 
 	return(
 		<Card
@@ -15,9 +12,9 @@ function Balance() {
 			headerClasses="text-center"
 			bgcolor="primary"
 			margin="mx-auto mt-5"
-			header={"User: " + ctx.users[ctx.users.length - 1].name}
-			balance={true}
-			text={<h3 className="text-center">Balance: ${ctx.users[ctx.users.length - 1].balance}</h3>}
+			header={"User: " + user.name}
+			balance={user.balance}
+			text={<h3 className="text-center">Balance: ${user.balance}</h3>}
 		/>
 	);
 }
