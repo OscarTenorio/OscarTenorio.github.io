@@ -44,7 +44,7 @@ function NavBar() {
           <a className={className(depwithIsActive)} name="DepWith" href="#/depositwithdraw/" onClick={toggleDepwithActive}>Deposit/Withdraw</a>
         </li>
         <li className="nav-item">
-          <a className={className(historyIsActive)} name="History" href="#/balancehistory/" onClick={toggleHistoryActive}>All Data</a>
+          <a className={className(historyIsActive)} name="History" href="#/balancehistory/" onClick={toggleHistoryActive}>History</a>
         </li>
       </ul>
     </>

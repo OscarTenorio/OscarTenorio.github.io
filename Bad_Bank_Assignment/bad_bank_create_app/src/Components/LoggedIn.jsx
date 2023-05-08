@@ -10,7 +10,7 @@ function LoggedIn(user) {
 	let greeting = "Hello, "
 	if (hour > 5 && hour < 12) {
 		greeting = "Good Morning, ";
-	} else if (hour > 12 && hour < 16) {
+	} else if (hour > 12 && hour < 21) {
 		greeting = "Good Afternoon, ";
 	} else {
 		greeting = "Good Evening, "; 

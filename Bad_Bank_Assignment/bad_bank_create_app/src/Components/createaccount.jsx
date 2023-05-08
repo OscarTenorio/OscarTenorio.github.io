@@ -37,7 +37,7 @@ function CreateAccount() {
 		if (!validate(password, 'password')) return;
 		console.log("HANDLE CREATE: Name: ",String(name),", Email: ",String(email),", Password: ",String(password));
 
-		// store in database =======================
+		// store in db =======================
 		(async () => {
 			var res = await fetch(endpointUrl + `/account/create/${name}/${email}/${password}`);
 			var jsonResponse = await res.json();

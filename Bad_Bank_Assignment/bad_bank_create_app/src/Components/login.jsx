@@ -64,21 +64,27 @@ function Login() {
 		if (!validate(password, 'password')) return;
 		console.log("HANDLE LOGIN: Email: ",String(email),", Password: ",String(password));
 
-		//retrieve from database =======================
+		//atttempt login with db credentials =======================
 		(async () => {
 			var res = await fetch(endpointUrl + `/account/login/${email}/${password}`);
 			var jsonResponse = await res.json();
-			console.log('ASYNC Login db call - Login Data: ', JSON.stringify(jsonResponse));
-			// update current user state after 5 seconds
-			setTimeout(() => {
-				setUser({name:jsonResponse.name, email:jsonResponse.email, password:jsonResponse.password, balance:jsonResponse.balance, history:jsonResponse.history});
-				// console.log('LOGIN setTimeout JSON Response Balance??: ', jsonResponse.balance);
-			}, 5000);
-		})();
+			console.log('ASYNC LOGIN db call - Login Data: ', JSON.stringify(jsonResponse));
+			console.log("JSON.stringify(jsonResponse).includes('failed'): ", JSON.stringify(jsonResponse).includes('failed'))
 
-		setShow(false);
-		setStatus(false);
-		setLoginButton(false);
+			// throw error if login failed
+			if (JSON.stringify(jsonResponse).includes('failed')){
+				setStatus('Email or Password are incorrect');
+				setTimeout(() => setStatus('* Required'), 5000);
+			} else {
+				setShow(false);
+				// setStatus(false);
+				setLoginButton(false);
+				// update current user state after 5 seconds
+				setTimeout(() => {
+					setUser({name:jsonResponse.name, email:jsonResponse.email, password:jsonResponse.password, balance:jsonResponse.balance, history:jsonResponse.history});
+				}, 5000);
+			};
+		})();
 	};
 
 

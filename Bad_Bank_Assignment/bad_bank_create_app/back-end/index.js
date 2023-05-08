@@ -55,14 +55,6 @@ app.get('/account/login/:email/:password', function (req, res) {
 	}); 
 });
 
-// login user (commented out in the video for some reason, quess they're just not using it now)
-// app.get('/account/login/:email/:password', function(req, res){
-//     res.send({
-//         email:      req.params.email,
-//         password:   req.params.password
-//     });
-// });
-
 // find user account
 app.get('/account/find/:email', function (req, res) {
 

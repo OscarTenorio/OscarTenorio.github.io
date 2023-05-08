@@ -12,9 +12,9 @@ function Balance() {
 			headerClasses="text-center"
 			bgcolor="primary"
 			margin="mx-auto mt-5"
-			header={"User: " + user.name}
+			header="Balance"
 			balance={user.balance}
-			text={<h3 className="text-center">Balance: ${user.balance}</h3>}
+			text={<h3 className="text-center">${user.balance}</h3>}
 		/>
 	);
 }

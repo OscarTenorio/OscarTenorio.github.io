@@ -8,6 +8,7 @@ import ReferenceLinks from './referencelinks';
 function Depositwithdraw() {
 	const {user, setUser}				= React.useContext(UserContext);
 	console.log('DEPWITH user value: ', user)
+	const endpointUrl = 'http://localhost:3001';
 
 	const [deposit, setDeposit] 								= React.useState(0);
 	const [withdraw, setWithdraw] 							= React.useState(0);
@@ -39,25 +40,30 @@ function Depositwithdraw() {
 		return true;
 	}
 
+
 	function handleDeposit() {
 		if (!validate(deposit, 'deposit')) {
 			clearForm();
 			return
 		};
 		user.balance += parseInt(deposit);
-		// enter deposit into DB =============
-		
-
-		// update local state =============
+		// update user history =======================================
 		user.history.push({
-			name:"Oscar",
-			email:"emai@email.email",
+			name:user.name,
+			email:user.email,
 			type:"Deposit", amount:deposit,
 			balance:user.balance,
 			timestamp:new Date()
 		});
 		user.blank = false;
 		setShowDesposit(false);
+		// enter deposit into DB =======================================
+		(async () => {
+			var res = await fetch(endpointUrl + `/account/update/${user.email}/${Math.abs(deposit)}`);
+			var jsonResponse = await res.json();
+			console.log('DEPOSIT JSON response: ',jsonResponse);
+		})();
+
 	}
 
 	function handleWithdraw() {
@@ -66,9 +72,16 @@ function Depositwithdraw() {
 			return
 		};
 		user.balance -= parseInt(withdraw);
+		// enter withdrawal into db =======================================
+		(async () => {
+			var res = await fetch(endpointUrl + `/account/update/${user.email}/${-Math.abs(withdraw)}`);
+			var jsonResponse = await res.json();
+			console.log('WITHDRAW JSON response: ',jsonResponse);
+		})();		
+
 		user.history.push({
-			name:"Oscar",
-			email:"emai@email.email",
+			name:user.name,
+			email:user.email,
 			type:"Withdrawal", amount:withdraw,
 			balance:user.balance,
 			timestamp:new Date()
