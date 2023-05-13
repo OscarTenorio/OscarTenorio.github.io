@@ -68,6 +68,57 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     NOTE: where exactly the file is located will be dependant on where you're viewing this from, but just following tthe above path from oscartenorio.github.io on should do the trick
     - you can see it done for restaurants at the following as well: /Users/otenorio/Desktop/MIT_MERN_fullstack/oscartenorio.github.io/References/Notes/Module_24_express_server_and_graphQL/graphql-restaurant-data-exercise_starter/index.js
 
+- Deploying a React App to a hosting server (DigitalOcean Droplet), as done in the Bad Bank Capstone project:
+    1. Create separate Repo for application in Github
+    2. Set up Droplet in DigitalOcean
+        - used Docker image for the BadBank capstone, but ran into specific problems because of it.
+        - probably using basic image would have been better - if doing so, remember to install Docker as dependency, and skip the step where you enter iptables to expose port 80 (I think, since default image would have that port open already I'd imagine)
+    3. Using the console link on the DigitalOcean webpage for the Droplet, do the following in ther server:
+        - install npm
+        - generate ssh key for use shortly (copy somewhere temporary on the side for use in the next step):
+            - ssh-keygen -t ed25519 -C "otenorio90@gmail.com"
+            - press enter enough time for default settings
+            - "cat" the contents of the file ending in "pub" (you'll see it displayed in the contents above once the key is generated) to get your public key 
+    4. In Github, create Deploy Key for server with read only access
+        - use the key generated and noted in Step 3 here (this'll allow the server to access the app's files from Github)
+    5. Back in the Droplet, clone the repo
+            - git clone <repo_url>, for example: git clone https://github.com/OscarTenorio/BadBank-Capstone.git
+            - cd into application folder
+            - use Screen (linux multi-terminal tool) to set up terminal windows for application, server, and docker
+    6. Use Screen to setup terminal windows for spinning up application parts
+        - run Screen (and press Enter) to start Screen tool
+        - I'll use <> to denote commands to make this easier to read - they are not key presses
+        - press <ctrl+a A> (<- that's a capital A, so <shift a>) to name the window. Let's call it App
+        - press <ctrl+a c> to create a new terminal window. Then do the above step to name it Server
+        - do the same again to make another terminal window and call it Docker
+        - <ctrl+a "> lets you see all the windows, and use the arrow keys and Enter to navigate the terminal windows
+    7. In the Screen - Docker window, set up Docker
+        - IF not using a Docker Droplet, first run: npm install Docker
+        - docker run -p 27017:27017 --name badbank_capstone -d mongo
+        - this'll spin up an instance of the Docker container for MongoDB on the server, using port 27017, and giving it a name of badbank_capstone
+        - it also sets it up as the active container so that should be all
+            - NOTE: my own index.js server file notes that port, so if doing this on another project keep an eye out for that
+    8. In the Screen - Server window, spin up the App's server
+        - cd into whatever folder houses the back-end server
+        - run it. For example,for this project I used: node index.js
+    9. In the Screen - App window, run the application
+        - as of writing this, I've only spun up the dev version of the site (not the Prod, or Build version)
+        - ensure you're at the directory that sees the package.json file
+        - npm install
+        - npm start
+        - if running a Prod version (using a Build folder) of the app, look up the appropriate steps to run that
+    10. Depending on what steps taken in Step 2:
+        - IF using a Docker image for the Droplet,
+            you may need to expose port 80 to connect to the server. Look up "how to expose port 80 iptables" for that mission to get that working
+        - IF using a default image for the Droplet,
+            I think you're good already here (theory, haven't tested it yet)
+    11. Back in the DigitalOcean Droplet webpage, copy the ip4 address
+        - paste it into a browser tab, and add ":PORT" where PORT = the port exposed in your app (for npm start, it defaults to 3000)
+    12. To keep the server running when this console is closed, you need to detach the SCreen windows so they continue running without supervision
+        - 
+    That should be it!!!
+        
+
 
 --------------------------------------------------------------------------------
 --------------------------- Other Terms to Recognize ---------------------------
