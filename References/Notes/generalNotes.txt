@@ -68,6 +68,7 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
     NOTE: where exactly the file is located will be dependant on where you're viewing this from, but just following tthe above path from oscartenorio.github.io on should do the trick
     - you can see it done for restaurants at the following as well: /Users/otenorio/Desktop/MIT_MERN_fullstack/oscartenorio.github.io/References/Notes/Module_24_express_server_and_graphQL/graphql-restaurant-data-exercise_starter/index.js
 
+-----------------------------------------------------------------------
 - Deploying a React App to a hosting server (DigitalOcean Droplet), as done in the Bad Bank Capstone project:
     1. Create separate Repo for application in Github
     2. Set up Droplet in DigitalOcean
@@ -96,6 +97,10 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
         - IF not using a Docker Droplet, first run: npm install Docker
         - docker run -p 27017:27017 --name badbank_capstone -d mongo
         - this'll spin up an instance of the Docker container for MongoDB on the server, using port 27017, and giving it a name of badbank_capstone
+            - if there is already a container of that name running, run the following commands to stop then remove that copy (so running the previous command works without issue)
+                1. docker ps    - gives a list of all current containers - get the id of the container you want to stop
+                2. docker stop <id>     - stops the container with the given id
+                3. docker rm <id>       - removes the container
         - it also sets it up as the active container so that should be all
             - NOTE: my own index.js server file notes that port, so if doing this on another project keep an eye out for that
     8. In the Screen - Server window, spin up the App's server
@@ -114,8 +119,14 @@ syntax: { truthyOrFalseyVariable && <elementToRender />}
             I think you're good already here (theory, haven't tested it yet)
     11. Back in the DigitalOcean Droplet webpage, copy the ip4 address
         - paste it into a browser tab, and add ":PORT" where PORT = the port exposed in your app (for npm start, it defaults to 3000)
-    12. To keep the server running when this console is closed, you need to detach the SCreen windows so they continue running without supervision
-        - 
+    12. To keep the server running when this console is closed, you need to detach the Sreen windows so they continue running without supervision
+        - in the Screen terminal (where you can run <ctrl+a "> to see all the windows) run <ctrl+a d> to detach the collection of terminals
+            - <screen -r > (followed by the id of the screen)is the command to reattach the window to take control of those screens again
+                - when running <screen -r >, you'll get a list of avaiable sessions. the id is the 4+ numbers at the beginning of the line with the screen.
+                    example: 6610.pts-5.BadBank-Capstone     (05/12/23 02:10:20)     (Detached)
+                             -a--
+                        a. the id I was talking about
+                    So running <screen -r 6610> will reattach that screen and let you have control of it again
     That should be it!!!
         
 
